@@ -36,7 +36,40 @@
 
 
 
-
-
 ### 2.1.2. Coulomb's Law
+
+* 단일 point charge $q$에 의해, 이로부터 $d$만큼 거리가 떨어져있는 test charge $Q$에 가해지는 힘은 다음과 같다.
+
+> $$
+> \mathbf F = \frac{1}{4\pi\epsilon_0}\frac{qQ}{d^2} \hat{\pmb d}.
+> $$
+>
+> * $\epsilon_0$ : permittivity of free space
+>
+>   * Permittivity : 유전율
+>   * 전하 사이에 전기장이 작용할 때, 전하 사이의 매질이 전기장에 미치는 영향을 나타내는 물리적 단위.
+>
+>   $$
+>   \epsilon_0 = 8.85 \times 10^{-12} \frac{\text{C}^2}{\text{N}\cdot \text{m}^2}
+>   $$
+>
+> * $\pmb d$ : $\mathbf r^\prime$ ($q$의 위치) 로부터 $\mathbf r$ ($Q$의 위치) 까지의 separation vector.
+>   $$
+>   \pmb d = \mathbf r - \mathbf r^\prime
+>   $$
+>
+>   * $d$ : $\pmb d$의 magnitude; $\hat{\pmb d}$ : $\pmb d$의 direction.
+
+* 거리가 떨어진 test charge에 가해지는 힘은 
+
+  * **각 전하의 곱에 비례**하고
+  * **두 전하간 거리의 제곱에 반비례**한다.
+
+* $q$와 $Q$가 같은 sign을 갖고 있다면 source charge로부터 repulsive, 다른 sign을 갖고 있다면 attractive.
+
+  <img src="\images\ED_3.png" alt="image-20220123153355174" style="zoom: 33%;" />
+
+
+
+### 2.1.3. The Electric Field
 

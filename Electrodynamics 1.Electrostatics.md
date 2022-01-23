@@ -1,7 +1,7 @@
 # 2. Electrostatics
 
 * 정전기학
-* electrostatics, the study of electromagnetic phenomena that occur when there are **no moving charges**—i.e., after a static equilibrium has been established.
+* the study of electromagnetic phenomena that occur when there are **no moving charges**—i.e., after a static equilibrium has been established.
 
 ## 2.1. The Electric Field
 
@@ -9,7 +9,7 @@
 
 * Electrodynamics의 근본적인 목표는 다음 문제를 해결하는 것.
   * 전하 $q_1, q_2, \cdots$가 있을 때, 이들이 다른 전하 $Q$에 가하는 힘이 무엇인가?
-    ![image-20220122083855908](C:\Users\Jaejoon\Desktop\2. Electrostatics.assets\image-20220122083855908.png)
+    ![image-20220122083855908](\images\ED_1.png)
   * $q_1, q_2, \cdots $를 source charge, $Q$를 test charge라고 함.
   * Source charge의 위치는 시간에 대한 함수로 주어지고, 그에 따른 test particle의 궤적은 계산되어야 함.
 * 이 문제에 대한 solution은 **"중첩(superposition)의 원리"**에 의해 얻을 수 있다.
@@ -26,7 +26,7 @@
 
     * Q에 가해지는 힘은 전하 간 separation distance $r$에 영향을 받는다.
 
-    ![image-20220122083926284](C:\Users\Jaejoon\Desktop\2. Electrostatics.assets\image-20220122083926284.png)
+    ![image-20220122083926284](\images\ED_2.png)
 
     * $q$의 속도와 가속도에 영향을 받음.
     * 가해지는 전자기적 영향은 빛의 속도로 이동하므로, $Q$에 영향을 끼치는 것은 아주 조금 더 과거의 $q$의 위치, 속도, 가속도임.

@@ -775,22 +775,120 @@ $$
 * Simple function의 경우와 그렇지 않은 경우에 대해 두 가지 방법으로 정의를 한 것 같지만, 아래 정의는 $f$가 simple function일 때도 적용된다.
   * 이 때는 $0 \le s \le f$의 $s$ 중 supremum을 취하면 $s=f$이 된다.
 
-
+* 위 정의에서 왜 $f$가 measurable function이어야 할까?
+  * $f$가 measurable이어야 $f$의 preimage $f^{-1}(A)$이 measurable하고, simple function에 대한 integration을 정의할 수 있기 때문이다. 
+    * $\mu(f^{-1}(A))$가 정의되어야함.
 
 ### 1.24 Proposition
 
-1. If $0\le f \le g$, then $\int_E f d\mu \le \int_E g d\mu$.
+*The functions and sets occurring in the following are assumed to be measurable:*
 
-2. If $A \subset B$ and $f \ge 0$, then $\int_A f d\mu \le \int_B f d\mu$.
+1. *If $0\le f \le g$, then $\int_E f d\mu \le \int_E g d\mu$.*
 
-3. If $f \ge 0$ and $c$ is a constant, $0 \le c < \infty$, then
+2. *If $A \subset B$ and $f \ge 0$, then $\int_A f d\mu \le \int_B f d\mu$.*
+
+3. *If $f \ge 0$ and $c$ is a constant, $0 \le c < \infty$, then*
    $$
    \int_E cf d\mu = c \int_E f d\mu
    $$
 
-4. If $f(x)=0$ for all $x \in E$, then $\int_E f d\mu = 0$, even if $\mu(E) = \infty$.
+4. *If $f(x)=0$ for all $x \in E$, then $\int_E f d\mu = 0$, even if $\mu(E) = \infty$.*
 
-5. If $\mu(E) = 0$, then $\int_E f d\mu = 0$, even if $f(x) = \infty$ for every $x \in E$.
+5. *If $\mu(E) = 0$, then $\int_E f d\mu = 0$, even if $f(x) = \infty$ for every $x \in E$.*
 
-6. If $f \ge 0$, then $\int_E f d\mu = \int_X \chi_E f d\mu$.
+6. *If $f \ge 0$, then $\int_E f d\mu = \int_X \chi_E f d\mu$.*
+
+
+
+#### Proof
+
+**1.**
+$$
+\begin{align*}
+&f\le g \\
+\implies &\{ s : 0\le s\le f\} \subset \{ s : 0\le s\le g\} \\
+\implies &\int_E f d\mu = \sup_{0 \le s \le f, s \text{ : simple}} \int_E s d\mu \le
+\sup_{0 \le s \le g, s \text{ : simple}} \int_E s d\mu = \int_E g d\mu
+\end{align*}
+$$
+**2.**
+$$
+\begin{align*}
+\int_B f d\mu &= \sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le f} \left\{ \sum_{i=1}^{n} \alpha_i\mu(A_i \cap B) \right\} \\
+&=\sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le f} \left\{ \sum_{i=1}^{n} \alpha_i[\mu(A_i \cap A)+\mu(A_i \cap (B-A))] \right\}\\
+&\ge\sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le f} \left\{ \sum_{i=1}^{n} \alpha_i\mu(A_i \cap A) \right\} = \int_A f d\mu
+\end{align*}
+$$
+**3.**
+$$
+\begin{align*}
+c\int_E f d\mu &= \sup_{ s : 0\le s\le f} c\int_E s d\mu\\
+&= \sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le f} \left\{ c\sum_{i=1}^{n} \alpha_i\mu(A_i \cap E) \right\} \\
+&= \sup_{\sum_{i=1}^n \beta_i \chi_{A_i} \le cf} \left\{ \sum_{i=1}^{n} \beta_i\mu(A_i \cap E) \right\} \enspace(\beta_i = c \alpha_i)\\
+&= \sup_{ s : 0\le s\le cf} \int_E s d\mu \\
+&= \int_E cf d\mu
+\end{align*}
+$$
+**4.**
+
+* 상수함수 $f = 0$에 대해, $0 \le s \le f = 0$을 만족하는 simple function $s$는 $s=0$ 밖에 없으므로,
+  $$
+  \int_E f d\mu = \sup_{ s : 0\le s\le f} \int_E s d\mu =   \int_E 0 d\mu = \sum_{i=1}^{n} 0 \cdot \mu(A_i \cap E) = 0
+  $$
+
+  * $0\cdot \infty= 0$의 convention을 사용하고 있으므로, 이는 $\mu(A_i \cap E) = \infty$의 경우에도 성립.
+
+**5.**
+
+* $A_i \cap E \subset E \implies 0\le \mu(A_i \cap E) \le \mu(E)=0$이므로,
+
+$$
+\int_E f d\mu = \sup_{ s : 0\le s\le f} \int_E s d\mu = \sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le f}  \sum_{i=1}^{n} \alpha_i \cdot \mu(A_i \cap E) = \sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le f}  \sum_{i=1}^{n} \alpha_i \cdot 0= 0
+$$
+
+**6.**
+$$
+\int_X \chi_E f d\mu =\sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le \chi_Ef}  \sum_{i=1}^{n} \alpha_i \cdot \mu(A_i) \\
+= \sup_{\sum_{i=1}^n \alpha_i \chi_{A_i} \le \chi_Ef}  \sum_{i=1}^{n} \alpha_i \cdot \mu(A_i \cap E)
+$$
+
+
+### 1.25 Proposition
+
+*Let $s$ and $t$ be nonnegative measurable simple functions on $X$. For $E \in \mathfrak M$, define*
+$$
+\varphi(E) = \int_E s d\mu.
+$$
+*Then $\varphi$ is a measure on $\mathfrak M$. Also*
+$$
+\int_X (s+t) d\mu = \int_X s d\mu + \int_X t d\mu.
+$$
+
+
+#### Proof
+
+* 
+
+
+
+### 1.26 Theorem (Lebesgue's Monotone Convergence Theorem)
+
+*Let $\{ f_n \}$ be a sequence of measurable functions on $X$, and suppose that*
+
+1. *$0 \le f_1(x) \le f_2(x)\le \cdots \le \infty$ for every $x \in X$,*
+2. *$f_n(x) \to f(x)$ as $n \to \infty$, for every $x \in X$.*
+
+*Then $f$ is measurable, and*
+$$
+\int_X f_n d\mu \to \int_X f d\mu \quad \text{ as }n \to \infty.
+$$
+
+
+#### Proof
+
+* 
+
+
+
+### 1.27 Theorem
 

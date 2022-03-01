@@ -41,6 +41,8 @@
 
 
 
+## The Concept of Measurability
+
 ### 1.2 Definition (Topology, Topological Space, Continuous Function)
 
 1. *A collection $\tau$ of subsets of a set $X$ is said to be **a topology in $X$** if $\tau$ has the following three properties:*
@@ -95,8 +97,6 @@
 
 *Let $X$ and $Y$ be topological spaces. A mapping $f$ of $X$ into $Y$ is continuous if and only if $f$ is continuous at every point of $X$.*
 
-
-
 #### Proof
 
 $\Rightarrow$
@@ -150,12 +150,12 @@ $\Leftarrow$
 1. *If $X$ is a topological space, if $f: X \rightarrow Y$ is continuous, and if $h=g \circ f$, then $h: X \to Z$ is continuous.*
 2. *If $X$ is a measurable space, if $f: X \rightarrow Y$ is measurable, and if $h=g \circ f$, then $h: X \to Z$ is measurable.*
 
-
-
 #### Proof
 
 * 만약 $V$가 $Z$의 open set이라면, $g^{-1}(V)$는 $Y$의 open set이다.
 * $h^{-1}(V) = f^{-1}(g^{-1}(V))$
+
+
 
 
 ### 1.8 Theorem
@@ -165,8 +165,6 @@ $$
 h(x) = \Phi(u(x), v(x))
 $$
 *for $x \in X$. Then $h : X \to Y$ is measurable.*
-
-
 
 #### Proof
 
@@ -262,8 +260,6 @@ $$
 
 *If $\mathscr F$ is any collection of subsets of $X$, there exists a smallest $\sigma$-algebra $\mathfrak M^\ast$ in $X$ such that $\mathscr F \subset \mathfrak M^\ast$.*
 
-
-
 #### Proof
 
 * $\Omega$ : $\mathscr F$를 포함하는 $X$의 모든 $\sigma$-algebra의 family
@@ -333,8 +329,6 @@ $$
 2. *If $f$ is measurable and $E$ is a Borel set in $Y$, then $f^{-1}(E) \in \mathfrak M$.*
 3. *If $Y = [-\infty , \infty]$ and $f^{-1}((\alpha, \infty]) \in \mathfrak M$ for every real $\alpha$, then $f$ is measurable.*
 4. *If $f$ is measurable, if $Z$ is a topological space, if $g : Y \to Z$ is a Borel mapping, and if $h = g \circ f$, then $h: X \to Z$ is measurable.*
-
-
 
 #### Proof
 
@@ -427,8 +421,6 @@ $$
 $$
 *If $f(x) = \lim_{n\to\infty}f_n(x)$, the limit being assumed to exist at every $x \in X$, then we call $f$ the **pointwise limit** of the sequence $\{f_n\}$*
 
-
-
 #### Properties
 
 1. $b_1 \ge b_2 \ge b_3 \ge \cdots$로 decreasing이므로, 이 $\inf$로 $\{b_k\}$가 수렴하게 된다.
@@ -480,8 +472,6 @@ g = \sup_{n \ge 1}f_n, \quad h = \limsup_{n\to\infty}f_n,
 $$
 *then $g$ and $h$ are measurable.*
 
-
-
 #### Proof
 
 * $g$ is measurable
@@ -504,8 +494,6 @@ $$
   * $\sup$ 뿐만 아니라 $\inf$에 대해서도 위 증명이 성립한다.
   * $h = \inf_{k\ge 1}\sup_{\ell \ge k}f_\ell$이므로 Theorem 1.12.4에 의해 $h$는 measurable function.
 
-
-
 #### Corollaries
 
 1. *The limit of every pointwise convergent sequence of complex measurable functions is measurable.*
@@ -515,6 +503,8 @@ $$
    f^+ = \max \{ f, 0\} \quad \text{ and }\quad f^-= -\min\{f,0\}
    $$
    
+
+
 
 ### 1.15 Definition (Positive and Negative Parts)
 
@@ -528,6 +518,8 @@ $$
 * $f = g - h \ge -h$, $0 \ge -h$이므로, $\min \{f , 0\} \ge -h \implies f^- = -\min \{f , 0\} \le h$ 
 
 
+
+## Simple Functions
 
 ### 1.16 Definition (Simple Functions)
 
@@ -549,8 +541,6 @@ $$
 
 1. *$0 \le s_1 \le s_2 \le \cdots \le f$*
 2. *$s_n(x) \to f(x) \text{ as }n \to \infty$, for every $x \in X$*
-
-
 
 #### Proof
 
@@ -631,8 +621,6 @@ $$
    A_1 \supset A_2 \supset A_3 \supset \cdots
    $$
    *and $\mu(A_1)$ is finite.*
-
-
 
 #### Proof
 
@@ -749,6 +737,8 @@ $$
 
 
 
+## Integration of Positive Functions
+
 ### 1.23 Definition (Integration of Positive Functions)
 
 *If $s : X \to [0,\infty)$ is a measurable simple function, of the form*
@@ -779,6 +769,8 @@ $$
   * $f$가 measurable이어야 $f$의 preimage $f^{-1}(A)$이 measurable하고, simple function에 대한 integration을 정의할 수 있기 때문이다. 
     * $\mu(f^{-1}(A))$가 정의되어야함.
 
+
+
 ### 1.24 Proposition
 
 *The functions and sets occurring in the following are assumed to be measurable:*
@@ -797,8 +789,6 @@ $$
 5. *If $\mu(E) = 0$, then $\int_E f d\mu = 0$, even if $f(x) = \infty$ for every $x \in E$.*
 
 6. *If $f \ge 0$, then $\int_E f d\mu = \int_X \chi_E f d\mu$.*
-
-
 
 #### Proof
 
@@ -857,7 +847,7 @@ $$
 
 *Let $s$ and $t$ be nonnegative measurable simple functions on $X$. For $E \in \mathfrak M$, define*
 $$
-\varphi(E) = \int_E s d\mu.
+\varphi(E) = \int_E s d\mu
 $$
 *Then $\varphi$ is a measure on $\mathfrak M$. Also*
 $$
@@ -867,9 +857,41 @@ $$
 
 #### Proof
 
-* 
+* 먼저 $\varphi$가 measure on $\mathfrak M$임을 보이자.
 
+  * Let $s = \sum_{i=1}^n \alpha_i \chi_{A_i}$, $E = \cup_{r=1}^\infty E_r$, and $E_i \cap E_j = \emptyset$ for $i \neq j$.
+    $$
+    \begin{align*}
+    \varphi(E) &= \sum_{i=1}^n \alpha_i \mu(A_i \cap E) \\
+    &= \sum_{i=1}^n \alpha_i \sum_{r=1}^\infty \mu(A_i \cap E_r) \\
+    &= \sum_{r=1}^\infty \sum_{i=1}^n \alpha_i \mu(A_i \cap E_r) \\
+    &= \sum_{r=1}^\infty \varphi(E_r) \\
+    \implies \int_E s d\mu &= \sum_{r=1}^\infty \int_{E_r} s d\mu
+    \end{align*}
+    $$
 
+  * 또한 $\varphi(\emptyset) = \sum_{i=1}^n \alpha_i \mu(A_i \cap \emptyset) = 0$이다.
+
+* Lebesgue integral on simple function이 합에 대해 쪼개지는 것을 보이자.
+
+  * Let $s = \sum_{i=1}^n \alpha_i \chi_{A_i}$, $t = \sum_{j=1}^m \beta_j \chi_{B_j}$, and $E_{ij} = A_i \cap B_j$.
+
+  * $ s + t = \sum_{i=1}^n \sum_{j=1}^m (\alpha_i + \beta_j) \chi_{E_{ij}}$
+
+  * 따라서 모든 $E_{ij}$에 대하여 다음이 만족한다.
+    $$
+    \begin{align*}
+    \int_{E_{ij}} (s+t) d\mu &= (\alpha_i + \beta_j) \mu(E_{ij}) \\
+    &=  \alpha_i \mu(E_{ij})+\beta_j\mu(E_{ij}) \\
+    &=  \int_{E_{ij}} s d\mu  + \int_{E_{ij}} t d\mu   \\
+    \end{align*}
+    $$
+
+  * $E_{ij} (1 \le i \le n, 1 \le j \le m)$은 $X$의 disjoint partition이므로, 첫번째 proposition에 의해 다음이 만족한다.
+    $$
+    \int_X (s+t) d\mu = \int_X s d\mu + \int_X t d\mu
+    $$
+    
 
 ### 1.26 Theorem (Lebesgue's Monotone Convergence Theorem)
 
@@ -891,4 +913,204 @@ $$
 
 
 ### 1.27 Theorem
+
+*If $f_n : X \to [0,\infty]$ is measurable, for $n = 1,2,...$, and*
+$$
+f(x) = \sum_{n=1}^\infty f_n(x) \quad (x\in X),
+$$
+*then*
+$$
+\int_X f d\mu = \sum_{n=1}^\infty \int_X f_n d\mu.
+$$
+
+#### Proof
+
+* 
+
+#### Corollary
+
+*If $a_{ij} \ge 0$ for $i,j = 1,2,...$, then*
+$$
+\sum_{i=1}^\infty\sum_{j=1}^\infty a_{ij}= \sum_{j=1}^\infty\sum_{i=1}^\infty a_{ij}
+$$
+
+
+### 1.28 Theorem (Fatou's Lemma)
+
+*If $f_n : X \to [0,\infty]$ is measurable, for each positive integer $n$, then*
+$$
+\int_X \left( \liminf_{n\to \infty} f_n\right) d\mu \le \liminf_{n\to \infty}\int_X f_n d\mu
+$$
+*Strict inequality can occur; see Exercise 8.* (★★)
+
+#### Proof
+
+* 
+
+
+
+### 1.29 Theorem (Converse of Radon-Nikodym theorem)
+
+Suppose $f : X \to [0,\infty]$ is measurable, and
+$$
+\varphi(E) =\int_E f d\mu \quad (E \in \mathfrak M).
+$$
+Then $\varphi$ is a measure on $\mathfrak M$, and
+$$
+\int_X g d\varphi = \int_X gf d\mu
+$$
+for every measurable $g$ on $X$ with range in $[0,\infty]$.
+
+#### Proof
+
+* 
+
+
+
+## Integration of Complex Functions
+
+* 앞선 논의에서처럼, 별다른 표시가 없다면 $\mu$는 measurable space $X$ 위의 positive measure이다.
+
+
+
+### 1.30 Definition ($L^1 (\mu)$)
+
+*We define $L^1(\mu)$ to be the collection of all complex measurable functions $f$ on $X$ for which*
+$$
+\int_X \vert f \vert d\mu < \infty.
+$$
+*The members of $L^1(\mu)$ are called **Lebesgue integrable** functions (with respect to $\mu$) or **summable** functions.* 
+
+* Measurability of $f$에 의해 $\vert f \vert$ 역시 자동으로 measurable하므로, 위 integral이 잘 정의된다.
+
+  * Proposition 1.9.2 참고.
+
+* Notation $L^1(\mu)$에서 지수로 붙은 숫자 $1$의 의미는 Chapter 3에서 더 자세히 다룬다.
+  $$
+  \Vert f\Vert_p = \left\{ \int_X \vert f \vert^p d\mu \right\}^{1/p} < \infty \quad (0<p<\infty)
+  $$
+
+* 
+
+
+
+### 1.31 Definition (Integration of Complex Functions)
+
+*If $f = u + iv$, where $u$ and $v$ are real measurable functions on $X$, and $f \in L^1(\mu)$, we define*
+$$
+\int_E f d\mu = \int_E u^+ d\mu - \int_E u^- d\mu + i\int_E v^+ d\mu - i\int_E v^- d\mu
+$$
+*for every measurable set $E$.*
+
+* $u^+, u^-, v^+, v^-$는 모두 measurable, real, nonnegative이므로 우변이 잘 정의된다.
+
+* $u^+ \le \vert u \vert < \vert f \vert $이므로 우변의 네 개의 적분값은 finite이며, 좌변의 적분값은 complex number가 된다.
+
+* 또한, Range가 $[-\infty, \infty]$인 real measurable function $f$의 적분은 아래와 같이 정의된다.
+  $$
+  \int_E f d\mu = \int_E f^+ d\mu - \int_E f^- d\mu
+  $$
+
+  * 우변의 두 적분 중 적어도 하나의 적분값이 finite할 때 정의되며, 전체 적분값은 $[-\infty, \infty]$ 내의 값을 갖게 된다.
+
+
+
+### 1.32 Theorem
+
+Suppose $f$ and $g \in L^1(\mu)$ and $\alpha$ and $\beta$ are complex numbers. Then $\alpha f + \beta g \in L^1(\mu)$, and
+$$
+\int_X (\alpha f + \beta g)d \mu = \alpha \int_X f d\mu + \beta \int_X gd\mu.
+$$
+
+#### Proof
+
+* 
+
+
+
+### 1.33 Theorem
+
+If $f \in L^1(\mu)$, then
+$$
+\left\vert \int_X f d\mu \right\vert \le \int_X \vert f \vert d\mu
+$$
+
+#### Proof
+
+* 
+
+
+
+### 1.34 Theorem (Lebesgue's Dominated Convergence Theorem)
+
+*Suppose $\{ f_n \}$ is a sequence of complex measurable functions on $X$ such that*
+$$
+f(x) = \lim_{n \to \infty} f_n (x)
+$$
+*exists for every $x \in X$. If there is a function $g \in L^1 (\mu)$ such that*
+$$
+\left\vert f_n(x)\right\vert \le g(x) \quad (n=1,2,3,... ; x \in X)
+$$
+*then $f \in L^1 (\mu)$,*
+$$
+\lim_{n \to\infty} \int_X \vert f_n - f \vert d\mu = 0
+$$
+*and*
+$$
+\lim_{n \to\infty} \int_X  f_n  d\mu =  \int_X  f  d\mu
+$$
+
+#### Proof
+
+* 
+
+
+
+## The Role Played by Sets of Measure Zero
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

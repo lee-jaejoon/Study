@@ -1068,7 +1068,53 @@ $$
 
 ## The Role Played by Sets of Measure Zero
 
+### 1.35 Definition
 
+*Let $P$ be a property which a point $x$ may or may not have. For instance, $P$ might be the property "$f(x) > 0$" if $f$ is a given function, or it might be "$\{ f_n(x) \}$ converges" if $\{ f_n\}$ is a given sequence of functions.*
+
+*If $\mu$ is a measure on a $\sigma$-algebra $\mathfrak M$ and if $E \in \mathfrak M$, the statement "**$P$ holds almost everywhere on $E$**" means that there exists an $N \in \mathfrak M$ such that $\mu(N) = 0$, $N \subset E$, and $P$ holds at every point of $E-N$. This concept of a.e. depends of course very strongly on the given measure, and we shall write "$\text{a.e. } [\mu]$" whenever clarity requires that the measure be indicated.*
+
+* 어떤 property가 만족하지 않는 원소들이 이루는 집합은 measure zero라는 뜻.
+
+* 예를 들면, measurable function $f,g$에 대하여, $f = g \text{ a.e. }[\mu]$ on $X$는 다음을 의미한다.
+  $$
+  \mu( \{ x : f(x) \neq g(x)\}) = 0
+  $$
+
+  * 이는 equivalence relation이 된다.
+
+    * 각각 measure zero이므로, 아래 두 set의 union의 measure가 0이 되므로 transivity 만족
+      $$
+      \{ x : f(x) \neq g(x)\}, \{ x : g(x) \neq h(x)\}
+      $$
+
+* 따라서 일반적으로 measure zero인 set은 적분에서 무시 가능하다.
+
+* 하지만 measure zero인 set $N \in \mathfrak M$의 어떤 subset $E \subset N$이 $\mathfrak M$에 속하지 않는다면?
+
+  * 물론 $\mu(E) = 0$이 되도록 $E \notin \mathfrak M$의 measure 값을 **정의**할 수 있다.
+  * 이를 위해서는 아래와 같은 extension이 필요. 
+
+
+
+### 1.36 Theorem
+
+*Let $(X, \mathfrak M, \mu )$ be a measure space, let $\mathfrak M^\ast$ be the collection of all $E \subset X$ for which there exist sets $A$ and $B \in \mathfrak M$ such that $A \subset E\subset B$ and $\mu(B-A)=0$, and define $\mu(E)= \mu(A)$ in this situation. Then $\mathfrak M^\ast$ is a $\sigma$-algebra, and $\mu$ is a measure on $\mathfrak M^\ast$.*
+
+* 이 extended measure $\mu$ on $\mathfrak M^\ast$을 **complete**하다고 한다.
+  * 즉 $X$의 모든 measure 0 subset이 measurable하다.
+* 또한 이 $\sigma$-algebra $\mathfrak M^\ast$를 **$\mu$-completion of $\mathfrak M$**이라고 부른다.
+* 이 Theorem은 모든 measure가 complete해질 수 있음을 의미한다.
+
+#### Proof
+
+* 
+
+
+
+### 1.37 Remarks
+
+* 
 
 
 

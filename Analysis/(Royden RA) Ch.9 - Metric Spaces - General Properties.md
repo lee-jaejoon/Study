@@ -247,19 +247,136 @@ $$
 f( B(x,\delta) ) \subseteq B(f(x), \epsilon).
 $$
 
-* s
+* $\Rightarrow$
+
+  * Let $\{ x_n \}$ be a sequence in $X$ such that $x_n \to x$.
+
+  * Then, by continuity of $f$, $f(x_n) \to f(x)$.
+
+  * For proof by contradiction, suppose there exists $\epsilon_0 > 0$ such that there is no positive $m \in \mathbb N$ for which
+    $$
+    f(B(x, 1/m)) \subseteq B(f(x), \epsilon_0)
+    $$
+
+  * Then, for all $x_n$ such that $\rho(x, x_n) < 1/m$, $f(x_n) \notin B(f(x), \epsilon_0)$.
+
+  * Contradiction.
+
+* $\Leftarrow$
+
+  * Let the $\epsilon - \delta$ criterion holds. Let $\epsilon > 0$.
+  * Let $\{ x_n \}$ be a sequence in $X$ such that $x_n \to x$.
+  * Choose $\delta >0 $ so that $f(B(x, \delta)) \subseteq B(f(x), \epsilon)$.
+  * Choose $N \in \mathbb N$ so that $n \ge N \implies x_n \in B(x, \delta)$
+  * Then $n \ge N \implies f(x_n) \in B(f(x), \epsilon)$
 
 ### Proposition 8
 
+A mapping $f$ from a metric space $X$ to a metric space $Y$ is continuous if and only if for each open subset $\mathcal O$ of $Y$, the inverse image under $f$ of $\mathcal O$, $f^{-1}(\mathcal O)$, is an open subset of $X$.
+
+* $\Rightarrow$
+
+  * Assume the mapping $f$ is continuous.
+
+  * Let $\mathcal O$ be an open subset of $Y$ and $x$ be a point in $f^{-1}(\mathcal O)$.
+
+  * There is some positive $r>0$ such that $B(f(x),r) \subseteq \mathcal O$. ($\because \mathcal O$ is open)
+
+  * By continuity of $f$ at $x$, we can choose $\delta > 0$ such that
+    $$
+    f(B(x,\delta)) \subseteq B(f(x),r) \subseteq \mathcal O
+    $$
+
+  * Then all element of $B(x,\delta)$ has its image in $\mathcal O$.
+
+    * Thus $B(x ,\delta) \subseteq f^{-1}(\mathcal O)$.
+
+* $\Leftarrow$
+
+  * Let $\epsilon > 0$.
+
+  * Suppose $f^{-1}(\mathcal O)$ is an open subset of $X$ for any open $\mathcal O \subseteq Y$.
+
+  * Then $f^{-1}(B(f(x), \epsilon))$ is open in $X$.
+
+    * and clearly $x \in f^{-1}(B(f(x), \epsilon))$.
+
+  * Then we can choose a positive $\delta > 0$ such that 
+    $$
+    B(x, \delta) \subseteq f^{-1}(B(f(x), \epsilon))
+    $$
+
+  * Thus
+    $$
+    f(B(x, \delta)) \subseteq B(f(x), \epsilon)
+    $$
+
+### Proposition 9
+
+The composition of continuous mappings between metric spaces, when defined, is continuous.
+
+* Let $f : X \to Y$, $g: Y \to Z$ be continuous mappings, for metric spaces $X, Y, Z$.
+* Let $\mathcal O$ be open in $Z$.
+* By proposition 8, $g^{-1}(\mathcal O)$ is open in $Y$.
+* Again, by proposition 8, $f^{-1}(g^{-1}(\mathcal O)) = (g\circ f)^{-1}(\mathcal O)$ is open in $X$.
+* Thus $g\circ f$ is continuous.
+
+### Definition
+
+A mapping from a metric space $(X, \rho)$ to a metric space $(Y, \sigma)$ is said to be **uniformly continuous**, provided for every $\epsilon > 0$, there is a $\delta > 0$ such that for any $u, v \in X$,
+$$
+\rho( u, v) < \delta \implies \sigma(f(u), f(v)) < \epsilon.
+$$
+A mapping $f$ from a metric space $(X, \rho)$ to a metric space $(Y, \sigma)$ is said to be **Lipschitz** provided there is a $c \ge 0$ such that for all $u,v \in X$,
+$$
+\sigma(f(u), f(v)) \le c \cdot \rho(u,v)
+$$
 
 
 
 
+## 9.4 COMPLETE METRIC SPACES
 
+### Definition
 
+A sequence $\{ x_n \}$ in a metric space $(X, \rho)$ is said to be a **Cauchy sequence** provided for each $\epsilon > 0 $, there is an index $N$ for which
+$$
+n, m \ge N \implies \rho(x_n, x_m ) < \epsilon.
+$$
+A metric space $X$ is said to be **complete** provided every Cauchy sequence in $X$ converges to a point in $X$.
 
+### Proposition 10
 
+Let $[a, b]$ be a closed, bounded interval of real numbers. Then $C[a, b]$, with the metric induced by the maximum norm, is complete.
 
+* Let $\{ f_n \}$ be a Cauchy sequence in $C[a,b]$.
+
+* Suppose there is a convergent series $\sum_{k=1}^\infty a_k$ such that, for all $k$,
+  $$
+  \Vert f_{k+1} - f_k \Vert_\max \le a_k
+  $$
+
+* Then, for any $n, k$,
+  $$
+  \Vert f_{n+k} - f_n \Vert_\max \le \sum_{j=n}^{n+k-1} \Vert f_{j+1} - f_j \Vert_\max \le \sum_{j=n}^{n+k-1} a_j \le \sum_{j=n}^\infty a_j
+  $$
+
+* Let $x \in [a,b]$,
+  $$
+  \vert f_{n+k}(x) - f_n(x) \vert \le \Vert f_{n+k} - f_n \Vert_\max \le \sum_{j=n}^\infty a_j \to 0 \text{ as }n \to \infty.
+  $$
+
+  * The series $\sum_{k=1}^\infty a_k$ is convergent, so $\sum_{j=n}^\infty a_j \to 0$ as $n \to \infty$.
+
+* Therefore $\{ f_n (x)\}$ is a Cauchy sequence of real numbers.
+
+* Denote the limit of $\{ f_n (x)\}$ by $f(x)$.
+
+* Also taking the limit $k \to \infty $ of the above inequality, we have the following
+  $$
+  \vert f(x) - f_n(x) \vert \le \sum_{j=n}^\infty a_j \text{ for all }n \text{ and all }x\in [a,b]
+  $$
+  
 
 
 

@@ -90,9 +90,7 @@ $$
 
 어떤 unbounded operator의 adjoint를 정의할 때, 우리는 다음과 같은 문제를 겪는다. 
 
-* 어떤 fixed $\phi \in \mathbf H$에 대하여, linear functional $L_\phi(\cdot) = \langle \phi, A \cdot\rangle$이 bounded가 아닐 수도 있다.
-
-* 이 경우는 $A^\ast \phi$를 정의할 때, 위의 bounded operator의 예시에서와 같이 Riesz 정리를 사용할 수 없음.
+* 임의의 $\phi \in \mathbf H$에 대하여, linear functional $L_\phi(\cdot) = \langle \phi, A \cdot\rangle$이 bounded가 아닐 수도 있기 때문에, $A^\ast \phi$를 정의할 때, 위의 bounded operator의 예시에서와 같이 Riesz 정리를 바로 사용할 수 없음.
 
 따라서 unbounded operator $A$가 $\mathbf H$ 전체가 아닌 어떤 subspace $\text{Dom}(A)$에서만 정의된 것처럼, $A^\ast$ 역시 $\mathbf H$의 어떤 subspace에서만 정의가 되어야 한다.
 
@@ -106,7 +104,9 @@ $$
 > $$
 > for all $\psi \in \text{Dom}(A)$.
 
-여기서는 아래와 같은 정리를 사용한다.
+$L_\phi (\cdot) : \text{Dom}(A)\to \mathbf H $이 linear, bounded functional이 되도록 하는 $\phi$들만 모아놓고, 그 collection을 $\text{Dom}(A^\ast)$라고 하고 거기서만 $A^\ast$를 정의하고자 하는 것이다. 이렇게 하면 unbounded operator $A$에 대해서도 adjoint $A^\ast$를 정의할 수 있게 된다.
+
+여기서는 Riesz 정리를 사용하기 위해, 아래와 같은 정리를 사용한다.
 
 > **[Bounded Linear Transformation Theorem]** Let $V_1$ be a normed space and $V_2$ be a Banach space. Suppose $W$ is a dense subspace of $V_1$ and $T: W \to V_2$ is a bounded linear map. Then there exists a unique bounded linear map $T : V_1 \to V_2$ such that $\tilde T \vert_W = T$. Furthermore, the norm of $\tilde T$ equals the norm of $T$.
 
@@ -116,13 +116,33 @@ $$
 
   * 또한, 그 extended된 bounded linear map은 항상 unique하게 정의되고, extension 전후의 operator norm도 보존된다.
 
-* 임의의 bounded & linear operator는 항상 continous하므로, 이와 같은 과정을 *continous linear extension*이라고도 부른다.
-  * For any $\epsilon > 0$, choose $\delta = \epsilon/2C$, then we have
-    $$
-    \Vert x-y\Vert < \delta \implies \Vert Ax - Ay\Vert  = \Vert A(x - y)\Vert\leq C \Vert x-y\Vert < C \delta = C\frac{\epsilon}{2C} < \epsilon
-    $$
+  * 임의의 bounded & linear operator는 항상 continous하므로, 이와 같은 과정을 *continous linear extension*이라고도 부른다.
 
-* 또한 임의의 separable metric space의 subspace는 원 space의 countable dense subset이므로, 
+    * For any $\epsilon > 0$, choose $\delta = \epsilon/2C$, then we have
+      $$
+      \Vert x-y\Vert < \delta \implies \Vert Ax - Ay\Vert  = \Vert A(x - y)\Vert\leq C \Vert x-y\Vert < C \delta = C\frac{\epsilon}{2C} < \epsilon
+      $$
 
-* 따라서 BLT 정리에 의해, $L_\phi$가 bounded linear functional on $\text{Dom}(A)$이면, $L_\phi$
+* 즉 $\text{Dom}(A) \subset \mathbf H$에서만 정의된 bounded linear functional을 $\mathbf H$ 전체에서 정의된 bounded linear functional로 확장하는데 BLT 정리를 사용한다.
 
+Definition 3.1에서 subspace $\text{Dom}(A)$가 dense in $\mathbf H$라고 했고, 임의의 $\phi \in \text{Dom}(A^\ast)$에 대하여 $L_\phi : \text{Dom}(A) \to \mathbf H$가 bounded linear functional이므로, BLT 정리에 의해, $L_\phi=\langle \phi, A \cdot \rangle$은 $\mathbf H$ 전체에 대하여 unique linear bounded extension을 갖는다. Riesz 정리를 이용하면 $L_\phi(\psi) = \langle \phi, A\psi \rangle = \langle \chi, \psi \rangle$ 만족하는 $\chi \in \mathbf H$가 unique하게 존재하고,  이를 $A^\ast \phi = \chi$로 정의하여, unbounded operator $A$의 adjoint $A^\ast$를 정의할 수 있다.
+
+> **[Definition 3.3]** An unbounded operator $A$ on $\mathbf H$ is **symmetric** if
+> $$
+> \langle \phi, A \psi \rangle = \langle A \phi,  \psi \rangle
+> $$
+> for all $\phi, \psi \in \text{Dom}(A)$. The operator $A$ is **self-adjoint** if $\text{Dom}(A^\ast) = \text{Dom}(A)$ and $A^\ast \phi = A \phi$ for all $\phi \in \text{Dom}(A)$. Finally $A$ is **essentially self-adjoint** if the closure in $\mathbf H \times \mathbf H$ of the graph of $A$ is the graph of a self-adjoint operator.
+
+이 개념들의 의미를 살펴보면, $A^\ast$와 $A$가 같은 operator이고 같은 domain을 가지면 $A$는 self-adjoint하다. 모든 self-adjoint 혹은 essentially self-adjoint operator는 symmetric이나, symmetric operator는 essentially self-adjoint하지 않을 수 있다. 임의의 symmetric operator에 대하여, $\text{Dom}(A^\ast) \supset \text{Dom}(A) $는 항상 만족하며, $A^\ast$는 $\text{Dom}(A)$ 위에서는 $A$와 일치한다. 
+
+* $\phi \in \text{Dom}(A) \implies A \phi \in \mathbf H$
+
+
+
+
+
+
+
+
+
+* 

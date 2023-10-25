@@ -250,6 +250,169 @@ $$
 
 고정된 시간 하에서, (Schrodinger가 제시한 wave theory를 따르는) 어떤 입자의 wave function $\psi (x)$는 "위치" 변수 $x$만을 input으로 갖는 함수이다. 따라서 wave function $\psi$는 입자의 위치에 대한 정보는 확률 밀도 $\vert \psi (x) \vert^2$를 통해 직접적으로 encoding하고 있는데, 입자의 momentum과 관련된 정보가 wave function에 어떻게 encoding되어 있는지는 직관적으로 바로 보이지는 않는다. 알고 보니 momentum에 대한 정보는 wave function의 *oscillations*, 즉 진동 양상에 encoding되어 있는데, 이와 관련된 양자 역학의 중요한 개념이 바로 *de Broglie hypothesis*이다. The de Broglie hypothesis는 wave function이, 고정된 시간 하에서 위치에 대한 함수가, 진동하는 주파수와 입자의 momentum 간의 관계식을 기술한다.
 
+> **[Proposition 3.5] (de Broglie hypothesis)** If the wave function of a particle has spatial frequency $k$, then the momentum $p$ of the particle is
+> $$
+> p = \hbar k
+> $$
+> where $\hbar$ is Planck's constant.
+
+Statement만 보았을 때는 Proposition 3.5는 다소 애매한 부분이 있는데, 보다 정확히 이야기하면, **$\psi(x) = e^{ikx}$의 형태를 갖는 wave function은 $p=\hbar k$의 momentum을 갖는 입자를 나타낸다**는 것이다. 그런데 함수 $e^{ikx}$는 square integrable한 함수가 아니므로, 아래 성질을 만족할 수 없고, 따라서 $e^{ikx}$이 바로 wave funciton이 될 수는 없다. 
+$$
+1 = \int_{\mathbb R} \vert \psi (x)\vert^2 dx
+$$
+
+
+#### Case 1 : Unit Circle($0 \sim 2\pi$) 위를 따라 움직이는 입자
+
+따라서 우선은 technical한 어려움을 피하기 위해, real line이 아닌 어떤 원($0 \sim 2\pi$) 위를 따라 움직이는 입자를 생각해보자. 그러면 우리의 wave function $\psi$은 $2\pi$-periodic function on $\mathbb R$이 되고, 아래와 같이 normalization condition을 나타낼 수 있다.
+$$
+\int_0^{2\pi} \vert \psi (x)\vert^2 dx = \int_0^{2\pi} \vert Ce^{ikx}\vert^2 dx= C^2\int_0^{2\pi}\overline{e^{ikx}}e^{ikx} dx= C^2\int_0^{2\pi}e^{-ikx}e^{ikx} dx = 2\pi C^2 = 1 \\
+\implies\psi(x) = \frac{1}{\sqrt{2\pi}}e^{ikx}
+$$
+Normalization condition이 만족하므로, 이제 임의의 정수 $k$에 대하여 $\psi(x) = e^{ikx}/{\sqrt{2\pi}}$가 $p=\hbar k$의 momentum을 갖는 입자의 wave function을 나타낸다고 할 수 있다. 이는 입자의 momentum을 정해진 것으로, definite, nonrandom한 것으로 보는 것이다. 만약 어떤 입자의 wave function이 $e^{ikx}/{\sqrt{2\pi}}$라면, 그 입자의 momentum을 쟀을 때의 측정값은 $\hbar k$이 될 것이다 (with probability 1).
+
+특정 $k$가 아니라, 모든 $k\in \mathbb Z$에 대한 함수 $e^{ikx}/{\sqrt{2\pi}}$들의 collection을 생각해보면, 이는 $2\pi$-periodic, square-integrable한 함수들로 이루어진 Hilbert space, 즉 $L^2([0,2\pi])$의 orthonormal basis가 된다. 
+
+* orthonormality
+
+  * For $\phi_1 = e^{ik_1x}/{\sqrt{2\pi}}$ and $\psi_2 = e^{ik_2x}/{\sqrt{2\pi}}$, 
+    $$
+    \begin{align*}
+    \langle \phi_1, \phi_2 \rangle &= \frac{1}{2\pi}\int_0^{2\pi}  \overline{e^{ik_1x}}e^{ik_2x}dx = \frac{1}{2\pi}\int_0^{2\pi}  e^{i(k_2 - k_1)x}dx \\
+    &= \frac{1}{2\pi}\int_0^{2\pi} \cos ((k_2 - k_1)x)dx + \frac{i }{2\pi}\int_0^{2\pi} \sin ((k_2 - k_1)x)dx\\
+    &=
+    \begin{cases} 
+    1 & k_1 = k_2\\
+    0 & k_1 \ne k_2
+    \end{cases}
+    \end{align*}
+    $$
+
+* The space of finite linear combinations of $\{ e^{ikx}/{\sqrt{2\pi}} : k \in \mathbb Z\}$ is dense in $L^2([0,2\pi])$
+
+  * 보충 필요
+  * ***Stone-Weierstrass theorem?***
+    https://math.stackexchange.com/questions/2720188/showing-that-the-sequence-big-fraceint-sqrt2-pi-big-n-1-infty
+
+따라서 원 위를 따라 움직이는 어떤 입자의 일반적인 wave function은 아래와 같이 이 orthonormal basis를 이용하여 나타낼 수 있다.
+$$
+\psi(x) = \sum_{k=-\infty}^{\infty} a_k \frac{e^{ikx}}{\sqrt{2\pi}}
+$$
+참고로 위 infinite sum은 $L^2([0,2\pi])$ 내에서 convergent하다고 하자. 만약 $\psi$가 unit vector로 normalize되었다면 아래 식이 만족할 것이다.
+$$
+\sum_{k=-\infty }^{\infty } {\vert a_k \vert^2} = \Vert \psi \Vert_{L^2([0,2\pi])}= 1
+$$
+
+* 이는 다음과 같이 확인할 수 있다. 
+  $$
+  \begin{align*}
+  1 &= \Vert \psi \Vert_{L^2([0,2\pi])} = \langle \psi, \psi\rangle \\
+  &= \left\langle \sum_{k=-\infty}^{\infty} a_k \frac{e^{ikx}}{\sqrt{2\pi}}, \sum_{\ell=-\infty}^{\infty} a_\ell \frac{e^{i\ell x}}{\sqrt{2\pi}} \right\rangle \\
+  &=\left\langle \lim_{m \to \infty }\sum_{k=-m}^{m} a_k \frac{e^{ikx}}{\sqrt{2\pi}}, \lim_{n \to \infty }\sum_{\ell=-n}^{n} a_\ell \frac{e^{i\ell x}}{\sqrt{2\pi}} \right\rangle \\
+  &=\lim_{m \to \infty }\lim_{n \to \infty }\left\langle \sum_{k=-m}^{m} a_k \frac{e^{ikx}}{\sqrt{2\pi}}, \sum_{\ell=-n}^{n} a_\ell \frac{e^{i\ell x}}{\sqrt{2\pi}} \right\rangle &\because \text{ continuity of inner product} \\
+  &=\lim_{m \to \infty }\lim_{n \to \infty }\sum_{k=-m}^{m}\sum_{\ell=-n}^{n} \overline{a_k} a_\ell \left\langle   \frac{e^{ikx}}{\sqrt{2\pi}},  \frac{e^{i\ell x}}{\sqrt{2\pi}} \right\rangle  &\because \text{ linearity of inner product} \\
+  &=\lim_{m \to \infty }\lim_{n \to \infty }\sum_{k=-\min(m,n)}^{\min(m,n)} {\vert a_k\vert^2} 
+  \\&=\sum_{k=-\infty }^{\infty } {\vert a_k \vert^2}
+  \end{align*}
+  $$
+
+* 참고로 inner product가 continuous한 function이라는 것은 Cauchy-Schwartz에 의해 쉽게 확인할 수 있다.
+  $$
+  \langle \phi_n, \psi \rangle - \langle \phi, \psi \rangle = \langle \phi_n - \phi, \psi \rangle \leq \Vert\phi_n - \phi\Vert \Vert\psi\Vert \\
+  \langle \phi, \psi_n \rangle - \langle \phi, \psi \rangle = \langle \phi, \psi_n - \psi \rangle \leq \Vert\phi\Vert \Vert\psi_n - \psi\Vert
+  $$
+
+이렇게 orthonormal basis의 infinite linear combination 형태로 나타난 wave function $\psi$는 더이상 특정 momentum 값을 확정적으로 갖지 않는다. 그 대신 어떤 한 정수 $k$에 대하여 $\hbar k$의 momentum 값을 갖게 되며, 측정했을 때 입자의 momentum 값이 $\hbar k$일 확률은 $\vert a_k \vert^2$이다. 따라서 확률론의 개념을 이용하면, momentum의 기댓값 및 m차 moment는 다음과 같다. (아래 infinite sum의 absolute convergence는 보장된다고 가정.)
+$$
+E(p)= \sum_{k = -\infty}^\infty \hbar k \vert a_k \vert^2, \enspace E(p^m)= \sum_{k = -\infty}^\infty (\hbar k)^m \vert a_k \vert^2
+$$
+우리는 물리량을 operator로 나타내기로 했고, 기댓값과 m차 moment를 operator와 inner product를 이용해 정의했으므로, momentum에 대한 operator $P$는 다음을 만족해야한다.
+$$
+E(p)= \langle \psi , P \psi \rangle = \sum_{k = -\infty}^\infty \hbar k \vert a_k \vert^2 , \enspace
+E(p^m) = \langle \psi , P^m \psi \rangle= \sum_{k = -\infty}^\infty (\hbar k)^m \vert a_k \vert^2 
+$$
+이를 만족하는 operator $P$의 형태는 다음과 같다.
+$$
+P = -i \hbar \frac{d}{dx}
+$$
+
+#### Case 2 : Real line 위의 입자
+
+다시 1차원 real line 위를 움직이는 입자의 상황으로 돌아오자. Real line 위에서도 unit circle 위에서와 마찬가지로 momentum operator $P$가 $P = -i \hbar \text{ }{d}/{dx}$의 형태를 가질 것으로 추측해볼 수 있다. 이 형태의 operator $P$는 아래 관계식을 만족하므로, *"wave function $e^{ikx}$가 momentum $\hbar k$에 대응된다"*는 **Proposition 3.5 (de Broglie hypothesis)**의 내용과도 일맥상통한다.
+$$
+P e^{ikx} =  -i \hbar \frac{d}{dx}e^{ikx} =  -(i \hbar) (ik)e^{ikx} = (\hbar k) e^{ikx}
+$$
+비록 real line 위에서는 $e^{ikx}$가 $x$에 대하여 square-integrable하지 않으나, Fourier transform은 임의의 square-integrable function (in $L^2(\mathbb R)$)을 $e^{ikx}$ 형태 함수의 "superposition"으로 나타낼 수 있게 해준다. 여기서 *superposition*이라는 용어는 물리학자들이 linear combination 혹은 linear combination의 continuous version, 즉 integral을 부르는 말이다. 따라서 Fourier transform을 이용하면 아래와 같이 $e^{ikx}$의 (continuous) linear combination 형태이면서 square-integrable한 함수 $\psi$를 만들 수 있다.
+$$
+\psi(x) = \int_{-\infty}^\infty \hat\psi(k) \frac{e^{ikx}}{\sqrt{2\pi}} dk
+$$
+이때 앞선 예시의 $a_k$에 대응되는 $\hat\psi(k)$는 Fourier transform of $\psi$이며, 다음과 같이 정의된다.
+$$
+\hat \psi(k) = \int_{-\infty}^\infty \psi(x) \frac{e^{-ikx}}{\sqrt{2\pi}} dx
+$$
+Plancherel theorem에 의해 Fourier transform은 $L^2(\mathbb R)$에서 $L^2(\mathbb R)$로 가는 unitary map이며, surjective map(onto)이다. 따라서 임의의 unit vector $\psi \in L^2 (\mathbb R )$에 대하여 다음이 만족한다.
+$$
+\int_{-\infty}^\infty \vert \psi(x)\vert^2 dx = \int_{-\infty}^\infty \left\vert \hat\psi(k)\right\vert^2 dk = 1
+$$
+Unit circle 상 입자 예시에서 $\vert a_k \vert^2$가 momentum에 대한 확률값이었던 것처럼, $\vert \hat\psi(k)\vert^2$가 입자의 momentum에 대한 (보다 정확히는 $p/\hbar$에 대한) 확률 밀도가 될 것으로 추측해볼 수 있다. 
+
+이제 $e^{ikx}$가 square-integrable하지 않은 점에 구애받지 않고, momentum operator의 성질(wave function $e^{ikx}$가 momentum $p=\hbar k$에 대응)을 만족하는 wave function $\psi$를 Hilbert space $L^2(\mathbb R )$에서 정의할 수 있다.
+
+> **[Proposition 3.6]** Define the momentum operator $P$ by
+> $$
+> P = -i\hbar \frac{d}{dx}
+> $$
+> Then for all sufficiently nice unit vectors $\psi$ in $L^2(\mathbb R)$, we have
+> $$
+> \langle \psi, P^m \psi \rangle = \int_{-\infty}^\infty (\hbar k)^m \left\vert \hat\psi (k) \right\vert^2dk
+> $$
+> for all positive integers $m$. The quantity is interpreted as the expectation value of the $m$th power of the momentum, $E(p^m)$.
+
+Proposition 3.6은 앞서 소개한 내용으로 도출한 momentum operator $P$의 식 형태를 정의하고, 그리고 (Fourier transform을 이용해 $e^{ikx}$의 superposition 형태를 갖는) 적절한 함수 형태의 $\psi$에 대해서는 momentum의 기댓값과 m차 moment가 잘 정의된다는 사실을 소개한다.
+
+* ***Fourier analysis 기반 증명 (내용 공부하고 돌아오자.)***
+
+
+
+3.4절의 내용을 정리하면 다음과 같다. 
+
+* Proposition 3.5 (de Broglie hypothesis)에 따르면, $\psi(x) = e^{ikx}$의 형태를 갖는 wave function은 $p=\hbar k$의 momentum을 갖는 입자를 나타낸다. 
+
+* 하지만 $e^{ikx}$는 $x$를 실수 전체 범위로 두면 square-integrable하지 않은 함수이다.
+
+  * 이로 인해 $\vert \psi \vert = 1$의 normalization condition을 만족시킬 수 없고, wave function의 square 형태로 입자의 위치에 대한 확률 밀도가 정의가 되지 않는 문제가 발생한다.
+
+* $x \in [0,2\pi]$의 unit circle 상황 하에서는 그러한 문제가 없으므로, $e^{ikx}/{\sqrt{2\pi}}$를 wave function으로 둘 수 있었다.
+
+  * $\{ e^{ikx}/{\sqrt{2\pi}} : k \in \mathbb Z \}$가 the Hilbert space of $2\pi$-periodic, square-integrable functions, 즉 $L^2([0,2\pi])$의 orthonormal basis가 되므로, $e^{ikx}/{\sqrt{2\pi}}$의 (infinite) linear combination 형태로 wave function을 정의할 수 있었다.
+    $$
+    \psi(x) = \sum_{k=-\infty}^{\infty} a_k \frac{e^{ikx}}{\sqrt{2\pi}}
+    $$
+
+    * 계수 $a_k$에 대하여 $\vert a_k \vert^2$는 관측가능한 각 momentum 값 $p=\hbar k$에 대한 확률을 나타냄.
+
+  * 또한 momentum operator $P$가 다음과 같은 형태를 가질 것으로 추론할 수 있었다.
+
+  $$
+  P = -i \hbar \frac{d}{dx}
+  $$
+
+* $x$를 실수 전체 범위로 둔 경우에서는, Fourier transform을 이용하여, 관측가능한 각 momentum $p = \hbar k$와 각각의 관측 확률에 대한 정보가 encoding된 wave function $\psi$를 아래 형태와 같이 정의할 수 있다.
+  $$
+  \psi(x) = \int_{-\infty}^\infty \hat\psi(k) \frac{e^{ikx}}{\sqrt{2\pi}} dk, \enspace \text{ where }\hat \psi(k) = \int_{-\infty}^\infty \psi(x) \frac{e^{-ikx}}{\sqrt{2\pi}} dx.
+  $$
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 

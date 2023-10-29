@@ -371,6 +371,7 @@ Unit circle 상 입자 예시에서 $\vert a_k \vert^2$가 momentum에 대한 �
 Proposition 3.6은 앞서 소개한 내용으로 도출한 momentum operator $P$의 식 형태를 정의하고, 그리고 (Fourier transform을 이용해 $e^{ikx}$의 superposition 형태를 갖는) 적절한 함수 형태의 $\psi$에 대해서는 momentum의 기댓값과 m차 moment가 잘 정의된다는 사실을 소개한다.
 
 * ***Fourier analysis 기반 증명 (내용 공부하고 돌아오자.)***
+* 
 
 
 
@@ -405,16 +406,82 @@ Proposition 3.6은 앞서 소개한 내용으로 도출한 momentum operator $P$
 
 
 
+## 3.5. The Position and Momentum Operators
+
+앞선 두 절에서 배경 내용을 설명했던 position operator와 momentum operator의 정의는 아래와 같다.
+
+> [Definition 3.7] For a particle moving in $\mathbb R^1$, let the quantum Hilbert space be $L^2(\mathbb R)$ and define the **position** and **momentum operators** $X$ and $P$ by
+> $$
+> X \psi(x) = x \psi (x) \\
+> P \psi(x) = -i \hbar \frac{d\psi}{dx}
+> $$
+
+두 operator 모두 Hilbert space $L^2(\mathbb R)$ 전체에서 정의된 mapping이 아니다. 이는 다시 말하면 어떤 $\psi \in L^2(\mathbb R)$에 대하여, 아래와 같은 경우가 있을 수 있음을 의미한다.
+
+* $X\psi(x) = x \psi(x) \notin L^2(\mathbb R)$
+* $\psi$ not differentiable.
+* $P\psi(x) = -i \hbar \text{ }{d\psi}/{dx} \notin L^2(\mathbb R)$
+
+이는 3.2절에서 언급했던 것과 같이 $X$와 $P$가 unbounded operator임을 의미하며, 각자에게 적합한 $L^2(\mathbb R)$의 dense subspace $\text{Dom}(X)$와 $\text{Dom}(P)$ 위에서 정의하게 된다. 이러한 operator의 domain에 대한 심도있는 내용은 이후 9장에서 다루도록 하자.
+
+어떤 두 operator가 있을 때 굉장히 중요한 성질은, 많은 경우 두 operator가 **commutative하지 않다**는 점이다.
+
+> **[Proposition 3.8]** The position and momentum operator $X$ and $P$ do not commute, but satisfy the relation
+> $$
+> XP - PX = i \hbar I,
+> $$
+> This relation is known as the *canonical commutation relation*.
+
+* 증명
+  $$
+  \begin{align*}
+  PX \psi &= -i\hbar \frac{d}{dx}(x\psi(x)) \\
+  &= -i\hbar \psi(x) -i\hbar x\frac{d\psi}{dx} \\
+  &= -i\hbar \psi(x) + XP\psi
+  \end{align*}
+  $$
+
+* 
+
+이 "non-commutativity"에 의하여 양자역학의 다양한 중요한 개념들이 다뤄지는데 이는 11-14장에서 다룬다. 지금 단계에서는 고전 역학에서의 Poisson bracket 관계식과 위 식 간 연관이 있다는 점만 알아두자.
+
+> **[Proposition 3.9]** For all sufficiently nice functions $\phi$ and $\psi$ in $L^2 (\mathbb R)$, we have
+> $$
+> \langle \phi, X \psi \rangle = \langle  X \phi,\psi \rangle
+> $$
+> and
+> $$
+> \langle \phi, P \psi \rangle = \langle  P \phi,\psi \rangle.
+> $$
+
+* Position operator에 대한 symmetricity 증명
+
+  * $\phi$와 $\psi$가 $L^2 (\mathbb R)$의 원소이고, domain을 적절하게 선택하여 $x\phi(x)$와 $\psi(x)$ 역시 $L^2 (\mathbb R)$의 원소가 된다고 가정해보자. 그러면 $x$는 실수이므로 다음이 만족한다.
+    $$
+    \langle \phi, X \psi \rangle = \int^\infty_{-\infty} \overline{\phi(x)} x\psi(x) dx \int^\infty_{-\infty} \overline{x\phi(x)} \psi(x) dx = \langle X\phi, \psi \rangle
+    $$
+
+* Momentum operator에 대한 symmetricity 증명
+
+  * $\phi$와 $\psi$가 continuously differentiable하고, $x$가 $\pm \infty$로 갈 때 0으로 수렴한다고 가정하자.
+
+    * Schwartz function은 위 조건을 만족.
+
+  * 또한 $\phi$, $\psi$, $d\phi/dx$, $d\psi/dx$가 모두 $L^2 (\mathbb R)$의 원소라고 가정하면 다음이 만족한다.
+    $$
+    \begin{align*}
+    \langle \phi, P \psi \rangle &= \int^\infty_{-\infty} \overline{ \phi(x)} (P\psi)(x)dx \\
+    &= -i\hbar \int^\infty_{-\infty} \overline{\phi(x)} \frac{d \psi}{dx}dx \\
+    &= -i\hbar \overline{\phi(x)}  \psi(x) \Bigg\vert^\infty_{-\infty} + i\hbar \int^\infty_{-\infty} \overline{\frac{d \phi}{dx}} \psi(x)dx \\
+    &= 0 + \int^\infty_{-\infty} \overline{ -i\hbar\frac{d \phi}{dx}} \psi(x)dx \\
+    &= \int^\infty_{-\infty} \overline{ P\phi(x)} \psi(x)dx \\
+    &= \langle P\phi,  \psi \rangle
+    \end{align*}
+    $$
 
 
 
-
-
-
-
-
-
-
+## 3.6. Axioms of Quantum Mechanics: Operators and Measurements
 
 
 

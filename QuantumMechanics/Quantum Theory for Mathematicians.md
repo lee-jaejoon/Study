@@ -410,7 +410,7 @@ Proposition 3.6은 앞서 소개한 내용으로 도출한 momentum operator $P$
 
 앞선 두 절에서 배경 내용을 설명했던 position operator와 momentum operator의 정의는 아래와 같다.
 
-> [Definition 3.7] For a particle moving in $\mathbb R^1$, let the quantum Hilbert space be $L^2(\mathbb R)$ and define the **position** and **momentum operators** $X$ and $P$ by
+> **[Definition 3.7]** For a particle moving in $\mathbb R^1$, let the quantum Hilbert space be $L^2(\mathbb R)$ and define the **position** and **momentum operators** $X$ and $P$ by
 > $$
 > X \psi(x) = x \psi (x) \\
 > P \psi(x) = -i \hbar \frac{d\psi}{dx}
@@ -482,6 +482,137 @@ Proposition 3.6은 앞서 소개한 내용으로 도출한 momentum operator $P$
 
 
 ## 3.6. Axioms of Quantum Mechanics: Operators and Measurements
+
+이 절에서는 양자역학의 일반적인 axiom, 즉 공리에 대해 다룬다. 다만 이는 수학적인 sense로 이 공리로부터 다른 결과들이 엄밀하게 논리적으로 도출되는 것이 아니라, 양자역학이 어떻게 작동하는가에 대한 주된 원칙을 나타낸 것이라는 관점에서 이해하는 것이 바람직하다. 이 절에서는 고정된 시점에 대해 적용되는 "kinematic"한 axiom에 대해 다루며, system의 time-evolution에 대한 axiom은 다음 절에서 다룬다.
+
+> **[Axiom 1]** The state of the system is represented by a unit vector $\psi$ in an appropriate Hilbert space $\mathbf H$. If $\psi_1$ and $\psi_2$ are two unit vectors in $\mathbf H$ with $\psi_2 = c\psi_1$ for some constant $c \in \mathbb C$, then $\psi_1$ and $\psi_2$ represent the same physical state.
+
+Hilbert space $\mathbf H$는 보통 "quantum Hilbert space"라고 불린다. 그러나 이것이 $\mathbf H$가 Hilbert space의 개념에서 벗어난 어떤 variant라는 것을 의미하는 것은 아니며, "어떤 주어진 quantum system과 관련된 Hilbert space"로 이해하면 된다.
+
+$\mathbf H$의 unit vector는 "pure state"만을 나타내는데, 보다 일반적인 개념인 "Mixed state"에 대한 내용은 19장에서 다룬다. 대부분의 물리 교과서에서 처음에는 pure state의 내용만을 다루는 것과 같이, 본 교재도 전반부에서는 pure state만을 고려하기로 한다.
+
+> **[Axiom 2]** To each real-valued function $f$ on the classical phase space there is associated a self-adjoint operator $\hat f$ on the quantum Hilbert space.
+
+거의 모든 경우, observable $f$에 대한 operator $\hat f$는 unbounded operator이며, position operator나 momentum operator와 같이 가장 기본적인 operator조차도 unbounded이다. 이러한 unbounded case에서 self-adjointness의 개념을 정의하는 데에는 다소 technical한 작업이 필요한데, 이에 대한 예시를 앞서 살펴보았다. 대부분의 application에서, classical phase space의 모든 observable에 대하여 $\hat f$를 정의하는 것까지는 필요가 없고, 보통은 position, momentum, energy, angular momentum과 같이 몇가지 중요한 observable에 대해서만 operator $\hat f$를 정의하면 충분하다. 이 기본적인 operator에 대한 내용은 이 3장의 후반부에서 다루게 될 것이다. (몇 가지 조건을 만족하는) 임의의 observable $f$에 대하여 operator $\hat f$를 정의하기 위해서는 Weyl quantization scheme이라는 방법을 사용해야 하는데, 이는 13장에서 소개한다.
+
+$\mathbb R^1$ 위를 움직이는 입자에 대하여, classical phase space에서는 입자의 위치 $x$와 momentum $p$의 pair $ (x,p) \in \mathbb R^2$로 입자의 위치와 운동을 기술한다. 양자역학의 경우 $\mathbb R^1$ 위를 움직이는 입자에 대한 quantum Hilbert space는 $L^2 (\mathbb R)$이다 ($L^2 (\mathbb R^2)$이 아니라!). Observable $f$가 입자의 위치를 나타내는 position function $f(x,p) = x$라면, 이에 대한 operator $\hat f$는 position operator $X$이다. Observable $f$가 입자의 운동량을 나타내는 momentum function $f(x,p) = p$라면, 이에 대한 operator $\hat f$는 momentum operator $P = -i \hbar \text{ }d/dx$이다.
+
+앞에서도 이미 사용한 표현이지만, 물리학에서는 classical phase space에서 정의된 function $f$를 **observable**, 혹은 **classical observable**이라고 한다. 이는 해당 system에서 어떤 측정을 함으로써 관측될 수 있는 물리량이라는 뜻이다. 그리고 이에 대한 operator $\hat f$를 **quantum observable**이라고 한다.
+
+> **[Axiom 3]** If a quantum system is in a state described by a unit vector $\psi \in \mathbf H$, the probability distribution for the measurement of some observable $f$ satisfies
+> $$
+> E(f^m) = \left\langle \psi, (\hat f )^m \psi \right\rangle.
+> $$
+> In particular, the expectation value for a measurement of $f$ is given by
+> $$
+> E(f) = \left\langle \psi, \hat f  \psi \right\rangle.
+> $$
+
+양자역학에서는 classical observable $f$는 더이상 특정 definite value를 갖는 것이 아니라, 여러 관측 가능한 값들에 대한 어떤 확률 분포를 갖게 된다. 그리고 이 정보는 quantum observable $\hat f$ 와 vector $\psi \in \mathbf H$ 안에 encoding되어있다.
+
+만약 위 정의에서 vector $\psi \in \mathbf H$가 unit vector가 아니라고 한다면, 식은 다음과 같이 normalized된 $\tilde \psi = \psi/\Vert \psi\Vert$에 대한 식으로 수정되어야 한다. 기댓값을 구할 때마다 normalization factor $\langle  \psi ,  \psi \rangle$를 곱해주는 것은 번거롭기 때문에, 보통은 $\psi \in \mathbf H$를 unit vector로 가정한다.
+$$
+E(f) = \frac{\left\langle \psi, \hat f  \psi \right\rangle}{\langle  \psi ,  \psi \rangle} = \frac{\left\langle \psi, \hat f  \psi \right\rangle}{\Vert  \psi  \Vert^2} = \left\langle \tilde \psi, \hat f  \tilde \psi \right\rangle
+$$
+Axiom 2에서 $\hat f$는 self-adjoint한 operator임을 가정했고, 모든 self-adjoint operator는 symmetric하므로, Proposition 3.4에 의하여 Axiom 3의 기댓값 $E(f)$와 $m$차 moment $E(f^m)$이 항상 실수값을 갖는다는 사실을 알 수 있다. 또한 $\hat f$가 symmetric일 뿐만 아니라 self-adjoint한 것으로 가정했으므로, **spectral theorem**에 의해 $\mathbb R^1$ 위의 probability measure $\mu_{A, \psi}$를 잘 정의할 수 있게 되고, 이 probability measure는 state $\psi$에서 $A$라는 값이 관측하는 확률 분포를 의미한다.
+
+또한 Axiom 3으로부터 (complex) 상수배 차이나는 두 unit vector가 같은 physical state를 나타낸다는 점을 확인할 수 있다. 만약 $\vert c \vert = 1$인 $c \in \mathbb C$에 대하여 $\psi_2 = c\psi_1$이 만족한다면, 임의의 operator $A$에 대하여 다음와 같이 쓸 수 있다.
+$$
+\langle \psi_2 , A \psi_2\rangle = \langle c\psi_1 , A c\psi_1\rangle = c\bar c\langle \psi_1 , A \psi_1\rangle = \vert c\vert \langle \psi_1 , A \psi_1\rangle = \langle \psi_1 , A \psi_1\rangle
+$$
+이는 임의의 quantum observable에 대하여 state $\psi_1$와 state $\psi_2$에서 그 기댓값이 같다는 것, 즉 두 state가 같은 physical state임을 의미한다.
+
+> **[Notation 3.10]** If $A$ is a self-adjoint operator on $\mathbf H$ and $\psi \in \mathbf H$ is a unit vector, the expectation value of $A$ in the state $\psi$ is denoted $\langle A \rangle_\psi$ and is defined (in light of Axiom 3) to be
+> $$
+> \langle A \rangle_\psi = \left\langle \psi, A  \psi \right\rangle .
+> $$
+
+> **[Proposition 3.11] (Eigenvectors)** If a quantum system is in a state described by a unit vector $\psi \in \mathbf H$ and for some quantum observable $\hat f$ we have $\hat f \psi = \lambda \psi$ for some $\lambda \in \mathbb R$, then
+> $$
+> E(f^m)= \left\langle (\hat f)^m \right\rangle_\psi = \lambda^m
+> $$
+> for all positive integers $m$. The unique probability measure consistent with this condition is the one in which $f$ has the definite value $\lambda$, with probability one.
+
+이 Proposition이 의미하는 바는, $\psi$가 $\hat f$의 eigenvector라면 state $\psi$에 있는 입자에 대하여 $f$를 관측했을 때는 항상 그 결과값이 $\lambda$가 나온다는 것이다.  또한 $\hat f$는 self-adjoint, 즉 symmetric하므로 quantum observable $\hat f$의 eigenvalue는 항상 real이다.
+
+만약 $\hat f \psi = \lambda \psi$가 만족한다면, $m$차 moment $\langle \psi, (\hat f)^m \psi \rangle = \langle \psi, \lambda^m \psi \rangle = \lambda^m$이다. 따라서 우리는 임의의 non-negative integer $m$에 대하여 다음을 만족하는 probability measure $\mu$ on $\mathbb R$를 찾아야 한다.
+$$
+\int_\mathbb R x^m d\mu = \lambda^m
+$$
+Proposition 3.11은 그러한 probability measure가 유일하게 존재하고, 그것이 point $\lambda$에서 degenerate하게 모든 probability mass를 갖는 $\delta$-measure라는 것을 말한다.
+
+* 증명
+
+  * quantum observable $\hat f$의 eigenvalue가 real이라는 것, $m$차 moment $E(f^m)$이 $\lambda^m$라는 것은 앞선 내용에서 이미 보였다.
+
+  * Non-negative integer $m$에 대하여 다음을 만족하는 probability measure $\mu$ on $\mathbb R$가 point $\lambda$에서 degenerate하게 모든 probability mass를 갖는 $\delta$-measure라는 것을 보여야 한다.
+    $$
+    \int_\mathbb R x^m d\mu = \lambda^m
+    $$
+
+    * $\mu$가 $\delta$-measure at $\lambda$라면 당연히 위 관계식이 만족한다.
+    * 위 관계식이 만족하면 $\mu$가 $\delta$-measure at $\lambda$라는 부분은, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

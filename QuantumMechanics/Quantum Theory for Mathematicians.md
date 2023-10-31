@@ -550,20 +550,83 @@ Proposition 3.11은 그러한 probability measure가 유일하게 존재하고, 
     \int_\mathbb R x^m d\mu = \lambda^m
     $$
 
-    * $\mu$가 $\delta$-measure at $\lambda$라면 당연히 위 관계식이 만족한다.
-    * 위 관계식이 만족하면 $\mu$가 $\delta$-measure at $\lambda$라는 부분은, 
+    * $\mu$가 $\delta$-measure at $\lambda$라면 당연히 위 관계식이 만족.
+    * 위 관계식이 만족하면 $\mu$가 $\delta$-measure at $\lambda$라는 부분은, moment generating function이 확률 분포를 unique하게 정의한다는 사실로부터 얻을 수 있는데, moment generating function이 존재하지 않는 일부 exotic한 case를 배제한다면, 모든 moment가 동일하면 동일한 확률분포로 볼 수 있음.
+
+> **[Example 3.12]** Suppose $\hat f$ has an orthonormal basis $\{e_j\}$ of eigenvectors with distinct (real) eigenvalues $\lambda_j$. Suppose also that $\psi$ is a unit vector in $\mathbf H$ with the expansion
+> $$
+> \psi = \sum_{j=1}^\infty a_j e_j
+> $$
+> Then for a measurement in the state $\psi$ of the observable $f$, the observed value of $f$ will always be one of the numbers $\lambda_j$. Furthermore, the probability of observing the value $\lambda_j$ is given by
+> $$
+> \text{Prob}\{f = \lambda_j \} = \vert a_j \vert ^2
+> $$
+
+어떤 system의 state가 $\hat f$의 eigenvector들의 linear combination이라면, $f$를 관측해서 얻는 값은 더이상 deterministic하지 않다. $\psi$가 $(\hat f)^m$의 domain에 속하고 continuous하다면, 위와 같이 linear combination의 계수의 크기 $\vert a_j \vert^2$를 이용해 각 값이 관측될 확률을 부여할 시, 앞서 Axiom 3에서 가정한 것과 동일한 $m$차 moment 공식이 유도된다는 것을 확인할 수 있다.
+$$
+\begin{align*}
+E(f^m) &= \sum_{j=1}^\infty \text{Prob}\{f = \lambda_j \} \cdot \lambda_j^m  = \sum_{j=1}^\infty \vert a_j \vert ^2 \lambda_j^m \\
+&= \left\langle \sum_{j=1}^\infty a_j e_j, (\hat f)^m \left(\sum_{j=1}^\infty a_j e_j \right) \right\rangle \\
+&= \left\langle \sum_{j=1}^\infty a_j e_j, (\hat f)^m\left( \lim_{J \to\infty}\sum_{j=1}^J a_j e_j \right) \right\rangle \\
+&= \left\langle \sum_{j=1}^\infty a_j e_j, \lim_{J \to\infty}\left[ (\hat f)^m \left( \sum_{j=1}^J a_j e_j \right) \right] \right\rangle &\hat f : \text{continuous 가정} \\
+&= \left\langle \sum_{j=1}^\infty a_j e_j, \lim_{J \to\infty}\left[\sum_{j=1}^J a_j (\hat f)^m \left( e_j \right) \right] \right\rangle \\
+&= \left\langle \sum_{j=1}^\infty a_j e_j,\sum_{j=1}^\infty a_j \lambda_j^m  e_j  \right\rangle \\
+&=  \lambda_j^m\left\langle \sum_{j=1}^\infty a_j e_j,\sum_{j=1}^\infty a_j  e_j  \right\rangle =  \lambda_j^m \left\langle \psi, \psi  \right\rangle = \lambda_j^m
+\end{align*}
+$$
+하지만 Axiom 3로부터 반대로, $\vert a_j \vert^2$가 각 값이 관측될 확률이 될 것이라는 사실을 논리적으로 도출하는 것은 쉽지 않다. 그럼에도 불구하고 이 $\vert a_j \vert^2$를 각 eigenvalue $\lambda_j$가 관측될 확률로 보는 것은 자연스러우며, 우리는 이를 axiom으로 받아들이기로 한다. 만약 몇몇 eigenvalue가 서로 distinct하지 않은 경우는 어떻게 될까? 임의의 eigenvalue의 sequence $\{\lambda_j\}$에 대하여, 어떤 값 $\lambda$를 관측할 확률은 $\lambda_j = \lambda$를 만족하는 $j$에 대하여 $\vert a_j \vert^2$를 모두 더해주면 된다.
+
+임의의 self-adjoint operator $A$에 대하여, spectral theorem에 의해, $A$는 eigenvector들로 이루어진 orthonormal basis 혹은 그것의 continuous 버전을 갖는다. 특히, 어떤 self-adjoint operator $A$와 unit vector $\psi \in \mathbf H$가 주어졌을 때, spectral theorem에 따라 probability measure $\mu_\psi^A$ on $\mathbb R$를 얻을 수 있으며, state $\psi$에서 $A$를 관측했을 때 관측되는 값에 대한 확률분포를 의미한다. Operator가 bounded인 경우는 Proposition 7.17에서, unbounded인 경우는 Definition 10.7에서 소개한다.
+
+> **[Axiom 4]** Suppose a quantum system is initially in a state $\psi$ and that a measurement of an observable $f$ is performed. If the result of the measurement is the number $\lambda \in \mathbb R$, then immediately after the measurement, the system will be in a state $\psi^\prime$ that satisfies
+> $$
+> \hat f \psi^\prime= \lambda \psi^\prime
+> $$
+> The passage from $\psi$ to $\psi^\prime$ is called the *collapse* of the wave function. Here $\hat f$ is the self-adjoint operator associated with $f$ by Axiom 2.
+
+다시 $\hat f$이 eigenvector $\{ e_j \}$로 이루어진 orthonormal basis를 갖고, 각 eigenvector $e_j$는 서로 다른 eigenvalue $\lambda_j$를 갖는다고 하자. Axiom 4는, $\hat f$를 관측했을 때 $\lambda_j$를 얻었다면, 해당 system은 $\psi^\prime = e_j$의 state를 갖게 된다는 것으 의미한다. 즉 observable에 대한 관측 하는 행동은 $k=j$를 제외한 $\psi$의 그 외 모든 $e_k$ 방향의 component를 날려버리며, 이를 wave function이 $e_j$로 "collapse"되었다고 한다.
+
+이와 같은 wave function의 collapse는 많은 논의와 논쟁을 불러일으켰다. 이 상황을 바라보는 한 가지 방법은, wave function $\psi$가 사실은 system의 "state"가 아니라, system이 가질 수 있는 state들에 대한 확률의 정보를 품고 있는 추상적 개념이라고 생각하는 것이다. 이 관점에서는, 미래 관측의 확률 분포는 현재 이미 관측된 결과와 consistent해야한다는 측면에서, wave function의 collapse가 일종의 조건부 확률과 같다고 이해할 수 있다. Paul Dirac은 이와 같은 wave function의 collapse를 두고, system의 state가 불연속적으로 변화하는 것이 아니라 **system의 state에 대한 우리의 지식**이 불연속적으로 변하는 것이라고 설명하였다.
+
+Axiom 4에 따르면 만약 $f$를 관측하고 아주 짧은 시간 뒤 다시 $f$를 관측한다면, 첫 번째 관측에 의해 system은 $\psi^\prime$의 state를 가질 것이고 두 번째 관측은 첫 번째 관측과 동일한 결과값이 나올 것이다. 하지만 이는 관측 직후에 한정하여 이론적으로 그러한 것이고, 일반적인 경우에는 관측 이후 system의 state가 time-evolution을 거치며 변화하게 된다. 그렇기 때문에 관측 이후 충분한 시간이 지난 이후의 경우, system의 state는 $\psi^\prime$이 아닌 다른 state에 있을 것이다.
+
+실제 physical system에서, 예를 들면 수소 원자에 대해서, 관측이 어떻게 이루어지는지에 대한 예시를 소개하며 본 절을 마무리하도록 하자. 어떤 한 수소 원자에 대한 Hamilton operator $\hat H$는 아래 식과 같이 음수인 eigenvalue를 갖는다.
+$$
+-\frac{R}{n^2}
+$$
+이때 $R$은 *Rydberg constant*라고 하는 상수이며, $n$은 자연수를 의미한다. (참고로 이 에너지 공식은 18장에서 도출한다.) Hamilton operator의 negative eigenvalue, 즉 negative energy는 electron이 원자핵에 묶여있는 state에 대응되기 때문에, negative eigenvalue가 보통은 더 관심 대상이 된다. 만약 electron이 energy $-R/n_1^2$를 갖는 state에 있다면 이는 결국 더 낮은 energy, 예를 들면 $-R/n_2^2$를 갖는 state로 "decay"할 것이다. 이 decay의 과정에서 electron은 photon을 방출하며, 방출되는 photon의 energy는 electron의 energy 변화량과 같게 된다.
+$$
+E_{\text{photon}} = \frac{R}{n_2^2} - \frac{R}{n_1^2}
+$$
+또한 photon의 frequency는 그 photon의 energy에 비례하게 된다. 따라서 방출된 photon의 frequency를 관측함으로써 우리는 electron의 energy가 얼마나 변했는지를 알 수 있고, 따라서 $n_1$과 $n_2$의 값을 알 수 있게 된다.
+
+(electron이 원자핵에 묶여있는) 수소 원자의 일반적인 "bound state"는 $-{R}/{n^2}$ 형태의 eigenvalue 값들에 대한 eigenvector들의 linear combination으로 기술된다. Electron의 energy를 측정하기 위해서 우리는 electron이 더 낮은 energy의 state로 decay하며 photon을 방출할 때까지 기다리고, photon의 frequency를 측정하여, electron의 energy 수준을 역산한다. 만약 완전히 동일한, "identically prepared" electron들이 충분히 있고, 이들이 모두 eigenvector들의 linear combination 형태인 동일한 wave function $\psi$를 갖는다면, 방출된 photon으로부터 다양한 frequency 값이 읽힐 것이고, 즉 다양한 energy level을 갖는 electron이 관측될 것이다. 이렇게 관측된 energy에 대한 확률 분포가 앞서 Example 3.12에서 소개한 확률 분포이다.
+
+확률론에서, 어떤 random variable $Y$에 대하여 $Y$의 variance $\sigma^2$는 다음과 같이 계산할 수 있다.
+$$
+\sigma^2 = E\left[(Y - E(Y))^2\right] = E(Y^2) - E(Y)^2
+$$
+이와 유사하게 observable의 standard deviation을 정의할 수 있다.
+
+> **[Definition 3.13]** If $A$ is a self-adjoint operator on a Hilbert space $\mathbf H$ and $\psi$ is a unit vector in $\mathbf H$, let $\Delta_\psi A$ denote the standard deviation associated with measurements of $A$ in the state $\psi$, which is computed as
+> $$
+> (\Delta_\psi A)^2 = \left\langle \left(A - \langle A \rangle_\psi I \right)^2 \right\rangle_\psi = \left\langle A^2\right\rangle_\psi - \left( \left\langle A\right\rangle_\psi \right)^2
+> $$
+> We refer to $\Delta_\psi A$ as the **uncertainty** of $A$ in the state $\psi$.
+
+Observable $A$에 대하여, 어떤 state $\psi$를 고려하느냐에 따라서 uncertainty of $A$, $\Delta_\psi A$가 커질 수도 있고 작아질 수도 있다. 12장에서는 서로 commute되지 않는 두 observable $A$, $B$가 있을 때, $\Delta_\psi A$와 $\Delta_\psi B$를 동시에 작게 만드는 데에는 어떤 하한이 있고, 이 하한보다 더 작게 두 observable의 uncertainty를 줄이는 것은 불가능하다는 사실을 소개 및 도출한다. 이것이 바로 그 유명한 **Heisenberg uncertainty principle**이고, 이는 $\Delta_\psi X$와 $\Delta_\psi P$이 정의되는 모든 $\psi$에 대하여 만족하는 부등식이다.
+$$
+(\Delta_\psi X)(\Delta_\psi P) \geq \frac{\hbar}{2}
+$$
 
 
 
 
+## 3.7. Time-Evolution in Quantum Theory
 
+### 3.7.1. The Schrodinger Equation
 
-
-
-
-
-
-
+지금까지의 논의에서는 어떤 고정된 시점에서의 wave function $\psi$에 대한 내용 및 예시를 다루었다. 이제 wave function이 시간이 지남에 따라 어떻게 변화하는지, time-evolution과 관련된 내용을 살펴보고자 한다. 고전 역학의 Hamiltonian formulation에서 어떤 system의 time-evolution은 Hamilton 방정식을 통해, Hamiltonian function $H$에 의해 결정되게 된다. Axiom 2에 따르면 이 함수 $H$에 대한 quantum observable $\hat H$가 존재할 것이고 이는 Hilbert space $\mathbf H$ 내의 self-adjoint linear operator이다.
 
 
 

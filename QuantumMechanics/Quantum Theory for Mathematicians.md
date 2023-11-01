@@ -1,16 +1,16 @@
 # 3. A First Approach to Quantum Mechanics
 
-이 챕터는 양자역학의 주된 아이디어들을 이해하는 것을 목표로 한다. 양자역학에서 어떤 측정의 결과는 사전에 예측될 수 없고 (even in principle), 오직 측정 결과에 대한 *확률*만이 예측 가능하다. 이 *확률*은 *wave function*이라고 하는 위치 변수 $\mathbf x \in \mathbb R^n$에 대한 함수로 encode되어 있고, 입자의 위치에 대한 확률은 이 wave function을 제곱하여 얻을 수 있다. 또한 입자의 운동량(momentum)에 대한 확률은 wave function의 진동 주파수에 그 정보가 encode되어 있다. 이처럼 입자의 정보가 wave function, 즉 함수에 encode되어 있기 때문에, 입자의 위치와 운동량에 대한 확률은 함수 공간 상 정의된 연산자(operator), *position operator*와 *momentum operator*를 이용하여 기술된다. 또한 wave function의 시간 변화(time-evolution)은 Hamiltonian operator에 의해 기술되며, 이는 고전역학의 Hamilton 방정식의 Hamiltonian 함수(혹은 에너지 함수)와 대응되는 개념이다.
+이 장은 양자역학의 주된 아이디어들을 개괄적으로 이해하는 것을 목표로 한다. 양자역학에서 어떤 측정의 결과는 사전에 예측될 수 없고 (even in principle), 오직 측정 결과에 대한 *확률*만이 예측 가능하다. 이 *확률*은 *wave function*이라고 하는 위치 변수 $\mathbf x \in \mathbb R^n$에 대한 함수로 encode되어 있고, 입자의 위치에 대한 확률은 이 wave function을 제곱하여 얻을 수 있다. 또한 입자의 운동량(momentum)에 대한 확률은 wave function의 진동 주파수에 그 정보가 encode되어 있다. 이처럼 입자의 정보가 wave function, 즉 함수에 encode되어 있기 때문에, 입자의 위치와 운동량에 대한 확률은 함수 공간 상 정의된 연산자(operator), *position operator*와 *momentum operator*를 이용하여 기술된다. 또한 wave function의 시간 변화(time-evolution)은 Hamiltonian operator에 의해 기술되며, 이는 고전역학의 Hamilton 방정식의 Hamiltonian 함수(혹은 에너지 함수)와 대응되는 개념이다.
 
 ## 3.1. Waves, Particles, and Probabilities
 
-양자이론에는 크게 두 가지의 주된 내용이 있고, 이는 모두 어떤 실험 결과로부터 착안한 것이다.
+양자역학의 이론에는 크게 두 가지의 주된 내용이 있고, 이는 모두 어떤 실험 결과로부터 착안한 것이다.
 
 첫 번째 내용은 *파동-입자 이중성(wave-particle duality)*이다. 이는 어떤 물체가 입자의 성질과 파동의 성질을 동시에 보이는 것을 의미하는데, 빛을 예로 들면, 빛은 19세기 후반까지 파동으로 여겨졌으나, 20세기 초반 이후 입자의 성질도 갖는다는 사실이 확인되었다. 반대로 전자는 원래는 입자인 것으로 여겨졌으나 이후 파동의 성질을 갖는다는 것이 밝혀졌다.
 
-두 번째 주된 내용은 물체가 갖는 확률적인 성질이다. 이중 슬릿 실험을 예로 들면, 동일하게 준비된 전자들은 스크린 상 같은 위치에 도달하지 않는다. 양자이론은 Randomness가 자연이 움직이는 방식의 근간을 이루고 있다고 가정한다. 양자역학에 의하면, 어떤 실험의 결과를 사전에 예측하는 것은 실험적으로도, 심지어 이론적으로도 불가능하며, 오직 실험 결과에 대한 확률을 예측할 수 있을 뿐이다.
+두 번째 주된 내용은 물체가 갖는 확률적인 성질이다. 이중 슬릿 실험을 예로 들면, 동일하게 준비된 전자들은 스크린 상 같은 위치에 도달하지 않는다. 양자역학은 Randomness가 자연이 움직이는 방식의 근간을 이루고 있다고 가정한다. 양자역학에 의하면, 어떤 실험의 결과를 사전에 예측하는 것은 실험적으로도, 심지어 이론적으로도 불가능하며, 오직 실험 결과에 대한 확률을 예측할 수 있을 뿐이다.
 
-Wave function, 즉 파동함수는 이 두 가지 양자이론의 주된 내용을 모두 포함하고 있는 개념이다. Wave function은 위치 변수 $\mathbf x \in \mathbb R^n$에 대한 함수이며, 시간이 지남에 따라 파동과 같은 방정식(Schrödinger equation)을 따라 진행(evolve)한다. Wave function과 wave function의 time-evolution은 양자이론의 파동적 측면을 설명하며, 입자적인 측면은 이 wave function을 해석하는 방식에서 나온다. 
+Wave function, 즉 파동함수는 이 두 가지 양자역학 이론의 주된 내용을 모두 포함하고 있는 개념이다. Wave function은 위치 변수 $\mathbf x \in \mathbb R^n$에 대한 함수이며, 시간이 지남에 따라 파동과 같은 방정식(Schrödinger equation)을 따라 진행(evolve)한다. Wave function과 wave function의 time-evolution은 양자역학의 파동적 측면을 설명하며, 입자적인 측면은 이 wave function을 해석하는 방식에서 나온다. 
 
 혹자는 wave function을 어떤 종류의 구름과 같이, 어떤 전자의 구름의 일부는 여기 있고 또 다른 일부는 저기 있는 것과 같이 해석하고 싶을 수도 있지만, 이와 같은 wave function의 해석은 실제 실험에서 얻어지는 결과와는 매우 다르다. 실제로 측정했을 때, 어떤 한 전자의 위치는 항상 특정 한 지점에 있는 것으로 측정된다. 이중 슬릿 실험에서조차 어떤 한 전자의 위치는 하나의 지점에 있는 것으로 측정되지, wave function과 같이 여러 위치에 동시에 퍼져서 존재하는 것으로 측정되지 않는다. 따라서 wave function은 어떤 한 입자에서 직접 관측한 양상을 기술하는 것이 아니라, 해당 입자와 동일한 입자가 충분히 많이 있을 때 그 입자들이 통계적으로 어떤 움직임 양상을 보일지에 대한 정보를 기술하는 것으로 해석해야 한다.
 
@@ -248,7 +248,7 @@ $$
 
 ## 3.4. Momentum and the Momentum Operator
 
-고정된 시간 하에서, (Schrodinger가 제시한 wave theory를 따르는) 어떤 입자의 wave function $\psi (x)$는 "위치" 변수 $x$만을 input으로 갖는 함수이다. 따라서 wave function $\psi$는 입자의 위치에 대한 정보는 확률 밀도 $\vert \psi (x) \vert^2$를 통해 직접적으로 encoding하고 있는데, 입자의 momentum과 관련된 정보가 wave function에 어떻게 encoding되어 있는지는 직관적으로 바로 보이지는 않는다. 알고 보니 momentum에 대한 정보는 wave function의 *oscillations*, 즉 진동 양상에 encoding되어 있는데, 이와 관련된 양자 역학의 중요한 개념이 바로 *de Broglie hypothesis*이다. The de Broglie hypothesis는 wave function이, 고정된 시간 하에서 위치에 대한 함수가, 진동하는 주파수와 입자의 momentum 간의 관계식을 기술한다.
+고정된 시간 하에서, (Schrödinger가 제시한 wave theory를 따르는) 어떤 입자의 wave function $\psi (x)$는 "위치" 변수 $x$만을 input으로 갖는 함수이다. 따라서 wave function $\psi$는 입자의 위치에 대한 정보는 확률 밀도 $\vert \psi (x) \vert^2$를 통해 직접적으로 encoding하고 있는데, 입자의 momentum과 관련된 정보가 wave function에 어떻게 encoding되어 있는지는 직관적으로 바로 보이지는 않는다. 알고 보니 momentum에 대한 정보는 wave function의 *oscillations*, 즉 진동 양상에 encoding되어 있는데, 이와 관련된 양자 역학의 중요한 개념이 바로 *de Broglie hypothesis*이다. The de Broglie hypothesis는 wave function이, 고정된 시간 하에서 위치에 대한 함수가, 진동하는 주파수와 입자의 momentum 간의 관계식을 기술한다.
 
 > **[Proposition 3.5] (de Broglie hypothesis)** If the wave function of a particle has spatial frequency $k$, then the momentum $p$ of the particle is
 > $$
@@ -441,8 +441,6 @@ Proposition 3.6은 앞서 소개한 내용으로 도출한 momentum operator $P$
   \end{align*}
   $$
 
-* 
-
 이 "non-commutativity"에 의하여 양자역학의 다양한 중요한 개념들이 다뤄지는데 이는 11-14장에서 다룬다. 지금 단계에서는 고전 역학에서의 Poisson bracket 관계식과 위 식 간 연관이 있다는 점만 알아두자.
 
 > **[Proposition 3.9]** For all sufficiently nice functions $\phi$ and $\psi$ in $L^2 (\mathbb R)$, we have
@@ -624,9 +622,98 @@ $$
 
 ## 3.7. Time-Evolution in Quantum Theory
 
-### 3.7.1. The Schrodinger Equation
+### 3.7.1. The Schrödinger Equation
 
-지금까지의 논의에서는 어떤 고정된 시점에서의 wave function $\psi$에 대한 내용 및 예시를 다루었다. 이제 wave function이 시간이 지남에 따라 어떻게 변화하는지, time-evolution과 관련된 내용을 살펴보고자 한다. 고전 역학의 Hamiltonian formulation에서 어떤 system의 time-evolution은 Hamilton 방정식을 통해, Hamiltonian function $H$에 의해 결정되게 된다. Axiom 2에 따르면 이 함수 $H$에 대한 quantum observable $\hat H$가 존재할 것이고 이는 Hilbert space $\mathbf H$ 내의 self-adjoint linear operator이다.
+지금까지의 논의에서는 어떤 고정된 시점에서의 wave function $\psi$에 대한 내용 및 예시를 다루었다. 이제 wave function이 시간이 지남에 따라 어떻게 변화하는지, time-evolution과 관련된 내용을 살펴보고자 한다. 고전 역학의 Hamiltonian formulation에서 어떤 system의 time-evolution은 Hamilton 방정식을 통해, Hamiltonian function $H$에 의해 결정되게 된다. Axiom 2에 따르면 이 함수 $H$에 대한 quantum observable $\hat H$가 존재하며 이는 Hilbert space $\mathbf H$ 내의 self-adjoint linear operator이다. 이를 Hamiltonian operator라고 부르며 자세한 내용은 3.7.4의 예시에서 소개한다.
+
+앞서 momentum operator를 정의할 때 motivation을 위하여, momentum operator의 식 형태를 de Broglie hypothesis, $p=\hbar k$로부터 도출하였고, 이때 $k$는 complex-valued wave function의 spatial frequency를 의미했다. 양자역학의 time-evolution도 이와 비슷하게, energy와 wave function의 temporal frequency의 관계식을 통해 도출할 수 있다.
+$$
+E = \hbar \omega
+$$
+Energy와 temporal frequency 간의 이 관계식은 Planck가 흑체 복사에 대한 그의 이론에서 제안한 관계식이다. 어떤 wave function $\psi_0$이 definite한 level의 energy $E$를 가지고 있다고 하자. 즉 $\psi_0$은 operator $\hat H$의 eigenvector이며 그때의 eigenvalue는 $E$가 된다. 
+$$
+\hat H \psi_0 = E \psi_0
+$$
+이때 위 관계식 $E = \hbar \omega$에 따르면 wave function의 time dependency $\omega$는 $E/ \hbar$가 된다. 따라서 time $t = 0$에서의 system의 state를 $\psi_0$라고 한다면, 다른 시점 $t$에서의 system의 state는 다음과 같다.
+$$
+\psi(t) = e^{-i\omega t}\psi_0 = e^{-i E t/ \hbar}\psi_0
+$$
+이는 다음 미분방정식의 solution이다.
+$$
+\frac{d \psi}{dt} = -\frac{iE}{\hbar} \psi = \frac{E}{i\hbar} \psi 
+$$
+앞서 wave function의 spatial frequency $k$는 $e^{ikx}$ 형태로 반영하였는데, 여기서 temporal frequency $\omega$는 $e^{-i\omega t}$로 지수에 '$-$' 부호가 달린 형태로 식을 작성하였다. 이와 같은 convention은 이후(4장)에 free Schrödinger equation의 pure exponential solution을 나타낼 때 편리한 형태인데, solution은 $\exp[i(kx-wt)]$의 형태가 되고 $\omega/k$의 속도로 오른쪽으로 움직이는 형태의 wave function이 된다.
+
+위 미분방정식은 특정 definite energy 값 $E$의 initial state $\psi_0$를 갖는 입자에 대한 time-evolution을 나타내므로 일반적인 입자의 time-evolution을 완전히 기술한 것은 아니다. 
+$$
+E \psi = e^{i \omega t}E \psi_0 = e^{i \omega t}\hat H \psi_0 = \hat H (e^{i \omega t}\psi_0) = \hat H \psi
+$$
+따라서 $E \psi$ 자리에 $\hat H \psi$를 대입하면, initial state를 definite energy 값을 갖는 state로 가정한 상황 하에서가 아닌, 일반적인 상황 하에서의 quantum system의 time-evolution에 대한 관계식을 얻을 수 있다.
+
+> **[Axiom 5]** The time-evolution of the wave function $\psi$ in a quantum system is given by the **Schrödinger equation**,
+> $$
+> \frac{d \psi}{d t} = \frac{1}{i\hbar} \hat H \psi.
+> $$
+> Here $\hat H$ is the operator corresponding to the classical Hamiltonian $H$ by means of Axiom 2.
+
+Hamilton 방정식과 Schrodinger equation 모두 Hamiltonian을 포함하고 있지만, 두 방정식은 유사해보이지 않는다. 물론 양자역학과 고전역학은 다르기에, 두 이론이 동일한 time-evolution을 가질 것이라고 기대할 수는 없다. 하지만 그럼에도 불구하고, classical system의 time-evolution과 그와 대응되는 quantum system의 time-evolution 간 어떠한 부분에서는 유사점이 있지 않을까? 그러한 두 이론의 time-evolution 간의 유사점은 양자역학에서 observable의 기댓값이 시간이 흐름에 따라 어떻게 변화하는지를 보면 확인할 수 있다.
+
+> **[Proposition 3.14]** Suppose $\psi(t)$ is a solution of the Schrodinger equation and $A$ is a self-adjoint operator on $\mathbf H$. Assuming certain natural domain conditions hold, we have
+> $$
+> \frac{d}{dt} \langle A \rangle_{\psi(t)} = \left\langle \frac{1}{i\hbar} [A, \hat H]\right\rangle_{\psi(t)}
+> $$
+> where $\langle A \rangle_\psi$ is as in Notation 3.10 and where $[\cdot, \cdot]$ denotes the commutator, defined as
+> $$
+> [A, B] = AB -BA
+> $$
+
+Classical phase space에서 함수 $f$가 Hamilton 방정식의 solution을 따라 evolve하는 관계식은 다음과 같다: $df/dt = \{ f, H\}$. 양자역학에서 operator의 commutator와 고전역학의 Poisson bracket의 역할이 대응되는 유사점이 있다는 것을 알 수 있다. 이 proposition의 증명은 다음과 같다.
+
+* $\psi(t)$가 Schrodinger 방정식의 solution이라고 하자. 도출 과정에서 등장하는 operator들의 domain은 우선 걱정하지 말고 우선 식을 전개해보자.
+  $$
+  \begin{align*}
+  \frac{d}{dt}\langle A \rangle_{\psi(t)} &= \frac{d}{dt}\langle \psi(t), A \psi(t)\rangle \\
+  &= \left\langle  \frac{d\psi}{dt}, A\psi \right\rangle + \left\langle \psi, A \frac{d\psi}{dt}\right\rangle \\
+  &= \left\langle \frac{1}{i\hbar} \hat H \psi, A\psi \right\rangle + \left\langle \psi, \frac{1}{i\hbar} A \hat H \psi\right\rangle \\
+  &=-\frac{1}{i\hbar} \left\langle  \psi,  \hat HA\psi \right\rangle +\frac{1}{i\hbar} \left\langle \psi,  A \hat H \psi\right\rangle \\
+  &=\frac{1}{i\hbar} \left\langle  \psi,  [A, \hat H]\psi \right\rangle\\
+  &=\left\langle \frac{1}{i\hbar} [A, \hat H]\right\rangle_{\psi}
+  \end{align*}
+  $$
+
+  * 첫 번째 등식에서는 inner product 미분의 product rule을 사용하였다.
+
+* 사실 $\hat H$는 unbounded operator이고, $A$ 역시 거의 모든 경우 그러하므로, 위 식 전개 과정은 엄밀하지 않은 부분이 있다.
+
+  * 다만 9장에서 unbounded operator를 다룰 때 발생하는 이슈들을 심도있게 다룰 것이고, 지금은 양자역학에 대한 introduction 단계이므로, 우선은 이 부분을 넘어가도록 하자.
+
+  * 왜 그런 것인지 이유는 차치하고, 우선 위 식 전개가 unbounded operator $\hat H$, $A$에 대해서 문제가 없이 위한 조건을 제시하면 다음과 같다.
+
+    * 임의의 $t \in \mathbb R$에 대하여, $[A, \hat H] \psi(t)$가 정의될 수 있게 하기 위하여, 다음이 만족해야 한다.
+      $$
+      \begin{align*}
+      1) \enspace&\psi(t) \in \text{Dom(A)}\cap\text{Dom}(\hat H) \\
+      2) \enspace&\psi(t) \in \text{Dom}(\hat H) \\
+      3) \enspace&\hat H \psi(t) \in \text{Dom(A)}\\
+      4) \enspace&A \psi(t) \text{ : continuous path in }\mathbf H
+      \end{align*}
+      $$
+
+Proposition 3.14가 의미하는 중요한 점은, quantum system의 time-evolution을 위해서는 (Hamiltonian operator $\hat H$와의) noncommutativity가 반드시 있어야 한다는 것이다. 만약 임의의 operator $A$가 $\hat H$와 commutative하다고 해보자. 그럼 $[A, \hat H] = 0$이 되고, operator $A$의 기댓값은 시간에 대하여 constant가 될 것이다. 따라서 기본적인 operator의 noncommutativity는 양자역학에 있어 필수적인 성질 중 하나다. 이후에 3.7.4절에서 자세히 소개하겠지만 Hamiltonian operator $\hat H$는 그 식 안에 momentum operator $P$가 들어있고, $X$와 $P$가 commutative하지 않으므로 (Proposition 3.8), position operator $X$는 근본적으로 $\hat H$와 noncommutativity가 있다.
+
+그러나 물리적으로 의미가 있는 이 세상 모든 operator들이 모두 Hamiltonian $\hat H$와 noncommutativity가 있지는 않을 것이고, 일부 commutable한 operator도 있을 것이다. 만약 $[A, \hat H] = 0$이면, quantum observable $A$의 기댓값 및 $m$차 moment는 Schrodinger 방정식의 어떠한 solution을 가져와도 시간에 대한 상수가 될 것이다. 이러한 operator $A$는 보존량, conserved quantity 혹은 constant of motion으로 부른다. 그리고 이러한 conserved quantity는 Schrodinger 방정식을 푸는 방식을 이해하는 데 도움이 된다.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

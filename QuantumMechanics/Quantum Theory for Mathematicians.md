@@ -656,9 +656,9 @@ $$
 > $$
 > Here $\hat H$ is the operator corresponding to the classical Hamiltonian $H$ by means of Axiom 2.
 
-Hamilton 방정식과 Schrodinger equation 모두 Hamiltonian을 포함하고 있지만, 두 방정식은 유사해보이지 않는다. 물론 양자역학과 고전역학은 다르기에, 두 이론이 동일한 time-evolution을 가질 것이라고 기대할 수는 없다. 하지만 그럼에도 불구하고, classical system의 time-evolution과 그와 대응되는 quantum system의 time-evolution 간 어떠한 부분에서는 유사점이 있지 않을까? 그러한 두 이론의 time-evolution 간의 유사점은 양자역학에서 observable의 기댓값이 시간이 흐름에 따라 어떻게 변화하는지를 보면 확인할 수 있다.
+Hamilton 방정식과 Schrödinger equation 모두 Hamiltonian을 포함하고 있지만, 두 방정식은 유사해보이지 않는다. 물론 양자역학과 고전역학은 다르기에, 두 이론이 동일한 time-evolution을 가질 것이라고 기대할 수는 없다. 하지만 그럼에도 불구하고, classical system의 time-evolution과 그와 대응되는 quantum system의 time-evolution 간 어떠한 부분에서는 유사점이 있지 않을까? 그러한 두 이론의 time-evolution 간의 유사점은 양자역학에서 observable의 기댓값이 시간이 흐름에 따라 어떻게 변화하는지를 보면 확인할 수 있다.
 
-> **[Proposition 3.14]** Suppose $\psi(t)$ is a solution of the Schrodinger equation and $A$ is a self-adjoint operator on $\mathbf H$. Assuming certain natural domain conditions hold, we have
+> **[Proposition 3.14]** Suppose $\psi(t)$ is a solution of the Schrödinger equation and $A$ is a self-adjoint operator on $\mathbf H$. Assuming certain natural domain conditions hold, we have
 > $$
 > \frac{d}{dt} \langle A \rangle_{\psi(t)} = \left\langle \frac{1}{i\hbar} [A, \hat H]\right\rangle_{\psi(t)}
 > $$
@@ -669,7 +669,7 @@ Hamilton 방정식과 Schrodinger equation 모두 Hamiltonian을 포함하고 �
 
 Classical phase space에서 함수 $f$가 Hamilton 방정식의 solution을 따라 evolve하는 관계식은 다음과 같다: $df/dt = \{ f, H\}$. 양자역학에서 operator의 commutator와 고전역학의 Poisson bracket의 역할이 대응되는 유사점이 있다는 것을 알 수 있다. 이 proposition의 증명은 다음과 같다.
 
-* $\psi(t)$가 Schrodinger 방정식의 solution이라고 하자. 도출 과정에서 등장하는 operator들의 domain은 우선 걱정하지 말고 우선 식을 전개해보자.
+* $\psi(t)$가 Schrödinger 방정식의 solution이라고 하자. 도출 과정에서 등장하는 operator들의 domain은 우선 걱정하지 말고 우선 식을 전개해보자.
   $$
   \begin{align*}
   \frac{d}{dt}\langle A \rangle_{\psi(t)} &= \frac{d}{dt}\langle \psi(t), A \psi(t)\rangle \\
@@ -699,9 +699,91 @@ Classical phase space에서 함수 $f$가 Hamilton 방정식의 solution을 따�
       \end{align*}
       $$
 
-Proposition 3.14가 의미하는 중요한 점은, quantum system의 time-evolution을 위해서는 (Hamiltonian operator $\hat H$와의) noncommutativity가 반드시 있어야 한다는 것이다. 만약 임의의 operator $A$가 $\hat H$와 commutative하다고 해보자. 그럼 $[A, \hat H] = 0$이 되고, operator $A$의 기댓값은 시간에 대하여 constant가 될 것이다. 따라서 기본적인 operator의 noncommutativity는 양자역학에 있어 필수적인 성질 중 하나다. 이후에 3.7.4절에서 자세히 소개하겠지만 Hamiltonian operator $\hat H$는 그 식 안에 momentum operator $P$가 들어있고, $X$와 $P$가 commutative하지 않으므로 (Proposition 3.8), position operator $X$는 근본적으로 $\hat H$와 noncommutativity가 있다.
+Proposition 3.14가 시사하는 점은, quantum system의 time-evolution을 위해서는 (Hamiltonian operator $\hat H$와의) noncommutativity가 반드시 있어야 한다는 것이다. 만약 임의의 operator $A$가 $\hat H$와 commutative하다고 해보자. 그럼 $[A, \hat H] = 0$이 되고, operator $A$의 기댓값은 시간에 대하여 constant가 될 것이다. 따라서 기본적인 operator의 noncommutativity는 양자역학에 있어 필수적인 성질 중 하나다. 이후에 3.7.4절에서 자세히 소개하겠지만 Hamiltonian operator $\hat H$는 그 식 안에 momentum operator $P$가 들어있고, $X$와 $P$가 commutative하지 않으므로 (Proposition 3.8), position operator $X$는 근본적으로 $\hat H$와 noncommutativity가 있다.
 
-그러나 물리적으로 의미가 있는 이 세상 모든 operator들이 모두 Hamiltonian $\hat H$와 noncommutativity가 있지는 않을 것이고, 일부 commutable한 operator도 있을 것이다. 만약 $[A, \hat H] = 0$이면, quantum observable $A$의 기댓값 및 $m$차 moment는 Schrodinger 방정식의 어떠한 solution을 가져와도 시간에 대한 상수가 될 것이다. 이러한 operator $A$는 보존량, conserved quantity 혹은 constant of motion으로 부른다. 그리고 이러한 conserved quantity는 Schrodinger 방정식을 푸는 방식을 이해하는 데 도움이 된다.
+그러나 물리적으로 의미가 있는 이 세상 모든 operator들이 모두 Hamiltonian $\hat H$와 noncommutativity가 있지는 않을 것이고, 일부 commutable한 operator도 있을 것이다. 만약 $[A, \hat H] = 0$이면, quantum observable $A$의 기댓값 및 $m$차 moment는 Schrödinger 방정식의 어떠한 solution을 가져와도 시간에 대한 상수가 될 것이다. 이러한 operator $A$는 보존량, conserved quantity 혹은 constant of motion으로 부른다. 그리고 이러한 conserved quantity는 Schrödinger 방정식을 푸는 방식을 이해하는 데 도움이 된다.
+
+Proposition 3.14는 self-adjoint operator $A$, $B$에 대한 다음 map이 고전역학에서의 Poisson bracket과 유사한 역할을 한다는 것을 의미한다.
+$$
+(A,B) \longmapsto \frac{1}{i\hbar}[A,B]
+$$
+이는 다음 Proposition에 소개된 commutator의 여러 기본적 성질들을 보면 알 수 있다.
+
+> **[Proposition 3.15]** For any vector space $V$ over $\mathbb C$ and linear operators $A$, $B$, and $C$ on $V$ , the following relations hold.
+>
+> 1. $[A, B + \alpha C] = [A,B] + \alpha [A,C]$ for all $\alpha \in \mathbb C$
+> 2. $[B,A] = -[A,B]$
+> 3. $[A,BC]=[A,B]C + B[A,C]$
+> 4. $[A, [B,C]] = [[A,B],C] + [B,[A,C]]$
+
+그냥 쭉 전개해서 정리해보면 위 네 성질이 만족하는 것을 쉽게 확인할 수 있다.
+
+* 1
+  $$
+  [A, B + \alpha C] = A(B + \alpha C) - (B + \alpha C)A = AB + \alpha AC - BA - \alpha CA = [A,B]+\alpha[A,C]
+  $$
+
+* 2
+  $$
+  [B,A] = BA - AB = -(AB - BA) = -[A,B]
+  $$
+
+* 3
+  $$
+  \begin{align*}
+  [A,B]C + B[A,C] &= (AB-BA)C + B(AC - CA) \\
+  &= ABC-BAC + BAC - BCA \\
+  &= ABC - BCA \\
+  &= [A,BC]
+  \end{align*}
+  $$
+
+* 4
+  $$
+  
+  \begin{align*}
+  [[A,B],C] + [B,[A,C]] &= [AB-BA,C] + [B,AC-CA] \\
+  &= (AB-BA)C - C(AB-BA) + B(AC-CA)-(AC-CA)B\\
+  &= ABC - BAC - CAB + CBA + BAC - BCA - ACB + CAB \\
+  &= ABC + CBA - BCA - ACB \\
+  &= A(BC - CB)- (BC- CB)A \\
+  &= [A, BC-CB]\\
+  &= [A, [B,C]]
+  \end{align*}
+  $$
+
+만약 $A$, $B$가 어떤 Hilbert space 위의 bounded self-adjoint operator라면, $(1/i\hbar)[A,B]$ 역시 self-adjoint이다.
+$$
+\begin{align*}
+\left\langle \psi ,  \frac{1}{i\hbar}[A,B]\psi \right\rangle &=  \frac{1}{i\hbar}  \left\langle \psi , (AB-BA)\psi \right\rangle \\
+&= \frac{1}{i\hbar}\left[\left\langle \psi , AB\psi \right\rangle -\left\langle \psi , BA\psi \right\rangle\right] \\
+&= \frac{1}{i\hbar}\left[\left\langle A\psi , B\psi \right\rangle -\left\langle B\psi , A\psi \right\rangle\right] \\
+&= \frac{1}{i\hbar}\left[\left\langle BA\psi , \psi \right\rangle -\left\langle AB\psi , \psi \right\rangle\right] \\
+&=\frac{1}{i\hbar}\left\langle (BA- AB)\psi , \psi \right\rangle \\
+&=\left\langle -\frac{1}{i\hbar}(BA- AB)\psi , \psi \right\rangle\\
+&=\left\langle \frac{1}{i\hbar}(AB-BA)\psi , \psi \right\rangle\\
+&=\left\langle \frac{1}{i\hbar}[A,B]\psi , \psi \right\rangle
+\end{align*}
+$$
+또한 $A$, $B$가 unbounded self-adjoint operator일 때도, operator $A$와 $B$의 domain에 대한 적절한 가정이 있다면 $(1/i\hbar)[A,B]$는 self-adjoint 성질을 만족한다.
+
+> **[Proposition 3.16]** If $\phi(t)$ and $\psi(t)$ are solutions to the Schrodinger equation (3.28), the quantity $\langle \phi(t), \psi(t) \rangle$ is independent of $t$. In particular, $\Vert \psi(t) \Vert $ is independent of $t$, for any solution $\psi(t)$ of the Schrodinger equation.
+
+$$
+\begin{align*}
+\frac{d}{dt}\langle \phi(t), \psi(t) \rangle &= \left\langle \frac{d}{dt}\phi(t), \psi(t) \right\rangle + \left\langle \phi(t), \frac{d}{dt}\psi(t) \right\rangle \\
+&= \left\langle \frac{1}{i\hbar} \hat H \phi(t), \psi(t) \right\rangle + \left\langle \phi(t), \frac{1}{i\hbar} \hat H \psi(t) \right\rangle \\
+&= -\frac{1}{i\hbar}\left\langle  \hat H \phi(t), \psi(t) \right\rangle + \frac{1}{i\hbar}\left\langle \phi(t),  \hat H \psi(t) \right\rangle \\
+&= -\frac{1}{i\hbar}\left\langle  \hat H \phi(t), \psi(t) \right\rangle + \frac{1}{i\hbar}\left\langle \hat H \phi(t),  \psi(t) \right\rangle\\
+&=0
+\end{align*}
+$$
+
+즉 Schrodinger 방정식의 임의의 해  $\phi(t)$ and $\psi(t)$에 대하여, $\langle \phi(t), \psi(t) \rangle$는 시간 $t$에 대해 상수, 즉 불변이다. 또한 solution의 norm $\Vert \psi(t) \Vert $역시 시간 $t$에 대하여 상수이다.
+
+
+
+### 3.7.2. Solving the Schrodinger Equation by Exponentiation
 
 
 

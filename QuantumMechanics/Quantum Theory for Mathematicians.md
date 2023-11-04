@@ -791,9 +791,66 @@ $$
 
 
 
+### 3.7.2. Solving the Schrodinger Equation by Exponentiation
 
+Schrodinger 방정식은 다음과 같은 형태의 방정식의 한 예이다.
+$$
+\frac{dv}{dt} = Av
+$$
+$A$는 Hilbert space 상의 linear operator이며, Schrodinger 방정식의 경우는 $A= (-i/\hbar )\hat H$이다. 만약 Hilbert space가 finite-dimensional $\mathbb C^n$이라고 한다면, linear operator $A$는 $n \times n$ 행렬이 될 것이고 위 방정식은 일반적인 상미분방정식 문제가 된다. 이 finite-dimensional case의 solution은 아래와 같다.
+$$
+v(t) = e^{it A} v_0
+$$
+Matrix exponential $e^{tA}$는 convergent power series로 define된 것이며, $v_0 = v(0)$는 initial condition을 의미한다. 
+$$
+e^{tA} = \sum_{m=0}^\infty \frac{(tA)^m}{m!} = I+tA + \frac{t^2}{2}A^2+ \frac{t^3}{6}A^3 + \cdots
+$$
+만약 $A$가 diagonalizable 하다면, 이 matrix exponential은 eigenbasis를 이용해서 계산이 가능하다.
 
+* 어떤 matrix $X$가 diagonalizable하면, 다음과 같이 나타낼 수 있다.
+  $$
+  X = Q 
+  \begin{pmatrix}
+  \lambda_1 &  & 0\\
+  & \ddots &  \\
+  0 &  & \lambda_n 
+  \end{pmatrix}
+  Q^{-1} = Q \Lambda Q^{-1}
+  $$
 
+  * $Q$는 각 column이 $X$의 eigenvector인 $n\times n$ 행렬이다.
+
+  $$
+  \begin{align*}
+  e^{X} &= \sum_{m=0}^\infty \frac{X^m}{m!} \\
+  &= \sum_{m=0}^\infty \frac{(Q \Lambda Q^{-1})^m}{m!}\\
+  &= \sum_{m=0}^\infty \frac{Q \Lambda^m Q^{-1}}{m!}\\
+  &= Q \left[ \sum_{m=0}^\infty \frac{\Lambda^m }{m!} \right]Q^{-1}\\
+  &= Q 
+  \begin{pmatrix}
+  \sum_{m=0}^\infty {\lambda_1^m }/{m!} &  & 0\\
+  & \ddots &  \\
+  0 &  & \sum_{m=0}^\infty {\lambda_n^m }/{m!}
+  \end{pmatrix}
+  Q^{-1}\\
+  &= Q 
+  \begin{pmatrix}
+  e^{\lambda_1} &  & 0\\
+  & \ddots &  \\
+  0 &  & e^{\lambda_n}
+  \end{pmatrix}
+  Q^{-1}
+  \end{align*}
+  $$
+
+위 finite-dimensional case의 예시에서 $\mathbb C^n$을 Hilbert space $\mathbf H$로 바꾸고, linear map $A$를 linear operator $-(i/\hbar) \hat H$로 바꾸면 Schrodinger 방정식을 얻을 수 있다.
+
+> **[Claim 3.17]** Suppose $\hat H$ is a self-adjoint operator on $\mathbf H$. If a reasonable meaning can be given to the expression $e^{-it \hat H/\hbar}$, then the Schrodinger equation can be solved by setting
+> $$
+> \psi(t) = e^{-it\hat H/\hbar} \psi_0
+> $$
+
+Finite-dimensional case에서 matrix exponential operator-valued expression인 $e^{-it \hat H/\hbar}$를 $t$에 대해 미분했을 때 
 
 
 

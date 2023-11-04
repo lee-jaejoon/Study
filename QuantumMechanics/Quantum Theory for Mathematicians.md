@@ -682,7 +682,15 @@ Classical phase space에서 함수 $f$가 Hamilton 방정식의 solution을 따�
   $$
 
   * 첫 번째 등식에서는 inner product 미분의 product rule을 사용하였다.
-
+    $$
+    \begin{align*}
+    &\lim_{h \to 0} \frac{\langle f(x+h), g(x+h)\rangle - \langle f(x),g(x) \rangle}{h} \\&= \lim_{h \to 0} \left[ \frac{\langle f(x+h), g(x+h)\rangle - \langle f(x),g(x + h)\rangle}{h} + \frac{\langle f(x), g(x+h)\rangle - \langle f(x),g(x) \rangle}{h} \right]\\
+    &= \lim_{h \to 0} \left[ \left\langle \frac{f(x+h)- f(x)}{h} ,g(x + h)\right\rangle+ \left\langle f(x), \frac{g(x+h)-g(x)}{h} \right\rangle \right]\\
+    &=  \left\langle f^\prime(x) ,g(x)\right\rangle+ \left\langle f(x), g^\prime(x) \right\rangle
+    \end{align*}
+    $$
+    
+  
 * 사실 $\hat H$는 unbounded operator이고, $A$ 역시 거의 모든 경우 그러하므로, 위 식 전개 과정은 엄밀하지 않은 부분이 있다.
 
   * 다만 9장에서 unbounded operator를 다룰 때 발생하는 이슈들을 심도있게 다룰 것이고, 지금은 양자역학에 대한 introduction 단계이므로, 우선은 이 부분을 넘어가도록 하자.
@@ -740,7 +748,6 @@ $$
 
 * 4
   $$
-  
   \begin{align*}
   [[A,B],C] + [B,[A,C]] &= [AB-BA,C] + [B,AC-CA] \\
   &= (AB-BA)C - C(AB-BA) + B(AC-CA)-(AC-CA)B\\
@@ -785,13 +792,7 @@ $$
 
 ### 3.7.2. Solving the Schrodinger Equation by Exponentiation
 
-
-
-
-
-
-
-### 3.7.2. Solving the Schrodinger Equation by Exponentiation
+* **모든 내용을 이미 알고 있는 독자를 대상으로 하듯, 전체 흐름을 쭉쭉 훑으며 결과를 나열해 놓아, 번역을 하면서도 내용이 이해가 안 가는 부분이 많은데... 꼭 다시 돌아오자.**
 
 Schrodinger 방정식은 다음과 같은 형태의 방정식의 한 예이다.
 $$
@@ -850,14 +851,142 @@ $$
 > \psi(t) = e^{-it\hat H/\hbar} \psi_0
 > $$
 
-Finite-dimensional case에서 matrix exponential operator-valued expression인 $e^{-it \hat H/\hbar}$를 $t$에 대해 미분했을 때 
+이 식에서 $ e^{-it\hat H/\hbar}$를 evolution operator, time-evolution operator라고도 부른다.
 
+만약 finite-dimensional case에서 matrix exponential $e^{tA}$를 $t$에 대해 미분하는 것처럼, operator-valued expression인 $e^{-it \hat H/\hbar}$를 $t$에 대해 미분할 수 있다면, 위 식의 $\psi(t)$는 아래와 같이 Schrodinger 방정식의 solution이 될 것이다.
+$$
+\frac{d}{dt} \psi(t) = \frac{d}{dt} e^{-it\hat H/\hbar} \psi_0 =  -\frac{i\hat H}{\hbar} e^{-it\hat H/\hbar} \psi_0=  -\frac{i\hat H}{\hbar}\psi(t)
+$$
+(실제로는 거의 그런 경우가 없지만) 만약 $\hat H$가 bounded operator라면, finite-dimensional case에서와 같이 operator의 exponential을 convergent power series로 정의하고 동일하게 $t$에 대하여 미분을 수행할 수 있다. 하지만 대부분의 실제 경우에서 그렇듯 Hamiltonian $\hat H$이 unbounded라면, series의 convergence에 대한 조건을 찾는 것은 어려운 일이기 때문에, 그 대신 spectral theorem을 사용한다. Specral theorem에 대한 일반적인 논의는 7장과 10장에서 다루기로 하고, 여기서는 pure point spectrum의 case만을 소개한다.
 
+어떤 (possibly unbounded) self-adjoint operator $\hat H$에 대하여, 그 operator $\hat H$의 eigenvector로 이루어진 Hilbert space $\mathbf H$의 orthonormal basis $\{ e_j \}$가 존재한다면, $\hat H$가 **pure point spectrum**을 갖는다고 한다. $\hat H e_j = E_j e_j$라고 하면, 다음 조건이 만족할 때 operator exponential이 정의될 수 있다.
+$$
+e^{-it\hat H / \hbar} e_j = e^{-itE_j / \hbar} e_j
+$$
+이 operator $e^{-it \hat H/\hbar}$는 unitary operator이며 bounded이다. 또한 위 관계식을 만족하는 unique bounded operator이다.
 
+하지만 self-adjoint operator라고 할지라도, 심지어는 bounded self-adjoint operator라고 할지라도, eigenvector로 이루어진 orthonormal basis가 항상 존재하는 것은 아니다. 그럼에도 불구하고 spectral theorem에 의하면, 어떤 self-adjoint operator $A$가 주어졌을 때, $A$의 generalized eigenspace로 $\mathbf H$를 decompose하는 것이 가능하기는 하지만, unbounded operator의 경우는 이 decomposition을 정의하는 과정부터가 대단히 복잡하다. 이와 같은 다양한 technical한 이슈가 있지만, 여전히 우리는 spectral theorem을 이용해서 오직 단 한 가지의 목표만 달성하면 된다. 
 
+* 어떤 real number $a$와 self-adjoint operator $A$에 대하여 operator의 exponential $e^{iaA}$가 잘 정의되도록 하는 것.
+  * Schrodinger 방정식의 solution을 얻기 위하여
 
+이 technical한 이슈들을 해결하는 과정은 7장(bounded operator)과 10장(unbounded operator)에서 다뤄질 예정이다.
 
+마지막으로 Claim 3.17의 식에서 짚고 넘어가야할 부분이 두 가지 있다.
 
+첫째는 $\psi(t) = e^{-it\hat H/\hbar} \psi_0$를 얻었다고 해서, Schrodinger 방정식을 실제로 완전히 푼 것은 아니라는 점이다. 이 식이 의미가 있으려면 우리는 저 operator exponential 부분을 explicit하게 계산할 수 있어야 한다. 예를 들어,  $\hat H$의 eigenvector로 이루어진 orthonormal basis of $\mathbf H$를 실제로 계산할 수 있다면, 아래 식을 이용해서 실제로 exponential operator가 어떤 behavior를 보이는지 알 수 있을 것이다.
+$$
+e^{-it\hat H / \hbar} e_j = e^{-itE_j / \hbar} e_j
+$$
+둘째는 $\hat H$는 unbounded operator이므로 $\mathbf H$ 전체가 아닌 $\mathbf H$의 어떤 dense subspace에서만 정의되었지만, unitary operator $e^{-it\hat H/\hbar}$는 $\mathbf H$ 전체에서 정의된다는 점이다. 따라서 Claim 3.17의 식은 임의의 $\psi_0 \in \mathbf H$에 대하여 사용할 수 있다. 하지만 $\psi_0$가 $\hat H$의 domain의 원소가 아니면, $ e^{-it\hat H/\hbar} \psi_0$가 "in the natural Hilbert space sense"에서 Schrodinger 방정식의 진정한 solution이라고 말할 수는 없다.
+
+* $\psi_0$이 $\hat H$의 domain에 속하지 않더라도, 수학적으로는 $e^{-it\hat H/\hbar} \psi_0$가 정의가 되고 Schrodinger 방정식도 만족을 할 수 있다. 
+* 하지만 이는, $\psi_0$이 $\hat H$의 domain에 속하지 않을 시, 해당 quantum system을 나타내고자 선택한 natural Hilbert space 내에서 물리적으로 어떤 의미도 갖지 않는 solution일 수도 있다는 의미이다.
+
+### 3.7.3. Eigenvectors and the Time-Independent Schrodinger Equation
+
+3.7.2절에서 소개하였듯, time-evolution operator $ e^{-it\hat H/\hbar}$를 explicit하게 계산할 때 $\hat H$의 eigenvector로 이루어진 $\mathbf H$의 orthonormal basis를 사용한다. 따라서 Schrodinger 방정식의 solution을 구할 때 Hamiltonian operator $\hat H$의 eigenvector는 매우 중요한 역할을 한다.
+
+> **[Definition 3.18]** If $\hat H$ is the Hamiltonian operator for a quantum system, the eigenvector equation
+> $$
+> \hat H \psi = E \psi, \enspace \enspace E \in \mathbb R
+> $$
+> is called the **time-independent Schrodinger equation**.
+
+위 방정식에서 우리는 nonzero solution이 존재하는 real number $E$와 그에 대한 eigenvector $\psi$를 구해야 한다. 양자역학에서 "quantum harmonic oscillator를 푼다"고 하는 것은, 보통 이 time-independent Schrodinger equation에 대한 모든 solution을 구하는 것을 의미한다. 만약 $\psi$가 time-independent Schrodinger equation의 solution이라면, initial condition이 $\psi$인 time-*dependent* Schrodinger equation의 solution은 앞서 소개한 evolution operator를 곱한 $\psi(t) = e^{itE/\hbar} \psi$가 된다. 또한 $\psi(t)$는 $\psi$에 constant를 곱한 것이므로 $\psi$와 동일한 physical state를 나타낸다. 따라서 time-independent Schrodinger equation의 solution을 종종 *stationary state*라고 부르기도 한다.
+
+### 3.7.4. The Schrodinger Equation in $\mathbb R^1$
+
+가장 간단한 상황인 1차원 real line 위를 움직이는 입자에 대한 Schrodinger 방정식을 생각해보자. 앞서 3.5절에서, $\mathbb R^1$ 위를 움직이는 입자에 대하여 position operator와 momentum operator를 정의하였다. 
+$$
+X \psi(x) = x \psi (x) , \enspace P \psi(x) = -i \hbar \frac{d\psi}{dx}
+$$
+고전역학에서 어떤 입자의 Hamiltonian은 다음과 같이 정의된다. 이때 $V$는 입자의 위치 $x$에 따른 potential energy function이다.
+$$
+H(x, p) = \frac{p^2}{2m} + V(x)
+$$
+따라서 이와 동일하게 아래와 같이 Hamiltonian operator $\hat H$를 정의할 수 있다. Operator $V(X)$는 potential energy $V(x)$를 곱하는 연산을 나타내는 operator이다. (Spectral theorem에 의한 functional calculus 관점에서는 operator $X$에 function $V$를 적용한 것으로 볼 수 있다.)
+$$
+\hat H = \frac{P^2}{2m} + V(X)
+$$
+따라서 다음과 같이 쓸 수 있다.
+$$
+\hat H \psi(x) = -\frac{\hbar^2}{2m} \frac{d^2 \psi}{dx^2} + V(x)\psi(x)
+$$
+이와 같이 정의된 operator $\hat H$를, 혹은 동일한 operator의 다차원 버전을, *Schrodinger operator*라고 부른다. *Hamiltonian operator*는 보통, 위 식 형태 뿐만 아니라, quantum system의 time-evolution에 대한 operator를 일반적으로 부르는 용어로 쓰인다.
+
+Hamiltonian이 위 식과 같다면, time-dependent Schrodinger equation은 다음과 같다.
+$$
+\frac{\partial \psi(x,t)}{\partial t} = \frac{i\hbar}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} -  \frac{i}{\hbar}V(x)\psi(x,t)
+$$
+$\mathbb R^1$ 내의 입자에 대한 Newton 방정식이 아래와 같이 nonlinear ordinary differential equation인데 반해, 이는 linear partial differential equation이다. 
+$$
+m \frac{d^2 x(t)}{dt} = -V^\prime(x(t)) = - \frac{\partial V(x)}{\partial x} \Bigg\vert_{x = x(t)}
+$$
+어떤 $\mathbb R^1$ 내의 입자에 대하여, time-independent Schrodinger equation은 ordinary differential equation이며, 이는 linear하지만, 일반적으로는 $V$가 constant라는 가정이 없다면, nonconstant coefficient를 갖는다. 
+$$
+-\frac{\hbar^2}{2m} \frac{d^2 \psi}{dx^2} + V(x)\psi(x) = E\psi(x)
+$$
+Potential function $V$에 대한 간단한 case에 대해서는, ordinary differential equation을 푸는 일반적인 방법으로 time-independent Schrodinger equation을 푸는 것이 가능하다.
+
+ ### 3.7.5. Time-Evolution of the Expected Position and Expected Momentum
+
+양자역학에서 입자는 고정된 위치나 운동량을 갖지 않으므로, 이 quantum particle이 Newton 방정식을 따르는지 여부를 가리는 것은 무의미하다. 그러나 입자의 위치나 운동의 *기댓값*이 Newton 방정식을 따르는지 여부는 확인해볼 수 있다.
+
+> **[Proposition 3.19]** Suppose $\psi(t)$ is a solution to the time-dependent Schrodinger equation for a sufficiently nice potential $V$ and for a sufficiently nice initial condition $\psi(0) = \psi_0$. 
+> $$
+> \frac{\partial \psi(x,t)}{\partial t} = \frac{i\hbar}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} -  \frac{i}{\hbar}V(x)\psi(x,t)
+> $$
+> Then the expected position and expected momentum in the state $\psi(t)$ satisfy
+> $$
+> \begin{align*}
+> &\frac{d}{dt} \langle X \rangle_{\psi(t)} = \frac{1}{m} \langle P \rangle_{\psi(t)} \\
+> &\frac{d}{dt} \langle P \rangle_{\psi(t)} = - \langle V^\prime(X) \rangle_{\psi(t)}
+> \end{align*}
+> $$
+
+위 proposition의 statement에서는 "nice"한 potential과 "nice"한 initial condition을 가정했다. 이는 두 가지 이유가 있다. 첫째, $\hat H$가 self-adjoint operator여야하기 때문이고, 둘째, Proposition 3.14에서의 domain 가정이 만족하게 하기 위해서이다. 예를 들어, $V(x)$가 $x$에 대한 bounded-below polynomial이고 $\psi_0$이 Schwartz function이라면 문제가 없다. 이러한 적절한 가정이 있다면, 위 proposition에 대한 증명은 아래 관계식이 만족함을 보인 Proposition 3.14에 의해 쉽게 보일 수 있다.
+$$
+\frac{d}{dt} \langle A \rangle_{\psi(t)} = \left\langle \frac{1}{i\hbar} [A, \hat H]\right\rangle_{\psi(t)}
+$$
+
+* $\frac{d}{dt} \langle X \rangle_{\psi(t)}$ 증명
+  $$
+  \begin{align*}
+  [X, \hat H]\psi &= (X\hat H  - \hat H X) \psi \\
+  &= x \frac{-\hbar^2}{2m}\frac{\partial^2 \psi}{\partial x^2} + x V(x) \psi - \left[  \frac{-\hbar^2}{2m}\frac{\partial^2 (x\psi)}{\partial x^2} + V(x) x \psi \right] \\
+  &=  -x \frac{\hbar^2}{2m}\frac{\partial^2 \psi}{\partial x^2} +  \frac{\hbar^2}{2m}\left[ 2\frac{\partial\psi}{\partial x} +x \frac{\partial^2\psi}{\partial x^2} \right]\\
+  &=\frac{\hbar^2}{m}\frac{\partial\psi}{\partial x}\\
+  \left\langle \frac{1}{i\hbar} [X, \hat H]\right\rangle_{\psi} &= \left\langle \psi, \frac{1}{i\hbar} [X, \hat H] \psi \right\rangle \\
+  &= \left\langle \psi, \frac{1}{i\hbar} \frac{\hbar^2}{m}\frac{\partial\psi}{\partial x} \right\rangle \\
+  &= \left\langle \psi, \frac{1}{m}\left( -i\hbar\frac{\partial\psi}{\partial x} \right) \right\rangle \\
+  &= \frac{1}{m}\langle \psi, P\psi\rangle \\
+  &= \frac{1}{m} \langle P \rangle_{\psi}
+  \end{align*}
+  $$
+
+* $\frac{d}{dt} \langle P \rangle_{\psi(t)}$ 증명
+  $$
+  \begin{align*}
+  P\hat H \psi &= -i\hbar \frac{\partial}{\partial x}\left[ -\frac{\hbar^2}{2m}\frac{\partial^2 \psi}{\partial x^2} + V(x) \psi\right] \\
+  &= \frac{\hbar^3}{2m}\frac{\partial^3 \psi}{\partial x^3} - i\hbar\frac{\partial}{\partial x}\left[ V(x) \psi \right] \\
+  &= \frac{\hbar^3}{2m}\frac{\partial^3 \psi}{\partial x^3} - i\hbar\frac{d V(x)}{d x} \psi - i\hbar V(x)\frac{\partial \psi}{\partial x} \\
+  \hat H P \psi &= -\frac{\hbar^2}{2m}\frac{\partial^2 }{\partial x^2} \left[ -i\hbar \frac{\partial \psi}{\partial x}\right]+ V(x) \left[ -i\hbar \frac{\partial \psi}{\partial x} \right] \\
+  &= \frac{\hbar^3}{2m}\frac{\partial^3 \psi}{\partial x^3} - i\hbar V(x)\frac{\partial \psi}{\partial x} \\
+  \frac{1}{i \hbar}[P, \hat H] \psi &= \frac{1}{i \hbar} \left[ - i\hbar\frac{d V(x)}{d x} \psi \right] \\
+  &= - \frac{d V(x)}{d x} \psi \\
+  \left\langle \frac{1}{i\hbar} [P, \hat H]\right\rangle_{\psi} &= \left\langle - \frac{d V(x)}{d x}\right\rangle_{\psi}
+  \end{align*}
+  $$
+
+이 식의 의미를 생각해보면, 기댓값 기준으로 보았을 때 quantum particle의 velocity는 고전 역학에서와 같이 momentum의 $1/m$배인 것으로 해석할 수 있다.
+$$
+p = mv 
+$$
+
+$$
+
+$$
 
 
 

@@ -978,18 +978,46 @@ $$
   \left\langle \frac{1}{i\hbar} [P, \hat H]\right\rangle_{\psi} &= \left\langle - \frac{d V(x)}{d x}\right\rangle_{\psi}
   \end{align*}
   $$
+  
+* 
 
 이 식의 의미를 생각해보면, 기댓값 기준으로 보았을 때 quantum particle의 velocity는 고전 역학에서와 같이 momentum의 $1/m$배인 것으로 해석할 수 있다.
 $$
-p = mv 
+p = mv, \\
+\frac{1}{m} \langle P \rangle_{\psi(t)}  = m \cdot \frac{d}{dt} \langle X \rangle_{\psi(t)} 
 $$
 
-$$
+Proposition 3.19의 결과를 보면, $ ( \langle X\rangle_{\psi(t)}, \langle P\rangle_{\psi(t)} )$가 Hamilton 방정식의 solution인 것처럼 보인다. 그리고 Proposition 3.19의 첫번째 식은 실제로 Hamilton 방정식의 결과와 정확히 일치한다.
+
+* 고전역학의 Hamiltonian : $H(\mathbf x, \mathbf p) = \frac{1}{2m}\sum_{j=1}^{n} p_j^2 + V(\mathbf x) $
+* 양자역학의 Hamiltonian operator : $\hat H = \frac{P^2}{2m} + V(X)$
 
 $$
+\begin{align*}
+&\text{(Classical Mechanics)} &\text{(Quantum Mechanics)}\\
+&\frac{d x_j}{dt} = \frac{\partial H}{ \partial p_j} = \frac{p_j}{m} &\frac{d}{dt} \langle X \rangle_{\psi(t)} = \frac{1}{m} \langle P \rangle_{\psi(t)} \\
+&\frac{d p_j}{dt} = -\frac{\partial H}{ \partial x_j} = - \frac{\partial V}{\partial x_j} &\frac{d}{dt} \langle P \rangle_{\psi(t)} = - \langle V^\prime(X) \rangle_{\psi(t)}
+\end{align*}
+$$
 
+하지만 두번째 식이 Hamilton 방정식과 완전히 같으려면 우변이 $- V^\prime(\langle X \rangle_{\psi(t)})$이 되어야 하는데, 일반적인 경우에서는 다음과 같다.
+$$
+- \langle V^\prime(X) \rangle_{\psi(t)} \neq - V^\prime(\langle X \rangle_{\psi(t)})
+$$
+예를 들어서 $V^\prime (x) = x^3 + x^2$이고 $\psi$가 even function이라고 한다면, 다음과 같다.
+$$
+\langle X \rangle_\psi = \int_{\mathbb R} \overline{\psi(x)} x \psi(x)dx = \int_{\mathbb R} x \vert \psi(x) \vert^2 dx = 0 \enspace \because x\vert \psi(x)\vert^2 \text{ odd} \\
+\implies V^\prime(\langle X \rangle_\psi) = \langle X \rangle_\psi^3 + \langle X \rangle_\psi^2 = 0
+$$
+하지만 $\langle X^3 + X^2\rangle_\psi$는 $X^3$에 대한 항은 기댓값이 $0$이 되지만 $X^2$에 대한 항은 적분 시 양수로 남을 것이므로 전체 기댓값이 $0$이 아니게 된다. 따라서 일반적인 경우 $\langle X \rangle_{\psi(t)}$와 $\langle P \rangle_{\psi(t)}$는 Hamilton 방정식을 따라 evolve하지 않는다는 것을 확인할 수 있다.
 
+그러나 어떤 경우에는, 예를 들면 $V$가 quadratic이고 $V^\prime$이 linear한 경우는, $ \langle V^\prime(X) \rangle_{\psi(t)}$와 $ V^\prime(\langle X \rangle_{\psi(t)})$가 값이 같게 된다.
+$$
+\langle V^\prime(X) \rangle_{\psi(t)} =  \langle aX+bI \rangle_{\psi(t)} = a\langle X \rangle_{\psi(t)} +b = V^\prime(\langle X \rangle_{\psi(t)})
+$$
+이와 같은 경우는 expected position과 expected momentum이 고전역학에서 예측하는 trajectory를 따라서 evolve하게 된다.
 
+비록 일반적인 경우에는 expected position과 expected momentum이 classical trajectory를 따라 evolve하지 않지만, 어떤 condition 하에서는 근사적으로 거의 같은 trajectory를 따라 evolve하게 된다. 만약 wave function $\psi(x)$이 한 point $x = x_0$ 근방에 모여있다면, $ \langle V^\prime(X) \rangle_{\psi(t)}$와 $ V^\prime(\langle X \rangle_{\psi(t)})$가 모두 $V^\prime (x_0)$와 거의 같게 된다. 이 경우는 입자의 expected position과 expected momentum이, wave function이 해당 한 점 근처에 concentrate되어 있는 동안은, 고전역학의 Hamilton 방정식에 의한 trajectory와 거의 유사하게 evolve하게 될 것이다.
 
 
 

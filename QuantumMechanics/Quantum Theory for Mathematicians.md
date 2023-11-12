@@ -920,6 +920,9 @@ $$
 \frac{\partial \psi(x,t)}{\partial t} = \frac{i\hbar}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} -  \frac{i}{\hbar}V(x)\psi(x,t)
 $$
 $\mathbb R^1$ 내의 입자에 대한 Newton 방정식이 아래와 같이 nonlinear ordinary differential equation인데 반해, 이는 linear partial differential equation이다. 
+
+* Newton 방정식
+
 $$
 m \frac{d^2 x(t)}{dt} = -V^\prime(x(t)) = - \frac{\partial V(x)}{\partial x} \Bigg\vert_{x = x(t)}
 $$
@@ -979,7 +982,6 @@ $$
   \end{align*}
   $$
   
-* 
 
 이 식의 의미를 생각해보면, 기댓값 기준으로 보았을 때 quantum particle의 velocity는 고전 역학에서와 같이 momentum의 $1/m$배인 것으로 해석할 수 있다.
 $$
@@ -1021,15 +1023,74 @@ $$
 
 
 
+## 3.8. The Heisenberg Picture
 
+양자역학의 Heisenberg picture, 혹은 Heisenberg representation은 operator(quantum observable)은 time-evolve하지만 Hilbert space의 vector(quantum state)는 시간에 영향을 받지 않는 것으로 가정한 formulation이며, Heisenberg의 matrix model에 근간을 두고 있다. 이는 observable이 시간에 독립이고 state가 time-evolve하는 지금까지 소개한 접근법, 즉 Schrodinger picture와는 상반된다.
 
+> **[Definition 3.20]** In the Heisenberg picture, each self-adjoint operator $A$ evolves in time according to the operator-valued differential equation
+> $$
+> \frac{dA(t)}{dt} = \frac{1}{i \hbar} [A(t), \hat H],
+> $$
+> where $\hat H$ is the Hamiltonian operator of the system, and where $[\cdot, \cdot]$ is the commutator, given by $[A,B] = AB-BA$.
 
+즉, Heisenberg picture에서는, quantum observable의 time-evolution은 위 미분방정식을 따른다. 또한 $\hat H$는 자기 자신과 commutable이므로, operator가 time-evolve한다고 보는 Heisenberg picture에서도 $\hat H$는 시간에 대해 constant이다. 고전역학에서 Hamiltonian $H$가 Hamilton 방정식의 어떤 solution에 대해서도 항상 constant인 것에 대응되는 것으로 볼 수 있다.
 
+주어진 self-adjoint operator $\hat H$에 대하여, spectral theorem을 이용하면 unitary operator의 family $e^{-it\hat H/\hbar}$, $t \in \mathbb R$, 를 construct할 수 있고, 이 family of operators는 Schrodinger picture에서의 state의 time-evolution을 계산하는 데 사용된다. (앞선 3.7.2절 참고) Hamiltonian $\hat H$는 time에 대해 constant이므로, Definition 3.20의 식에 대한 solution이 아래와 같은 형태를 갖는 것은 간단하게 확인할 수 있다.
+$$
+A(t) = e^{it \hat H / \hbar} A e^{-it \hat H / \hbar}
+$$
 
+* 증명
+  $$
+  \begin{align*}
+  \frac{dA(t)}{dt} &= \left( \frac{d}{dt}e^{it \hat H / \hbar} \right) A e^{-it \hat H / \hbar} +  e^{it \hat H / \hbar} A \left( \frac{d}{dt} e^{-it \hat H / \hbar} \right) \\
+  &= \frac{i}{\hbar} \left( \hat H e^{it \hat H / \hbar}  A e^{-it \hat H / \hbar} -  e^{it \hat H / \hbar} A \hat H e^{-it \hat H / \hbar}   \right)\\
+  &= \frac{i}{\hbar} \left( \hat H e^{it \hat H / \hbar}  A e^{-it \hat H / \hbar} -  e^{it \hat H / \hbar} A e^{-it \hat H / \hbar} \hat H   \right) \enspace \because \hat H, e^{-it\hat H/\hbar}\text{ commutable}\\
+  &= \frac{1}{i\hbar} \left[A(t), \hat H \right]
+  \end{align*}
+  $$
 
+* $\hat H$, $e^{-it\hat H/\hbar}$의 commutativity
+  $$
+  \left[ \hat H, e^{-it\hat H/\hbar}\right] = \left[ \hat H, \sum_{m=0}^\infty \frac1{m!}\left(\frac{-it}{\hbar} \right)^m {\hat H}^m \right] =  \sum_{m=0}^\infty \frac1{m!}\left(\frac{-it}{\hbar} \right)^m \left[ \hat H,{\hat H}^m \right] = 0
+  $$
 
+따라서 (여기서는 time에 대해 independent인) 어떤 quantum system $\psi$에 대하여, quantum observable $A(t)$에 대한 기댓값 $\langle A(t) \rangle_\psi$는 다음과 같다.
+$$
+\begin{align*}
+\langle A(t) \rangle_\psi &= \left\langle \psi , e^{it \hat H / \hbar} A e^{-it \hat H / \hbar} \psi \right\rangle \\
+&= \left\langle e^{-it \hat H / \hbar} \psi ,  A e^{-it \hat H / \hbar} \psi \right\rangle \enspace \because  \left(e^{it \hat H / \hbar}\right)^\ast =  e^{-it \hat H / \hbar} \\
+&= \left\langle \psi(t) ,  A \psi(t) \right\rangle
+\end{align*}
+$$
 
+* $\left(e^{it \hat H / \hbar}\right)^\ast =  e^{-it \hat H / \hbar}$
+  $$
+  \left(e^{it \hat H / \hbar}\right)^\ast = \left(\sum_{m=0}^\infty \frac1{m!}\left(\frac{-it}{\hbar} \right)^m {\hat H}^m \right)^\ast =\sum_{m=0}^\infty \frac1{m!}\left(\frac{it}{\hbar} \right)^m {\hat H}^m =  e^{-it \hat H / \hbar}
+  $$
 
+Schrodinger picture에서는 operator 대신 state가 time-evolve하는 것으로 보는데, 여기서 $\psi(t)$는 Schrodinger picture에서의 time-evolved state이고, state $\psi(t)$에서의 operator $A$에 대한 기댓값은 $\left\langle \psi(t) ,  A \psi(t) \right\rangle$이다. 따라서 system의 time-evolution을 기술하는 방법은 다르지만, Schrodinger picture과 Heisenberg picture는 observable의 기댓값을 정확히 같은 function of time으로 나타내며, 따라서 두 representation은 물리적으로 equivalent하다. 
+
+* 이후의 논의에서는 대부분 Schrodinger picture를 기준으로 양자역학을 설명할 것이지만, quantum field theory와 같은 이론에서는 Heisenberg picture가 사용된다.
+
+> **[Proposition 3.21]** Suppose $\hat H = P^2/(2m) + V(X)$, where $V$ is a bounded below polynomial. Then for any $t \in \mathbb R$ we have
+> $$
+> \hat H = \frac{1}{2m}(P(t))^2 + V(X(t))
+> $$
+
+Hamiltonian $\hat H$는 Heisenberg picture에서도 시간에 대해 불변이므로, $P(t)$, $X(t)$가 $t$에 대해 달라지더라도 위 식의 우변은 $t$에 대해 constant가 된다. 또한 위 식은 sufficiently nice한 nonpolynomial function $V$에 대해서도 성립하는데, 이때는 몇가지 추가 가정이 증명 과정에서 필요하다. Potential $V$가 bounded below라는 가정은 $\hat H $가 (essentially) self-adjoint operator가 되기 위해서 필요한데, 9.10절에서 자세한 내용을 다룬다.
+
+> **[Lemma 3.22]** Suppose $A$ is a self-adjoint operator $\mathbf H$ and that $A(\cdot)$ is a solution to the following equation with $A(0) = A$. 
+> $$
+> \frac{dA(t)}{dt} = \frac{1}{i \hbar} [A(t), \hat H],
+> $$
+> Then for any positive integer $m$, the map
+> $$
+> t \mapsto (A(t))^m
+> $$
+> is also a solution to the equation.
+
+즉 operator $A^m$의 time-evolution은 operator $A$의 time-evolution의 $m$th power와 같다는 것을 의미한다. $A^m(t) = (A(t))^m$.
 
 
 

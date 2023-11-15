@@ -868,7 +868,7 @@ $$
 하지만 self-adjoint operator라고 할지라도, 심지어는 bounded self-adjoint operator라고 할지라도, eigenvector로 이루어진 orthonormal basis가 항상 존재하는 것은 아니다. 그럼에도 불구하고 spectral theorem에 의하면, 어떤 self-adjoint operator $A$가 주어졌을 때, $A$의 generalized eigenspace로 $\mathbf H$를 decompose하는 것이 가능하기는 하지만, unbounded operator의 경우는 이 decomposition을 정의하는 과정부터가 대단히 복잡하다. 이와 같은 다양한 technical한 이슈가 있지만, 여전히 우리는 spectral theorem을 이용해서 오직 단 한 가지의 목표만 달성하면 된다. 
 
 * 어떤 real number $a$와 self-adjoint operator $A$에 대하여 operator의 exponential $e^{iaA}$가 잘 정의되도록 하는 것.
-  * Schrodinger 방정식의 solution을 얻기 위하여
+  * Schrodinger 방정식의 solution을 얻기 위하여.
 
 이 technical한 이슈들을 해결하는 과정은 7장(bounded operator)과 10장(unbounded operator)에서 다뤄질 예정이다.
 
@@ -1069,9 +1069,9 @@ $$
   \left(e^{it \hat H / \hbar}\right)^\ast = \left(\sum_{m=0}^\infty \frac1{m!}\left(\frac{-it}{\hbar} \right)^m {\hat H}^m \right)^\ast =\sum_{m=0}^\infty \frac1{m!}\left(\frac{it}{\hbar} \right)^m {\hat H}^m =  e^{-it \hat H / \hbar}
   $$
 
-Schrodinger picture에서는 operator 대신 state가 time-evolve하는 것으로 보는데, 여기서 $\psi(t)$는 Schrodinger picture에서의 time-evolved state이고, state $\psi(t)$에서의 operator $A$에 대한 기댓값은 $\left\langle \psi(t) ,  A \psi(t) \right\rangle$이다. 따라서 system의 time-evolution을 기술하는 방법은 다르지만, Schrodinger picture과 Heisenberg picture는 observable의 기댓값을 정확히 같은 function of time으로 나타내며, 따라서 두 representation은 물리적으로 equivalent하다. 
+Schrodinger picture에서는 operator 대신 state가 time-evolve하는 것으로 보는데, 여기서 $\psi(t)$는 Schrodinger picture에서의 time-evolved state이고, state $\psi(t)$에서의 operator $A$에 대한 기댓값은 $\left\langle \psi(t) ,  A \psi(t) \right\rangle$이다. 따라서 system의 time-evolution을 기술하는 방법은 다르지만, **Schrodinger picture과 Heisenberg picture는 observable의 기댓값을 정확히 같은 function of time으로 나타내며, 따라서 두 representation은 물리적으로 equivalent하다.** 
 
-* 이후의 논의에서는 대부분 Schrodinger picture를 기준으로 양자역학을 설명할 것이지만, quantum field theory와 같은 이론에서는 Heisenberg picture가 사용된다.
+* 이후의 논의에서는 대부분 Schrodinger picture를 기준으로 양자역학을 설명할 것이지만, quantum field theory와 같은 이론에서는 Heisenberg picture가 사용되므로 둘 다 알아두는 것이 좋다.
 
 > **[Proposition 3.21]** Suppose $\hat H = P^2/(2m) + V(X)$, where $V$ is a bounded below polynomial. Then for any $t \in \mathbb R$ we have
 > $$
@@ -1090,9 +1090,79 @@ Hamiltonian $\hat H$는 Heisenberg picture에서도 시간에 대해 불변이�
 > $$
 > is also a solution to the equation.
 
-즉 operator $A^m$의 time-evolution은 operator $A$의 time-evolution의 $m$th power와 같다는 것을 의미한다. $A^m(t) = (A(t))^m$.
+이 Lemma를 정리해보면 다음과 같다.
+
+* 어떤 operator $A$에 대하여, $A(t)$는 ${dA(t)}/{dt} =  [A(t), \hat H] / {i \hbar}$를 만족하는 solution이라는 것은, $A(t)$가 $A$의 time-evolution이라는 것이다.
+  * 이때 $A(t) = e^{it \hat H / \hbar} A e^{-it \hat H / \hbar}$가 된다는 것은 위에서 확인하였다.
+* 따라서 $A^m$의 time-evolution은 $(A^m)(t) := e^{it \hat H / \hbar} A^m e^{-it \hat H / \hbar}$이 되는데, Lemma 3.22에 의하면 이 $A^m(t)$와 $(A(t))^m$가 같다는 것을 의미한다.
+* 즉 operator $A^m$의 time-evolution은 operator $A$의 time-evolution의 $m$th power와 같다는 것을 의미한다.
+
+증명과정은 다음과 같다.
+$$
+\begin{align*}
+(A^m)(t) &= e^{it \hat H / \hbar} A^m e^{-it \hat H / \hbar} \\
+&= e^{it \hat H / \hbar} A e^{-it \hat H / \hbar} e^{it \hat H / \hbar} A e^{-it \hat H / \hbar} \cdots  e^{it \hat H / \hbar} A e^{-it \hat H / \hbar}\\
+&= (A(t))^m
+\end{align*}
+$$
+이 Lemma 3.22를 이용해 Proposition 3.21에 대한 증명을 할 수 있다.
+
+* Hamiltonian $\hat H$는 time에 대하여 불변임을 확인하였다.
+  $$
+  [\hat H, \hat H] = 0 \implies \frac{d\hat H(t)}{dt} = 0 \implies \hat H(t) = \hat H
+  $$
+
+* Lemma 3.22를 적용하면 아래와 같이 식을 전개할 수 있다.
+
+  * But why "bounded-below" polynomial?
+
+  $$
+  \begin{align*}
+  \hat H (t) &= e^{it \hat H / \hbar} \left(\frac{1}{2m}P^2 + V(X)\right)e^{-it \hat H / \hbar} \\
+  &=\frac{1}{2m} e^{it \hat H / \hbar} P^2 e^{-it \hat H / \hbar} +  e^{it \hat H / \hbar} V(X)e^{-it \hat H / \hbar}\\
+  &=\frac{1}{2m} \left( e^{it \hat H / \hbar} P e^{-it \hat H / \hbar} \right)^2 +  e^{it \hat H / \hbar} V(X)e^{-it \hat H / \hbar}\\
+  &=\frac{1}{2m} P(t) +  V(X(t)) \enspace  \enspace  (\because V \text{ : Polynomial})
+  \end{align*}
+  $$
+
+> **[Proposition 3.23]** Suppose the Hamiltonian of a quantum system is as in Proposition 3.21. Then the operators $X(t)$ and $P(t)$ defined by
+> $$
+> \frac{dA(t)}{dt} = \frac{1}{i \hbar} [A(t), \hat H]
+> $$
+>  satisfy the following operator-valued differential equation:
+> $$
+> \begin{align*}
+> \frac{dX(t)}{dt} &= \frac{1}{m} P(t) \\
+> \frac{dP(t)}{dt} &= - V^\prime(X(t)).
+> \end{align*}
+> $$
+
+이 Proposition은 Heisenberg picture에서 position/momentum operator의 time-evolution을 나타내는 operator-valued function $X(t)$와 $P(t)$가 고전역학에서의 운동 방정식과 유사한 관계식을 따른다는 것을 의미한다.
+$$
+\begin{align*}
+\frac{dx}{dt} &= \frac{p(t)}{m} \\
+\frac{dp}{dt} &= -V^\prime(x(t))
+\end{align*}
+$$
+하지만 Schrodinger picture에서 그러하였듯, 일반적인 경우에 $X(t)$와 $P(t)$의 기댓값은 고전역학의 운동방정식을 그대로 따르지는 않는다. 
+$$
+\begin{align*}
+\frac{d}{dt} \langle X(t) \rangle_\psi &= \frac{1}{m}\langle P(t) \rangle_\psi \\
+\frac{d}{dt} \langle P(t) \rangle_\psi &= -  \langle V^\prime(X(t)) \rangle_\psi \neq -   V^\prime(\langle X(t) \rangle_\psi ) 
+\end{align*}
+$$
 
 
+## 3.9 Example: A Particle in a Box
+
+1차원 "box" , 즉 구간 $0 \leq x \leq L$ 내를 움직이는 입자에 대한 양자역학을 생각해보자. 우리의 목적은 다음과 같다.
+
+* Schrodinger operator의 모든 eigenvector와 eigenvalue를 찾는 것.
+  * 즉 time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution을 찾는 것,
+
+1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
+
+따라서 만약 이 $C$가 무한히 큰 상황을 생각해보면, 즉 $C \to \infty$일 때는, time-independent Schrodinger equation의 solution이 box 밖에선 $0$의 값을 갖고, box의 양 끝 지점 $x=0$과 $x=L$에 다가갈 수록 0으로 수렴하게 될 것이다.
 
 
 

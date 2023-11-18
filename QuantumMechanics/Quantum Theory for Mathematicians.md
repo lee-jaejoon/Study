@@ -1168,11 +1168,142 @@ $$
 
 
 
+## 3.10 Quantum Mechanics for a Particle in $\mathbb R^n$
+
+지금까지의 논의에서는, 1차원 real line $\mathbb R^1$ 위의 quantum particle에 대하여 다루었는데, $\mathbb R^n$의 경우로의 generalization은 크게 다른 부분 없이 자연스럽게 확인할 수 있다. $\mathbb R^1$ 위의 입자에 대한 Hilbert space는 $L^2(\mathbb R^1)$이었던 것처럼, $\mathbb R^n$ 내의 입자에 대한 Hilbert space는 $L^2(\mathbb R^n)$이 되며, position에 대하여 단일 operator가 있는 것이 아니라, 이제는 $n$개의 차원 축에 대응되는 $n$개의 position operator가 다음과 같이 정의된다.
+$$
+X_j \psi(\mathbf x) = x_j \psi(\mathbf x), \enspace j=1, \cdots, n
+$$
+또한 momentum operator도 $n$개의 차원에 대하여 다음과 같다.
+$$
+P_j \psi(\mathbf x) = -i \hbar \frac{\partial \psi}{\partial x_j}
+$$
+
+$\mathbb R^1$에서의 경우처럼, $X_j$와 $P_j$는 서로 commutable하지 않고, $[X_j, P_j]=i \hbar I$를 만족한다. 그러나 서로 다른 차원 축 방향의 operator간에는 commutable한데, 아래와 같은 관계식을 canonical commutation relations라고 부른다.
+
+> **[Proposition 3.25] (Canonical Commutation Relations)** The position and momentum operators satisfy
+> $$
+> \begin{align*}
+> \frac{1}{i \hbar} [ X_j, X_k] &= 0 \\
+> \frac{1}{i \hbar} [ P_j, P_k] &= 0 \\ 
+> \frac{1}{i \hbar} [ X_j, P_k] &= \delta_{jk} I
+> \end{align*}
+> $$
+> for all $1 \leq j, k \leq n$.
+
+이 관계식은 고전역학에서 position, momentum function에 대해 성립하는 Poisson bracket 관계식의 양자역학 버전이다.
+
+$\mathbb R^n$ 내의 입자에 대한 Hamiltonian operator는 다음과 같이 정의할 수 있다.
+$$
+\hat H = \sum_{j=1}^{n}\frac{P_j^2}{2m} + V(\mathbf X)
+$$
+이때 $V(\mathbf X)$는 commutable한 operator의 family $\mathbf X = (X_1, ... , X_n)$에 대한 함수 $V$의 (operator-valued) 함숫값이며, '함수 $V(\mathbf x)$를 곱하는' 연산에 대응되는 operator로 이해할 수 있다. 따라서 위 식은 다음과 같이 보다 구체적으로 적을 수 있다. 이와 같이 정의된 operator $\hat H$를 Schrodinger operator라고 한다.
+$$
+\hat H \psi(\mathbf x) = \sum_{j=1}^{n}\left(\frac{- \hbar^2 }{2m}\right) \frac{\partial^2\psi}{\partial x_j^2} + V(\mathbf x)\psi(\mathbf x)\\
+= \frac{- \hbar^2 }{2m} \Delta \psi(\mathbf x) + V(\mathbf x)\psi(\mathbf x)
+$$
+$\Delta$는 Laplacian operator이며, 다음과 같이 정의된다.
+$$
+\Delta = \sum_{j=1}^{n} \frac{\partial^2}{\partial x_j^2}
+$$
+또한 고전 역학에서의 angular momentum function에 대응되는. angular momentum operator를 다음과 같이 정의할 수 있다.
+
+> **[Definition 3.26]** For each pair $(j, k)$ with $1 \leq j, k \leq n$, define the angular momentum operator $\hat J_{jk}$ by the formula
+> $$
+> \hat J_{jk} = X_j P_k - X_k P_j.
+> $$
+
+고전 역학에서의 angular momentum과 마찬가지로, $j=k$일 때는 $\hat J_{jk} = 0$이 된다. 또한 $j \neq k$일 때는 $X_j$와 $P_k$가 commute하므로, $\hat J_{jk}$를 정의한 식의 operator 순서가 중요치 않게 되고, 아래와 같이 적을 수 있다.
+$$
+\hat J_{jk} = -i \hbar \left( x_j \frac{\partial }{\partial x_k} - x_k \frac{\partial }{\partial x_j}\right)
+$$
+이때 괄호 안의 operator를 $(x_j, x_k)$ plane의 angular derivative $(\partial / \partial \theta)$라고 한다.
+
+$n=3$, 즉 $\mathbb R^3$에서는 아래와 같이 classical angular momentum vector와 유사한 형태의 operator를 자주 사용한다.
+$$
+\hat J_1 := X_2 P_3 - X_3 P_2; \enspace \hat J_2 := X_3 P_1 - X_1 P_3; \enspace \hat J_3 := X_1 P_2 - X_2 P_1
+$$
+
+
+## 3.11. Systems of Multiple Particles
+
+$\mathbb R^n$ 내의 quantum particle $N$개로 이루어진 system을 생각해보자. 만약 각 입자들이 모두 다른 종류라면, 예를 들면 전자 하나와 중성자 하나가 있는 경우, 이 system에 대한 Hilbert space는 $L^2 (\mathbb R^{nN})$이 된다. 즉 이 system의 wave function $\psi$는 $\mathbf x^1$, ... , $\mathbf x^N$을 input으로 갖는 함수가 되고, 각 $\mathbf x^j$는 $\mathbb R^n$에 속하는 것이다. 이 wave function $\psi$가 $L^2 (\mathbb R^{nN})$의 unit vector가 되도록 normalize를 하면, $\vert \psi(\mathbf x^1, ... , \mathbf x^N) \vert^2$는 $N$개의 서로 다른 종류의 입자의 위치들에 대한 joint probability distribution을 의미한다.
+
+$j$번째 입자의 $k$번째 축에 대한 position과 momentum operator를 각각 $X_k^j$, $P_k^j$라고 한다면, 그 system의 Hamiltonian operator는 다음과 같다.
+$$
+\hat H \psi(\mathbf x^1, ... , \mathbf x^N)  = - \sum_{j=1}^n \frac{\hbar^2}{2 m_j} \Delta_j \psi(\mathbf x^1, ... , \mathbf x^N) + V(\mathbf x^1, ... , \mathbf x^N) \psi(\mathbf x^1, ... , \mathbf x^N) 
+$$
+$m_j$는 $j$번째 입자에 대한 질량을, $\Delta_j$는 다른 변수들은 고정일 때 변수 $\mathbf x^j \in \mathbb R^n$에 대한 Laplacian을 의미한다.
+
+이후 19장에서 살펴볼 내용이지만, 이와 같이 여러 subsystem으로 이루어진 composite system의 Hilbert space는, 각 subsystem의 Hilbert space의 (Hilbert) tensor product로 정의된다. 위 경우에서는 각 개별 입자의 Hilbert space가 전체 system의 subsystem인 것으로 볼 수 있다. 이론적으로도 $L^2 (\mathbb R^{nN})$과 $\mathbb R^n$ $N$개의 tensor product 사이에 isomorphism이 자연스럽게 존재한다. (Proposition 19.12)
+
+만약 입자들이 모두 다른 종류가 아니라, 모두 같은 종류의 입자라면, 전체 composite system의 Hilbert space를 기술하는 데 추가적인 작업이 필요하다. 일반적인 양자역학 이론에서는 "동일한 종류의 입자는 서로 구별할 수 없다"고 말하는데, 이는 수학적으로는 wave function이 다음과 같은 성질을 만족해야 한다는 것을 의미한다.
+
+* wave function에서 두 입자, 예를 들어 $\mathbf x^1$과 $\mathbf x^2$를 서로 위치를 바꾸더라도, 바꾸기 전과 후의 wave function은 동일한 physical state를 나타내야 한다.
+
+* Quantum Hilbert space 내의 두 unit vector가 동일한 physical state를 대표한다는 것은, 두 unit vector가 absolute value 1의 상수배(complex)만큼만 차이가 난다는 것과 동치이므로, $\vert u \vert = 1$을 만족하는 어떤 constant $u$에 대하여 다음이 만족한다.
+  $$
+  \psi(\mathbf x^2,\mathbf x^1,\mathbf x^3,... ,\mathbf x^N) = u \psi(\mathbf x^1,\mathbf x^2,\mathbf x^3,... ,\mathbf x^N) 
+  $$
+
+그런데 이를 두 번 적용하면 $\psi = u^2 \psi$가 되므로, 결국 $u$는 $-1$ 또는 $1$의 값을 갖는다. 따라서 같은 종류의 입자로 이루어진 composite system 전체에 대한 wave function $\psi$는, 임의의 두 coordinate의 위치를 바꾸었을 때 $-1$ 또는 $1$배가 되는 성질을 만족해야 한다.
+
+이 $u$의 값이 $-1$인지 혹은 $1$인지 여부에 따라, 양자역학에서 입자는 크게 두 종류로 나뉜다. $u=1$인 입자를 boson, $u=-1$인 입자를 fermion이라고 부른다. 입자가 boson인지 fermion인지 여부는 입자의 spin에 따라 결정이 된다. 이 spin은 아직 우리가 다루지 않은 개념이지만, spin이 없는 입자를 boson이라고 부른다는 사실을 기억하자. $\mathbb R^3$ 위의 어떤 spin이 없는 한 종류의 입자 $N$개에 대하여, 적절한 Hilbert space는 $L^2(\mathbb R^{3N})$의 symmetric subspace, 즉 $L^2(\mathbb R^{3N})$ 내 함수들 중, input 변수들의 임의의 permutation에 invariant한 함수들로 이루어진 공간이다. 입자의 spin과 동일한 종류의 입자들로 이루어진 system에 대한 내용은 17장과 19장에서 보다 자세히 다룬다.
 
 
 
+## 3.12. Physics Notation
 
+양자역학을 다룰 때, 거의 모든 물리학자들은 1939년 Dirac에 의해 제안된 *Dirac notation*, 혹은 *bra-ket notation*을 사용한다. 이는 아래 Notation 3.27-3.29와 같으며, 이 절에서는 Dirac notation에 대한 소개와, 수학과 물리학 분야 간 몇가지 notation 상 차이가 있는 부분에 대하여 다룬다.
 
+또한 물리학의 notation 관습 상, inner product의 complex conjugate 부분은 inner product의 첫 번째 factor에 적용된다는 사실을 기억하자.
+
+> **[Notation 3.27]** A vector $\psi$ in $\mathbf H$ is referred to as a **ket** and is denoted $\ket{\psi}$. A continuous linear functional on $\mathbf H$ is called a **bra**. For any $\phi \in \mathbf H$, let $\bra{\phi}$ denote the bra given by
+> $$
+> \bra{\phi}(\psi) = \langle \phi, \psi \rangle.
+> $$
+> That is to say, $\bra{\phi}$ is the “inner product with $\phi$” functional. The bracket (or bra-ket) of two vectors $\phi, \psi \in \mathbf H$ is the result of applying the bra $\bra{\phi}$ to the ket $\ket{\psi}$, namely the inner product of the $\phi$ and $\psi$, denoted $\braket{\phi \vert\psi}$.
+
+어떤 operator $A$ on $\mathbf H$와 $\phi \in \mathbf H$에 대하여, linear functional $\bra{\phi}A$를 만들 수 있다.
+$$
+\bra{\phi}A : \psi \mapsto \bra{\phi}A \psi \rangle
+$$
+물리학자들은 이를 주로 $\bra{\phi} A \ket{\psi}$로 나타내는데, 이렇게 나타냄으로써 이 값에 대하여 두 가지 방법으로 생각할 수 있다.
+
+* Linear functional $\bra{\phi} A$를 vector $ \ket{\psi}$에 적용한 것
+* Linear functional $\bra{\phi} $를 vector $ A\ket{\psi}$에 적용한 것
+
+> **[Notation 3.28]** For any $\phi$ and $\psi$ in $\mathbf H$, the expression $\ket{\phi} \bra{\psi}$ denotes the linear operator on $\mathbf H$ given by
+> $$
+> (\ket{\phi}\bra{\psi})(\chi) = \ket{\phi}\braket{\psi \vert \chi} = \braket{\psi \vert \chi}\ket{\phi}
+> $$
+> That is, in mathematics notation, $\ket{\phi} \bra{\psi}$ is the operator sending $\chi$ to $\langle \psi, \chi \rangle \phi$.
+
+> **[Notation 3.29]** Given a family of vectors in $\mathbf H$ labeled by, say, three indices $n$, $l$, and $m$, rather than denoting these vectors as $\ket{\psi_{n,l,m}}$, a physicist will denote them simply as $\ket{n,l,m}$.
+
+이와 같은 표현법은 단점이 있는데, 같은 index로 labeled된 서로 다른 두 set of vectors, $\phi_{n,l,m}$, $\psi_{n,l,m}$이 있을 때, 물리학자들의 간소화된 위 notation 하에서는 둘 다 $\ket{n,l,m}$으로 나타내어진다는 점이다.
+
+Dirac notation의 한 예시는 다음과 같다. 어떤 operator $\hat H$가 eigenvector $\psi_n$으로 이루어진 어떤 orthonormal basis를 갖는다면, 물리학자는 일반적인 vector의 이 basis 하의 decomposition을 다음과 같이 나타낼 것이다.
+$$
+I= \sum_n \ket{n}\bra{n}
+$$
+이때 $\psi_n$은 간단하게 $\ket{n}$으로 표현되었고, $\ket{n}\bra{n}$은 vector $\ket{n}$이 span하는 1차원 subspace 상으로 orthogonal projection을 수행하는 functional을 의미한다.
+$$
+\text{Proj}_{\text{span}(\psi_n)}\chi = \frac{\langle \psi_n, \chi\rangle}{\langle \psi_n, \psi \rangle}\psi =  \langle \psi_n, \chi\rangle \psi_n = \braket{\psi_n \vert \chi} \ket{\psi_n} = (\ket{\psi_n}\bra{\psi_n})(\chi)= (\ket{n}\bra{n})(\chi)
+$$
+
+> **[Notation 3.30]** In the physics literature, the complex conjugate of a complex number $z$ is denoted as $z^\ast$, rather than $\bar z$, as in the mathematics literature. What a mathematician calls the adjoint of an operator and denotes by $A^\ast$, a physicist calls the Hermitian conjugate of $A$ and denotes by $A^\dagger$. Physicists refer to self-adjoint operators as Hermitian.
+
+어떤 operator의 adjoint, 혹은 Hermitian conjugate,의 개념을 Dirac notation을 이용해서 표현하면 다음과 같다. 어떤 bounded operator $A$ on $\mathbf H$에 대하여, $A^\dagger$는 다음을 만족하는 unique bounded operator이다.
+$$
+\bra{\psi} A = \left\langle A^\dagger \psi\right\vert
+$$
+양자역학에 대한 물리학 문헌에서 알 수 있는 한 가지 특이한 점은, 대부분의 문헌에서 Hilbert space가 무엇인지 명확하게 state하지 못한다는 것이다. 그들이 다루는 문제의 상황에서 Hilbert space가 어떤 것인지 정의하고 시작하는 것이 아니라, 물리학자들은 그들이 다루는 공간 내 여러 operator들 사이에 성립하는 commutation 관계식을 state하고 시작하곤 한다. 예를 들면 operator가 작용하는 함수들의 공간에 대한 specification 없이, position과 momentum operator에 대하여 $[X, P] = i \hbar I$가 성립하는 것을 제시하고 시작하는 식이다. 주로 이러한 '생략'에 대한 justification은 Stone von Neumann theorem으로 보인다. 
+
+* 특정 가정이 만족할 때, canonical commutation relation을 만족하는 operator와 Hilbert space가 unique하게 정의된다는 정리. 
+* 아직은 다루기 어려운 주제이며, 해당 Theorem의 statement와 증명 등 자세한 내용은 14장에서 다룬다.
+
+그럼에도 불구하고, operator가 작용하는 function space에 대한 specification에 대한 언급 없이, 논문 전체에 걸쳐 이 operator를 사용한 계산을 서술하는 것은 수학자의 입장에서 보았을 때 불편한 부분이 아닐 수 없다.
 
 
 

@@ -772,9 +772,9 @@ $$
 &=\left\langle \frac{1}{i\hbar}[A,B]\psi , \psi \right\rangle
 \end{align*}
 $$
-또한 $A$, $B$가 unbounded self-adjoint operator일 때도, operator $A$와 $B$의 domain에 대한 적절한 가정이 있다면 $(1/i\hbar)[A,B]$는 self-adjoint 성질을 만족한다.
+​	또한 $A$, $B$가 unbounded self-adjoint operator일 때도, operator $A$와 $B$의 domain에 대한 적절한 가정이 있다면 $(1/i\hbar)[A,B]$는 self-adjoint 성질을 만족한다.
 
-> **[Proposition 3.16]** If $\phi(t)$ and $\psi(t)$ are solutions to the Schrodinger equation (3.28), the quantity $\langle \phi(t), \psi(t) \rangle$ is independent of $t$. In particular, $\Vert \psi(t) \Vert $ is independent of $t$, for any solution $\psi(t)$ of the Schrodinger equation.
+> **[Proposition 3.16]** If $\phi(t)$ and $\psi(t)$ are solutions to the Schrödinger equation (3.28), the quantity $\langle \phi(t), \psi(t) \rangle$ is independent of $t$. In particular, $\Vert \psi(t) \Vert $ is independent of $t$, for any solution $\psi(t)$ of the Schrödinger equation.
 
 $$
 \begin{align*}
@@ -786,19 +786,19 @@ $$
 \end{align*}
 $$
 
-즉 Schrodinger 방정식의 임의의 해  $\phi(t)$ and $\psi(t)$에 대하여, $\langle \phi(t), \psi(t) \rangle$는 시간 $t$에 대해 상수, 즉 불변이다. 또한 solution의 norm $\Vert \psi(t) \Vert $역시 시간 $t$에 대하여 상수이다.
+즉 Schrödinger 방정식의 임의의 해  $\phi(t)$ and $\psi(t)$에 대하여, $\langle \phi(t), \psi(t) \rangle$는 시간 $t$에 대해 상수, 즉 불변이다. 또한 solution의 norm $\Vert \psi(t) \Vert $역시 시간 $t$에 대하여 상수이다.
 
 
 
-### 3.7.2. Solving the Schrodinger Equation by Exponentiation
+### 3.7.2. Solving the Schrödinger Equation by Exponentiation
 
 * **모든 내용을 이미 알고 있는 독자를 대상으로 하듯, 전체 흐름을 쭉쭉 훑으며 결과를 나열해 놓아, 번역을 하면서도 내용이 이해가 안 가는 부분이 많은데... 꼭 다시 돌아오자.**
 
-Schrodinger 방정식은 다음과 같은 형태의 방정식의 한 예이다.
+Schrödinger 방정식은 다음과 같은 형태의 방정식의 한 예이다.
 $$
 \frac{dv}{dt} = Av
 $$
-$A$는 Hilbert space 상의 linear operator이며, Schrodinger 방정식의 경우는 $A= (-i/\hbar )\hat H$이다. 만약 Hilbert space가 finite-dimensional $\mathbb C^n$이라고 한다면, linear operator $A$는 $n \times n$ 행렬이 될 것이고 위 방정식은 일반적인 상미분방정식 문제가 된다. 이 finite-dimensional case의 solution은 아래와 같다.
+$A$는 Hilbert space 상의 linear operator이며, Schrödinger 방정식의 경우는 $A= (-i/\hbar )\hat H$이다. 만약 Hilbert space가 finite-dimensional $\mathbb C^n$이라고 한다면, linear operator $A$는 $n \times n$ 행렬이 될 것이고 위 방정식은 일반적인 상미분방정식 문제가 된다. 이 finite-dimensional case의 solution은 아래와 같다.
 $$
 v(t) = e^{it A} v_0
 $$
@@ -844,16 +844,16 @@ $$
   \end{align*}
   $$
 
-위 finite-dimensional case의 예시에서 $\mathbb C^n$을 Hilbert space $\mathbf H$로 바꾸고, linear map $A$를 linear operator $-(i/\hbar) \hat H$로 바꾸면 Schrodinger 방정식을 얻을 수 있다.
+위 finite-dimensional case의 예시에서 $\mathbb C^n$을 Hilbert space $\mathbf H$로 바꾸고, linear map $A$를 linear operator $-(i/\hbar) \hat H$로 바꾸면 Schrödinger 방정식을 얻을 수 있다.
 
-> **[Claim 3.17]** Suppose $\hat H$ is a self-adjoint operator on $\mathbf H$. If a reasonable meaning can be given to the expression $e^{-it \hat H/\hbar}$, then the Schrodinger equation can be solved by setting
+> **[Claim 3.17]** Suppose $\hat H$ is a self-adjoint operator on $\mathbf H$. If a reasonable meaning can be given to the expression $e^{-it \hat H/\hbar}$, then the Schrödinger equation can be solved by setting
 > $$
 > \psi(t) = e^{-it\hat H/\hbar} \psi_0
 > $$
 
 이 식에서 $ e^{-it\hat H/\hbar}$를 evolution operator, time-evolution operator라고도 부른다.
 
-만약 finite-dimensional case에서 matrix exponential $e^{tA}$를 $t$에 대해 미분하는 것처럼, operator-valued expression인 $e^{-it \hat H/\hbar}$를 $t$에 대해 미분할 수 있다면, 위 식의 $\psi(t)$는 아래와 같이 Schrodinger 방정식의 solution이 될 것이다.
+만약 finite-dimensional case에서 matrix exponential $e^{tA}$를 $t$에 대해 미분하는 것처럼, operator-valued expression인 $e^{-it \hat H/\hbar}$를 $t$에 대해 미분할 수 있다면, 위 식의 $\psi(t)$는 아래와 같이 Schrödinger 방정식의 solution이 될 것이다.
 $$
 \frac{d}{dt} \psi(t) = \frac{d}{dt} e^{-it\hat H/\hbar} \psi_0 =  -\frac{i\hat H}{\hbar} e^{-it\hat H/\hbar} \psi_0=  -\frac{i\hat H}{\hbar}\psi(t)
 $$
@@ -868,36 +868,36 @@ $$
 하지만 self-adjoint operator라고 할지라도, 심지어는 bounded self-adjoint operator라고 할지라도, eigenvector로 이루어진 orthonormal basis가 항상 존재하는 것은 아니다. 그럼에도 불구하고 spectral theorem에 의하면, 어떤 self-adjoint operator $A$가 주어졌을 때, $A$의 generalized eigenspace로 $\mathbf H$를 decompose하는 것이 가능하기는 하지만, unbounded operator의 경우는 이 decomposition을 정의하는 과정부터가 대단히 복잡하다. 이와 같은 다양한 technical한 이슈가 있지만, 여전히 우리는 spectral theorem을 이용해서 오직 단 한 가지의 목표만 달성하면 된다. 
 
 * 어떤 real number $a$와 self-adjoint operator $A$에 대하여 operator의 exponential $e^{iaA}$가 잘 정의되도록 하는 것.
-  * Schrodinger 방정식의 solution을 얻기 위하여.
+  * Schrödinger 방정식의 solution을 얻기 위하여.
 
 이 technical한 이슈들을 해결하는 과정은 7장(bounded operator)과 10장(unbounded operator)에서 다뤄질 예정이다.
 
 마지막으로 Claim 3.17의 식에서 짚고 넘어가야할 부분이 두 가지 있다.
 
-첫째는 $\psi(t) = e^{-it\hat H/\hbar} \psi_0$를 얻었다고 해서, Schrodinger 방정식을 실제로 완전히 푼 것은 아니라는 점이다. 이 식이 의미가 있으려면 우리는 저 operator exponential 부분을 explicit하게 계산할 수 있어야 한다. 예를 들어,  $\hat H$의 eigenvector로 이루어진 orthonormal basis of $\mathbf H$를 실제로 계산할 수 있다면, 아래 식을 이용해서 실제로 exponential operator가 어떤 behavior를 보이는지 알 수 있을 것이다.
+첫째는 $\psi(t) = e^{-it\hat H/\hbar} \psi_0$를 얻었다고 해서, Schrödinger 방정식을 실제로 완전히 푼 것은 아니라는 점이다. 이 식이 의미가 있으려면 우리는 저 operator exponential 부분을 explicit하게 계산할 수 있어야 한다. 예를 들어,  $\hat H$의 eigenvector로 이루어진 orthonormal basis of $\mathbf H$를 실제로 계산할 수 있다면, 아래 식을 이용해서 실제로 exponential operator가 어떤 behavior를 보이는지 알 수 있을 것이다.
 $$
 e^{-it\hat H / \hbar} e_j = e^{-itE_j / \hbar} e_j
 $$
-둘째는 $\hat H$는 unbounded operator이므로 $\mathbf H$ 전체가 아닌 $\mathbf H$의 어떤 dense subspace에서만 정의되었지만, unitary operator $e^{-it\hat H/\hbar}$는 $\mathbf H$ 전체에서 정의된다는 점이다. 따라서 Claim 3.17의 식은 임의의 $\psi_0 \in \mathbf H$에 대하여 사용할 수 있다. 하지만 $\psi_0$가 $\hat H$의 domain의 원소가 아니면, $ e^{-it\hat H/\hbar} \psi_0$가 "in the natural Hilbert space sense"에서 Schrodinger 방정식의 진정한 solution이라고 말할 수는 없다.
+둘째는 $\hat H$는 unbounded operator이므로 $\mathbf H$ 전체가 아닌 $\mathbf H$의 어떤 dense subspace에서만 정의되었지만, unitary operator $e^{-it\hat H/\hbar}$는 $\mathbf H$ 전체에서 정의된다는 점이다. 따라서 Claim 3.17의 식은 임의의 $\psi_0 \in \mathbf H$에 대하여 사용할 수 있다. 하지만 $\psi_0$가 $\hat H$의 domain의 원소가 아니면, $ e^{-it\hat H/\hbar} \psi_0$가 "in the natural Hilbert space sense"에서 Schrödinger 방정식의 진정한 solution이라고 말할 수는 없다.
 
-* $\psi_0$이 $\hat H$의 domain에 속하지 않더라도, 수학적으로는 $e^{-it\hat H/\hbar} \psi_0$가 정의가 되고 Schrodinger 방정식도 만족을 할 수 있다. 
+* $\psi_0$이 $\hat H$의 domain에 속하지 않더라도, 수학적으로는 $e^{-it\hat H/\hbar} \psi_0$가 정의가 되고 Schrödinger 방정식도 만족을 할 수 있다. 
 * 하지만 이는, $\psi_0$이 $\hat H$의 domain에 속하지 않을 시, 해당 quantum system을 나타내고자 선택한 natural Hilbert space 내에서 물리적으로 어떤 의미도 갖지 않는 solution일 수도 있다는 의미이다.
 
-### 3.7.3. Eigenvectors and the Time-Independent Schrodinger Equation
+### 3.7.3. Eigenvectors and the Time-Independent Schrödinger Equation
 
-3.7.2절에서 소개하였듯, time-evolution operator $ e^{-it\hat H/\hbar}$를 explicit하게 계산할 때 $\hat H$의 eigenvector로 이루어진 $\mathbf H$의 orthonormal basis를 사용한다. 따라서 Schrodinger 방정식의 solution을 구할 때 Hamiltonian operator $\hat H$의 eigenvector는 매우 중요한 역할을 한다.
+3.7.2절에서 소개하였듯, time-evolution operator $ e^{-it\hat H/\hbar}$를 explicit하게 계산할 때 $\hat H$의 eigenvector로 이루어진 $\mathbf H$의 orthonormal basis를 사용한다. 따라서 Schrödinger 방정식의 solution을 구할 때 Hamiltonian operator $\hat H$의 eigenvector는 매우 중요한 역할을 한다.
 
 > **[Definition 3.18]** If $\hat H$ is the Hamiltonian operator for a quantum system, the eigenvector equation
 > $$
 > \hat H \psi = E \psi, \enspace \enspace E \in \mathbb R
 > $$
-> is called the **time-independent Schrodinger equation**.
+> is called the **time-independent Schrödinger equation**.
 
-위 방정식에서 우리는 nonzero solution이 존재하는 real number $E$와 그에 대한 eigenvector $\psi$를 구해야 한다. 양자역학에서 "quantum harmonic oscillator를 푼다"고 하는 것은, 보통 이 time-independent Schrodinger equation에 대한 모든 solution을 구하는 것을 의미한다. 만약 $\psi$가 time-independent Schrodinger equation의 solution이라면, initial condition이 $\psi$인 time-*dependent* Schrodinger equation의 solution은 앞서 소개한 evolution operator를 곱한 $\psi(t) = e^{itE/\hbar} \psi$가 된다. 또한 $\psi(t)$는 $\psi$에 constant를 곱한 것이므로 $\psi$와 동일한 physical state를 나타낸다. 따라서 time-independent Schrodinger equation의 solution을 종종 *stationary state*라고 부르기도 한다.
+위 방정식에서 우리는 nonzero solution이 존재하는 real number $E$와 그에 대한 eigenvector $\psi$를 구해야 한다. 양자역학에서 "quantum harmonic oscillator를 푼다"고 하는 것은, 보통 이 time-independent Schrödinger equation에 대한 모든 solution을 구하는 것을 의미한다. 만약 $\psi$가 time-independent Schrödinger equation의 solution이라면, initial condition이 $\psi$인 time-*dependent* Schrödinger equation의 solution은 앞서 소개한 evolution operator를 곱한 $\psi(t) = e^{itE/\hbar} \psi$가 된다. 또한 $\psi(t)$는 $\psi$에 constant를 곱한 것이므로 $\psi$와 동일한 physical state를 나타낸다. 따라서 time-independent Schrödinger equation의 solution을 종종 *stationary state*라고 부르기도 한다.
 
-### 3.7.4. The Schrodinger Equation in $\mathbb R^1$
+### 3.7.4. The Schrödinger Equation in $\mathbb R^1$
 
-가장 간단한 상황인 1차원 real line 위를 움직이는 입자에 대한 Schrodinger 방정식을 생각해보자. 앞서 3.5절에서, $\mathbb R^1$ 위를 움직이는 입자에 대하여 position operator와 momentum operator를 정의하였다. 
+가장 간단한 상황인 1차원 real line 위를 움직이는 입자에 대한 Schrödinger 방정식을 생각해보자. 앞서 3.5절에서, $\mathbb R^1$ 위를 움직이는 입자에 대하여 position operator와 momentum operator를 정의하였다. 
 $$
 X \psi(x) = x \psi (x) , \enspace P \psi(x) = -i \hbar \frac{d\psi}{dx}
 $$
@@ -913,9 +913,9 @@ $$
 $$
 \hat H \psi(x) = -\frac{\hbar^2}{2m} \frac{d^2 \psi}{dx^2} + V(x)\psi(x)
 $$
-이와 같이 정의된 operator $\hat H$를, 혹은 동일한 operator의 다차원 버전을, *Schrodinger operator*라고 부른다. *Hamiltonian operator*는 보통, 위 식 형태 뿐만 아니라, quantum system의 time-evolution에 대한 operator를 일반적으로 부르는 용어로 쓰인다.
+이와 같이 정의된 operator $\hat H$를, 혹은 동일한 operator의 다차원 버전을, *Schrödinger operator*라고 부른다. *Hamiltonian operator*는 보통, 위 식 형태 뿐만 아니라, quantum system의 time-evolution에 대한 operator를 일반적으로 부르는 용어로 쓰인다.
 
-Hamiltonian이 위 식과 같다면, time-dependent Schrodinger equation은 다음과 같다.
+Hamiltonian이 위 식과 같다면, time-dependent Schrödinger equation은 다음과 같다.
 $$
 \frac{\partial \psi(x,t)}{\partial t} = \frac{i\hbar}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} -  \frac{i}{\hbar}V(x)\psi(x,t)
 $$
@@ -926,17 +926,17 @@ $\mathbb R^1$ 내의 입자에 대한 Newton 방정식이 아래와 같이 nonli
 $$
 m \frac{d^2 x(t)}{dt} = -V^\prime(x(t)) = - \frac{\partial V(x)}{\partial x} \Bigg\vert_{x = x(t)}
 $$
-어떤 $\mathbb R^1$ 내의 입자에 대하여, time-independent Schrodinger equation은 ordinary differential equation이며, 이는 linear하지만, 일반적으로는 $V$가 constant라는 가정이 없다면, nonconstant coefficient를 갖는다. 
+어떤 $\mathbb R^1$ 내의 입자에 대하여, time-independent Schrödinger equation은 ordinary differential equation이며, 이는 linear하지만, 일반적으로는 $V$가 constant라는 가정이 없다면, nonconstant coefficient를 갖는다. 
 $$
 -\frac{\hbar^2}{2m} \frac{d^2 \psi}{dx^2} + V(x)\psi(x) = E\psi(x)
 $$
-Potential function $V$에 대한 간단한 case에 대해서는, ordinary differential equation을 푸는 일반적인 방법으로 time-independent Schrodinger equation을 푸는 것이 가능하다.
+Potential function $V$에 대한 간단한 case에 대해서는, ordinary differential equation을 푸는 일반적인 방법으로 time-independent Schrödinger equation을 푸는 것이 가능하다.
 
  ### 3.7.5. Time-Evolution of the Expected Position and Expected Momentum
 
 양자역학에서 입자는 고정된 위치나 운동량을 갖지 않으므로, 이 quantum particle이 Newton 방정식을 따르는지 여부를 가리는 것은 무의미하다. 그러나 입자의 위치나 운동의 *기댓값*이 Newton 방정식을 따르는지 여부는 확인해볼 수 있다.
 
-> **[Proposition 3.19]** Suppose $\psi(t)$ is a solution to the time-dependent Schrodinger equation for a sufficiently nice potential $V$ and for a sufficiently nice initial condition $\psi(0) = \psi_0$. 
+> **[Proposition 3.19]** Suppose $\psi(t)$ is a solution to the time-dependent Schrödinger equation for a sufficiently nice potential $V$ and for a sufficiently nice initial condition $\psi(0) = \psi_0$. 
 > $$
 > \frac{\partial \psi(x,t)}{\partial t} = \frac{i\hbar}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} -  \frac{i}{\hbar}V(x)\psi(x,t)
 > $$
@@ -1025,7 +1025,7 @@ $$
 
 ## 3.8. The Heisenberg Picture
 
-양자역학의 Heisenberg picture, 혹은 Heisenberg representation은 operator(quantum observable)은 time-evolve하지만 Hilbert space의 vector(quantum state)는 시간에 영향을 받지 않는 것으로 가정한 formulation이며, Heisenberg의 matrix model에 근간을 두고 있다. 이는 observable이 시간에 독립이고 state가 time-evolve하는 지금까지 소개한 접근법, 즉 Schrodinger picture와는 상반된다.
+양자역학의 Heisenberg picture, 혹은 Heisenberg representation은 operator(quantum observable)은 time-evolve하지만 Hilbert space의 vector(quantum state)는 시간에 영향을 받지 않는 것으로 가정한 formulation이며, Heisenberg의 matrix model에 근간을 두고 있다. 이는 observable이 시간에 독립이고 state가 time-evolve하는 지금까지 소개한 접근법, 즉 Schrödinger picture와는 상반된다.
 
 > **[Definition 3.20]** In the Heisenberg picture, each self-adjoint operator $A$ evolves in time according to the operator-valued differential equation
 > $$
@@ -1035,7 +1035,7 @@ $$
 
 즉, Heisenberg picture에서는, quantum observable의 time-evolution은 위 미분방정식을 따른다. 또한 $\hat H$는 자기 자신과 commutable이므로, operator가 time-evolve한다고 보는 Heisenberg picture에서도 $\hat H$는 시간에 대해 constant이다. 고전역학에서 Hamiltonian $H$가 Hamilton 방정식의 어떤 solution에 대해서도 항상 constant인 것에 대응되는 것으로 볼 수 있다.
 
-주어진 self-adjoint operator $\hat H$에 대하여, spectral theorem을 이용하면 unitary operator의 family $e^{-it\hat H/\hbar}$, $t \in \mathbb R$, 를 construct할 수 있고, 이 family of operators는 Schrodinger picture에서의 state의 time-evolution을 계산하는 데 사용된다. (앞선 3.7.2절 참고) Hamiltonian $\hat H$는 time에 대해 constant이므로, Definition 3.20의 식에 대한 solution이 아래와 같은 형태를 갖는 것은 간단하게 확인할 수 있다.
+주어진 self-adjoint operator $\hat H$에 대하여, spectral theorem을 이용하면 unitary operator의 family $e^{-it\hat H/\hbar}$, $t \in \mathbb R$, 를 construct할 수 있고, 이 family of operators는 Schrödinger picture에서의 state의 time-evolution을 계산하는 데 사용된다. (앞선 3.7.2절 참고) Hamiltonian $\hat H$는 time에 대해 constant이므로, Definition 3.20의 식에 대한 solution이 아래와 같은 형태를 갖는 것은 간단하게 확인할 수 있다.
 $$
 A(t) = e^{it \hat H / \hbar} A e^{-it \hat H / \hbar}
 $$
@@ -1069,9 +1069,9 @@ $$
   \left(e^{it \hat H / \hbar}\right)^\ast = \left(\sum_{m=0}^\infty \frac1{m!}\left(\frac{-it}{\hbar} \right)^m {\hat H}^m \right)^\ast =\sum_{m=0}^\infty \frac1{m!}\left(\frac{it}{\hbar} \right)^m {\hat H}^m =  e^{-it \hat H / \hbar}
   $$
 
-Schrodinger picture에서는 operator 대신 state가 time-evolve하는 것으로 보는데, 여기서 $\psi(t)$는 Schrodinger picture에서의 time-evolved state이고, state $\psi(t)$에서의 operator $A$에 대한 기댓값은 $\left\langle \psi(t) ,  A \psi(t) \right\rangle$이다. 따라서 system의 time-evolution을 기술하는 방법은 다르지만, **Schrodinger picture과 Heisenberg picture는 observable의 기댓값을 정확히 같은 function of time으로 나타내며, 따라서 두 representation은 물리적으로 equivalent하다.** 
+Schrödinger picture에서는 operator 대신 state가 time-evolve하는 것으로 보는데, 여기서 $\psi(t)$는 Schrödinger picture에서의 time-evolved state이고, state $\psi(t)$에서의 operator $A$에 대한 기댓값은 $\left\langle \psi(t) ,  A \psi(t) \right\rangle$이다. 따라서 system의 time-evolution을 기술하는 방법은 다르지만, **Schrödinger picture과 Heisenberg picture는 observable의 기댓값을 정확히 같은 function of time으로 나타내며, 따라서 두 representation은 물리적으로 equivalent하다.** 
 
-* 이후의 논의에서는 대부분 Schrodinger picture를 기준으로 양자역학을 설명할 것이지만, quantum field theory와 같은 이론에서는 Heisenberg picture가 사용되므로 둘 다 알아두는 것이 좋다.
+* 이후의 논의에서는 대부분 Schrödinger picture를 기준으로 양자역학을 설명할 것이지만, quantum field theory와 같은 이론에서는 Heisenberg picture가 사용되므로 둘 다 알아두는 것이 좋다.
 
 > **[Proposition 3.21]** Suppose $\hat H = P^2/(2m) + V(X)$, where $V$ is a bounded below polynomial. Then for any $t \in \mathbb R$ we have
 > $$
@@ -1144,7 +1144,7 @@ $$
 \frac{dp}{dt} &= -V^\prime(x(t))
 \end{align*}
 $$
-하지만 Schrodinger picture에서 그러하였듯, 일반적인 경우에 $X(t)$와 $P(t)$의 기댓값은 고전역학의 운동방정식을 그대로 따르지는 않는다. 
+하지만 Schrödinger picture에서 그러하였듯, 일반적인 경우에 $X(t)$와 $P(t)$의 기댓값은 고전역학의 운동방정식을 그대로 따르지는 않는다. 
 $$
 \begin{align*}
 \frac{d}{dt} \langle X(t) \rangle_\psi &= \frac{1}{m}\langle P(t) \rangle_\psi \\
@@ -1157,12 +1157,12 @@ $$
 
 1차원 "box" , 즉 구간 $0 \leq x \leq L$ 내를 움직이는 입자에 대한 양자역학을 생각해보자. 우리의 목적은 다음과 같다.
 
-* Schrodinger operator의 모든 eigenvector와 eigenvalue를 찾는 것.
-  * 즉 time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution을 찾는 것,
+* Schrödinger operator의 모든 eigenvector와 eigenvalue를 찾는 것.
+  * 즉 time-independent Schrödinger equation $\hat H \psi = E \psi$의 solution을 찾는 것,
 
-1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
+1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrödinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
 
-따라서 만약 이 $C$가 무한히 큰 상황을 생각해보면, 즉 $C \to \infty$일 때는, time-independent Schrodinger equation의 solution이 box 밖에선 $0$의 값을 갖고, box의 양 끝 지점 $x=0$과 $x=L$에 다가갈 수록 0으로 수렴하게 될 것이다.
+따라서 만약 이 $C$가 무한히 큰 상황을 생각해보면, 즉 $C \to \infty$일 때는, time-independent Schrödinger equation의 solution이 box 밖에선 $0$의 값을 갖고, box의 양 끝 지점 $x=0$과 $x=L$에 다가갈 수록 0으로 수렴하게 될 것이다.
 
 
 
@@ -1197,7 +1197,7 @@ $\mathbb R^n$ 내의 입자에 대한 Hamiltonian operator는 다음과 같이 �
 $$
 \hat H = \sum_{j=1}^{n}\frac{P_j^2}{2m} + V(\mathbf X)
 $$
-이때 $V(\mathbf X)$는 commutable한 operator의 family $\mathbf X = (X_1, ... , X_n)$에 대한 함수 $V$의 (operator-valued) 함숫값이며, '함수 $V(\mathbf x)$를 곱하는' 연산에 대응되는 operator로 이해할 수 있다. 따라서 위 식은 다음과 같이 보다 구체적으로 적을 수 있다. 이와 같이 정의된 operator $\hat H$를 Schrodinger operator라고 한다.
+이때 $V(\mathbf X)$는 commutable한 operator의 family $\mathbf X = (X_1, ... , X_n)$에 대한 함수 $V$의 (operator-valued) 함숫값이며, '함수 $V(\mathbf x)$를 곱하는' 연산에 대응되는 operator로 이해할 수 있다. 따라서 위 식은 다음과 같이 보다 구체적으로 적을 수 있다. 이와 같이 정의된 operator $\hat H$를 Schrödinger operator라고 한다.
 $$
 \hat H \psi(\mathbf x) = \sum_{j=1}^{n}\left(\frac{- \hbar^2 }{2m}\right) \frac{\partial^2\psi}{\partial x_j^2} + V(\mathbf x)\psi(\mathbf x)\\
 = \frac{- \hbar^2 }{2m} \Delta \psi(\mathbf x) + V(\mathbf x)\psi(\mathbf x)
@@ -1304,26 +1304,3 @@ $$
 * 아직은 다루기 어려운 주제이며, 해당 Theorem의 statement와 증명 등 자세한 내용은 14장에서 다룬다.
 
 그럼에도 불구하고, operator가 작용하는 function space에 대한 specification에 대한 언급 없이, 논문 전체에 걸쳐 이 operator를 사용한 계산을 서술하는 것은 수학자의 입장에서 보았을 때 불편한 부분이 아닐 수 없다.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

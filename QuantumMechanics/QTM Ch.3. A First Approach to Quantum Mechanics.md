@@ -1157,8 +1157,36 @@ $$
 
 1차원 "box" , 즉 구간 $0 \leq x \leq L$ 내를 움직이는 입자에 대한 양자역학을 생각해보자. 우리의 목적은 다음과 같다.
 
+<<<<<<< Updated upstream:QuantumMechanics/QTM Ch.3. A First Approach to Quantum Mechanics.md
 * Schrödinger operator의 모든 eigenvector와 eigenvalue를 찾는 것.
   * 즉 time-independent Schrödinger equation $\hat H \psi = E \psi$의 solution을 찾는 것,
+=======
+* Schrodinger operator의 모든 eigenvector와 eigenvalue를 찾는 것.
+  * 즉 time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution을 찾는 것,
+
+1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
+
+따라서 만약 이 $C$가 무한히 큰 상황을 생각해보면, 즉 $C \to \infty$일 때는, time-independent Schrodinger equation의 solution이 box 밖에선 $0$의 값을 갖고, box의 양 끝 지점 $x=0$과 $x=L$에 다가갈 수록 0으로 수렴하게 될 것이다. 즉 다음 boundary condition과 미분방정식을 만족하는 $[0,L]$ 위의 smooth function $\psi$를 찾는 것이다.
+$$
+-\frac{\hbar^2}{2m}\frac{d^2 \psi}{dx^2} = E\psi(x), \enspace0\leq x \leq L,\\
+\psi(0) = \psi(L) = 0.
+$$
+$E > 0$에 대하여, 위 방정식의 solution은 아래와 같이 sine과 cosine function의 span이 될 것이다.
+$$
+\psi(x) = a \sin\left( \frac{\sqrt{2mE}}{\hbar}x\right) + b \cos\left( \frac{\sqrt{2mE}}{\hbar}x\right)
+$$
+Boundary condition
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes:QuantumMechanics/Quantum Theory for Mathematicians.md
 
 1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrödinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
 

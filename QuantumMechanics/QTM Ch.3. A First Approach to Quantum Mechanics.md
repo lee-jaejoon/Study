@@ -1,6 +1,6 @@
 # 3. A First Approach to Quantum Mechanics
 
-이 장은 양자역학의 주된 아이디어들을 개괄적으로 이해하는 것을 목표로 한다. 양자역학에서 어떤 측정의 결과는 사전에 예측될 수 없고 (even in principle), 오직 측정 결과에 대한 *확률*만이 예측 가능하다. 이 *확률*은 *wave function*이라고 하는 위치 변수 $\mathbf x \in \mathbb R^n$에 대한 함수로 encode되어 있고, 입자의 위치에 대한 확률은 이 wave function을 제곱하여 얻을 수 있다. 또한 입자의 운동량(momentum)에 대한 확률은 wave function의 진동 주파수에 그 정보가 encode되어 있다. 이처럼 입자의 정보가 wave function, 즉 함수에 encode되어 있기 때문에, 입자의 위치와 운동량에 대한 확률은 함수 공간 상 정의된 연산자(operator), *position operator*와 *momentum operator*를 이용하여 기술된다. 또한 wave function의 시간 변화(time-evolution)은 Hamiltonian operator에 의해 기술되며, 이는 고전역학의 Hamilton 방정식의 Hamiltonian 함수(혹은 에너지 함수)와 대응되는 개념이다.
+이 장은 양자역학의 주된 아이디어들을 개괄적으로 이해하는 것을 목표로 한다. 양자역학에서 어떤 측정의 결과는 사전에 예측될 수 없고 (even in principle), 오직 측정 결과에 대한 *확률*만이 예측 가능하다. 이 *확률*은 *wave function*이라고 하는 위치 변수 $\mathbf x \in \mathbb R^n$에 대한 함수로 encode되어 있고, 입자의 위치에 대한 확률은 이 wave function을 제곱하여 얻을 수 있다. 또\한 입자의 운동량(momentum)에 대한 확률은 wave function의 진동 주파수에 그 정보가 encode되어 있다. 이처럼 입자의 정보가 wave function, 즉 함수에 encode되어 있기 때문에, 입자의 위치와 운동량에 대한 확률은 함수 공간 상 정의된 연산자(operator), *position operator*와 *momentum operator*를 이용하여 기술된다. 또한 wave function의 시간 변화(time-evolution)은 Hamiltonian operator에 의해 기술되며, 이는 고전역학의 Hamilton 방정식의 Hamiltonian 함수(혹은 에너지 함수)와 대응되는 개념이다.
 
 ## 3.1. Waves, Particles, and Probabilities
 
@@ -62,7 +62,7 @@ $$
     \end{align*}
     $$
 
-  * 임의의 operator $A$와 $\phi \in \mathbf H, \Vert\phi\Vert \leq 1$에 대하여 다음이 만족하므로, 
+  * 임의의 bounded operator $A$와 $\phi \in \mathbf H, \Vert\phi\Vert \leq 1$에 대하여 다음이 만족하므로, 
     $$
     \begin{align*}
     \Vert A \phi \Vert^2 &= \langle A \phi , A \phi \rangle = \langle A^\ast A \phi ,  \phi \rangle \\
@@ -1157,16 +1157,12 @@ $$
 
 1차원 "box" , 즉 구간 $0 \leq x \leq L$ 내를 움직이는 입자에 대한 양자역학을 생각해보자. 우리의 목적은 다음과 같다.
 
-<<<<<<< Updated upstream:QuantumMechanics/QTM Ch.3. A First Approach to Quantum Mechanics.md
 * Schrödinger operator의 모든 eigenvector와 eigenvalue를 찾는 것.
   * 즉 time-independent Schrödinger equation $\hat H \psi = E \psi$의 solution을 찾는 것,
-=======
-* Schrodinger operator의 모든 eigenvector와 eigenvalue를 찾는 것.
-  * 즉 time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution을 찾는 것,
 
-1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrodinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
+1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrödinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
 
-따라서 만약 이 $C$가 무한히 큰 상황을 생각해보면, 즉 $C \to \infty$일 때는, time-independent Schrodinger equation의 solution이 box 밖에선 $0$의 값을 갖고, box의 양 끝 지점 $x=0$과 $x=L$에 다가갈 수록 0으로 수렴하게 될 것이다. 즉 다음 boundary condition과 미분방정식을 만족하는 $[0,L]$ 위의 smooth function $\psi$를 찾는 것이다.
+따라서 만약 이 $C$가 무한히 큰 상황을 생각해보면, 즉 $C \to \infty$일 때는, time-independent Schrödinger equation의 solution이 box 밖에선 $0$의 값을 갖고, box의 양 끝 지점 $x=0$과 $x=L$에 다가갈 수록 0으로 수렴하게 될 것이다. 즉 다음 boundary condition과 미분방정식을 만족하는 $[0,L]$ 위의 smooth function $\psi$를 찾는 것이다.
 $$
 -\frac{\hbar^2}{2m}\frac{d^2 \psi}{dx^2} = E\psi(x), \enspace0\leq x \leq L,\\
 \psi(0) = \psi(L) = 0.
@@ -1182,15 +1178,6 @@ Boundary condition
 
 
 
-
-
-
-
->>>>>>> Stashed changes:QuantumMechanics/Quantum Theory for Mathematicians.md
-
-1차원 box 내에 입자가 있다는 제약 조건은 Hamiltonian $\hat H$ 식 내의 potential term $V$를 통해 반영할 수 있다. 구간 $0 \leq x \leq L$ 내에서는 $0$의 값을, 구간 밖에서는 굉장히 큰 constant value $C$를 갖도록 하는 것이다. 이는 고전역학의 관점에서는, 입자가 box 밖으로 탈출하기 위해서는 굉장히 큰 ($C$보다 큰) energy가 필요한 상황으로 이해할 수 있다. 양자역학의 관점에서는, 어떤 $E < C$인 energy level $E$와 potential $V$에 대하여, time-independent Schrödinger equation $\hat H \psi = E \psi$의 solution이 존재한다면, 이 solution $\psi$는 box 밖의 $x$에 대해서는 0으로 빠르게 decay하는 상황으로 이해할 수 있다. (자세한 내용은 5장에서 다룬다) 
-
-따라서 만약 이 $C$가 무한히 큰 상황을 생각해보면, 즉 $C \to \infty$일 때는, time-independent Schrödinger equation의 solution이 box 밖에선 $0$의 값을 갖고, box의 양 끝 지점 $x=0$과 $x=L$에 다가갈 수록 0으로 수렴하게 될 것이다.
 
 
 
@@ -1255,7 +1242,7 @@ $$
 
 ## 3.11. Systems of Multiple Particles
 
-$\mathbb R^n$ 내의 quantum particle $N$개로 이루어진 system을 생각해보자. 만약 각 입자들이 모두 다른 종류라면, 예를 들면 전자 하나와 중성자 하나가 있는 경우, 이 system에 대한 Hilbert space는 $L^2 (\mathbb R^{nN})$이 된다. 즉 이 system의 wave function $\psi$는 $\mathbf x^1$, ... , $\mathbf x^N$을 input으로 갖는 함수가 되고, 각 $\mathbf x^j$는 $\mathbb R^n$에 속하는 것이다. 이 wave function $\psi$가 $L^2 (\mathbb R^{nN})$의 unit vector가 되도록 normalize를 하면, $\vert \psi(\mathbf x^1, ... , \mathbf x^N) \vert^2$는 $N$개의 서로 다른 종류의 입자의 위치들에 대한 joint probability distribution을 의미한다.
+$\mathbb R^n$ 내의 quantum particle $N$개로 이루어진 system을 생각해보자. 만약 각 입자들이 모두 다른 종류라면, 예를 들면 전자 하나와 중성자 하나가 있는 경우, 이 system에 대한 Hilbert space는 $L^2 (\mathbb R^{2n})$이 된다. 즉 이 system의 wave function $\psi$는 $\mathbf x^1$, ... , $\mathbf x^N$을 input으로 갖는 함수가 되고, 각 $\mathbf x^j$는 $\mathbb R^n$에 속하는 것이다. 이 wave function $\psi$가 $L^2 (\mathbb R^{nN})$의 unit vector가 되도록 normalize를 하면, $\vert \psi(\mathbf x^1, ... , \mathbf x^N) \vert^2$는 $N$개의 서로 다른 종류의 입자의 위치들에 대한 joint probability distribution을 의미한다.
 
 $j$번째 입자의 $k$번째 축에 대한 position과 momentum operator를 각각 $X_k^j$, $P_k^j$라고 한다면, 그 system의 Hamiltonian operator는 다음과 같다.
 $$
